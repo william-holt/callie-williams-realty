@@ -22,6 +22,7 @@ import settings from '@/sanity/schemas/singletons/settings'
 import listing from '@/sanity/schemas/documents/listing'
 import listingImage from '@/sanity/schemas/objects/listingImage'
 import testimonial from '@/sanity/schemas/objects/testimonial'
+import service from '@/sanity/schemas/objects/service'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -45,6 +46,7 @@ export default defineConfig({
       listing,
       // Objects
       milestone,
+      service,
       timeline,
       testimonial,
       listingImage,
