@@ -19,6 +19,7 @@ import listing from '@/sanity/schemas/documents/listing'
 import listingImage from '@/sanity/schemas/objects/listingImage'
 import testimonial from '@/sanity/schemas/objects/testimonial'
 import service from '@/sanity/schemas/objects/service'
+import social from '@/sanity/schemas/objects/social'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -42,6 +43,7 @@ export default defineConfig({
       service,
       testimonial,
       listingImage,
+      social,
     ],
   },
   plugins: [

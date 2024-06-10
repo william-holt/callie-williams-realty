@@ -1,8 +1,10 @@
 import { defineField, defineType } from 'sanity'
+import listingStatus from '@/sanity/schemas/staticFields/listingStatus'
+import socialImage from '@/sanity/schemas/staticFields/socialImage'
 
 export default defineType({
-  name: '',
-  title: '',
+  name: 'social',
+  title: 'Social Media Link',
   type: 'object',
   fields: [
     defineField({
@@ -11,7 +13,22 @@ export default defineType({
       title: 'Title',
       validation: (rule) => rule.required(),
     }),
-
+    defineField({
+      type: 'url',
+      name: 'link',
+      title: 'Link',
+      validation: (rule) => rule.required(),
+    }),
+    {
+      title: 'Social Media Site',
+      name: 'socialImage',
+      type: 'string',
+      options: {
+        list: [
+          ...socialImage
+        ],
+      }
+    },
   ],
   preview: {
     select: {

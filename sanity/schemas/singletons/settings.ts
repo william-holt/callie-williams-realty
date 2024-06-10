@@ -58,6 +58,12 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'socials',
+      title: 'Socials',
+      type: 'array',
+      of: [{type: 'social'}],
+    }),
+    defineField({
       name: 'ogImage',
       title: 'Open Graph Image',
       type: 'image',

@@ -45,6 +45,7 @@ export default defineType({
       title: 'Services',
       type: 'array',
       of: [{type: 'service'}],
+      validation: (rule) => rule.min(3).max(3),
     }),
     defineField({
       name: 'propertiesTitle',
