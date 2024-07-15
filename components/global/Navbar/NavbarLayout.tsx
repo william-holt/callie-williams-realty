@@ -31,6 +31,20 @@ export default function Navbar(props: NavbarProps) {
             </Link>
           )
         })}
+      <Link
+        key='properties'
+        className={`text-lg hover:text-black md:text-xl text-gray-600`}
+        href='/properties'
+      >
+        Properties
+      </Link>
+      <Link
+        key='contact'
+        className={`text-lg hover:text-black md:text-xl text-gray-600`}
+        href='/contact'
+      >
+        Contact
+      </Link>
     </div>
   )
 }

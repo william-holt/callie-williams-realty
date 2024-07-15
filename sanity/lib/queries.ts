@@ -11,6 +11,12 @@ export const homePageQuery = groq`
       link,
       title,
     },
+    testimonials[]->{
+      _type,
+      name,
+      review,
+      date,
+    },
     title,
     heroImage,
     subtitle,

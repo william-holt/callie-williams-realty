@@ -1,5 +1,6 @@
 import type { PortableTextBlock } from 'next-sanity'
 import type { Image } from 'sanity'
+import Testimonial from '@/sanity/schemas/objects/testimonial'
 
 export interface MenuItem {
   _type: string
@@ -35,6 +36,13 @@ export interface Service {
   link?: string
 }
 
+export interface Testimonial {
+  _type: string
+  name?: string
+  review?: string
+  date?: string
+}
+
 // Page payloads
 
 export interface HomePagePayload {
@@ -50,6 +58,7 @@ export interface HomePagePayload {
   testimonialsTitle?: string
   aboutTitle?: string
   aboutText?: string
+  testimonials?: Testimonial[]
 }
 
 export interface PagePayload {

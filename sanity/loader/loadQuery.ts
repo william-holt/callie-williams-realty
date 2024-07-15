@@ -9,6 +9,7 @@ import {
   pagesBySlugQuery,
   projectBySlugQuery,
   settingsQuery,
+  allReviewsQuery,
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
@@ -91,5 +92,13 @@ export function loadPage(slug: string) {
     pagesBySlugQuery,
     { slug },
     { next: { tags: [`page:${slug}`] } },
+  )
+}
+
+export function loadTestimonials() {
+  return loadQuery<ProjectPayload | null>(
+    allReviewsQuery,
+    {},
+    { next: { tags: ['home'] } },
   )
 }
