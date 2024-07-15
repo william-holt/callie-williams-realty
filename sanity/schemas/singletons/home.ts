@@ -69,7 +69,7 @@ export default defineType({
       name: 'aboutText',
       description: 'This field is the body text of the About section.',
       title: 'About Section Body',
-      type: 'text',
+      type: 'string',
     }),
     defineField({
       name: 'overview',

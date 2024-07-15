@@ -1,5 +1,4 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import { ImageIcon } from '@sanity/icons'
 import listingStatus from '@/sanity/schemas/staticFields/listingStatus'
 
 export default defineType({

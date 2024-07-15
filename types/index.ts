@@ -27,13 +27,29 @@ export interface ShowcaseProject {
   title?: string
 }
 
+export interface Service {
+  _type: string
+  image?: Image
+  title?: string
+  description?: string
+  link?: string
+}
+
 // Page payloads
 
 export interface HomePagePayload {
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
-  showcaseProjects?: ShowcaseProject[]
   title?: string
+  heroImage?: any
+  subtitle?: string
+  paragraph?: string
+  servicesTitle?: string
+  services?: Service[]
+  propertiesTitle?: string
+  testimonialsTitle?: string
+  aboutTitle?: string
+  aboutText?: string
 }
 
 export interface PagePayload {
