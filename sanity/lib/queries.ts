@@ -1,21 +1,22 @@
 import { groq } from 'next-sanity'
 
-export const homePageQuery = groq`
-  *[_type == "home"][0]{
-    _id,
-    overview,
-    services[],
-    title,
-    heroImage,
-    subtitle,
-    paragraph,
-    servicesTitle,
-    propertiesTitle,
-    testimonialsTitle,
-    aboutTitle,
-    aboutText,
-  }
-`
+export const homePageQuery = groq`{
+    "homeData": *[_type == "home"][0]{
+      _id,
+      overview,
+      services[],
+      title,
+      heroImage,
+      subtitle,
+      paragraph,
+      servicesTitle,
+      propertiesTitle,
+      testimonialsTitle,
+      aboutTitle,
+      aboutText,
+    },
+    "propertyData": *[_type == "listing"][],
+  }`
 
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {

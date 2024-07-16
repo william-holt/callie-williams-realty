@@ -14,52 +14,46 @@ export interface HomePageProps {
   testimonials?: any
 }
 
-export function HomePage({ data, encodeDataAttribute, initial, testimonials }: HomePageProps) {
+export function HomePage({ data, encodeDataAttribute, initial, testimonials }: any) {
   // Default to an empty object to allow previews on non-existent documents
-  // const { overview = [], services = [], title = '', aboutTitle, propertiesTitle, aboutText, testimonialsTitle, servicesTitle, footer, paragraph, subtitle, heroImage } = data ?? {}
-  console.log('testimonials', testimonials);
+  const {homeData, propertyData} = data;
+  const { overview = [], services = [], title = '', aboutTitle, propertiesTitle, aboutText, testimonialsTitle, servicesTitle, footer, paragraph, subtitle, heroImage } = homeData ?? {}
+  console.log('heroImage', heroImage);
 
   return (
-    <div className="space-y-20">
+    <div className="space-y-20 flex flex-col">
       {/* Header */}
-      {/*{title && <Header centered title={title} description={overview} />}*/}
-      {/*{heroImage && <div><ImageBox data-sanity={encodeDataAttribute?.('coverImage')}*/}
-      {/*                             image={heroImage}*/}
-      {/*                             alt=""/></div>}*/}
-      {/*{subtitle && <div>{subtitle}</div>}*/}
-      {/*{paragraph && <div>{paragraph}</div>}*/}
-      {/*{servicesTitle && <div>{servicesTitle}</div>}*/}
+      {title && <Header centered title={title} description={overview} />}
+      {heroImage && (
+        <div className="max-w-80vw">
+          <ImageBox data-sanity={encodeDataAttribute?.('coverImage')}
+                                     image={heroImage}
+                                     alt=""/>
+        </div>
+      )}
+      {subtitle && <div>{subtitle}</div>}
+      {paragraph && <div>{paragraph}</div>}
+      {servicesTitle && <div>{servicesTitle}</div>}
 
-      {/*{services && services.length > 0 && (*/}
-      {/*  <div className="mx-auto max-w-[100rem] rounded-md border">*/}
-      {/*    {services.map((service, key) => {*/}
-      {/*      const href = resolveHref(service?._type, service?.link)*/}
-      {/*      if (!href) {*/}
-      {/*        return null*/}
-      {/*      }*/}
-      {/*      return (*/}
-      {/*        <Link*/}
-      {/*          key={key}*/}
-      {/*          href={''}*/}
-      {/*          data-sanity={encodeDataAttribute?.([*/}
-      {/*            'services',*/}
-      {/*            key,*/}
-      {/*            'link',*/}
-      {/*          ])}*/}
-      {/*        >*/}
-      {/*          {service.title}*/}
-      {/*        </Link>*/}
-      {/*      )*/}
-      {/*    })}*/}
-      {/*  </div>*/}
-      {/*)}*/}
+      {services?.length > 0 && (
+        <div className="mt-8 flex flex-row flex-nowrap">
+          {services.map((service, key) => {
+            return (
+              <div key={'service' + key} className="flex flex-col">
+                <div>{service.title}</div>
+                <div>{service.description}</div>
+              </div>
+            )
+          })}
+        </div>
+      )}
 
-      {/*{propertiesTitle && <div>{propertiesTitle}</div>}*/}
-      {/*{testimonialsTitle && <div>{testimonialsTitle}</div>}*/}
-      {/*{aboutTitle && <div>{aboutTitle}</div>}*/}
-      {/*{aboutText && <div>{aboutText}</div>}*/}
+      {propertiesTitle && <div>{propertiesTitle}</div>}
+      {testimonialsTitle && <div>{testimonialsTitle}</div>}
+      {aboutTitle && <div>{aboutTitle}</div>}
+      {aboutText && <div>{aboutText}</div>}
 
-      <Testimonials initial={initial} />
+      <Testimonials propertyData={propertyData} />
     </div>
   )
 }
