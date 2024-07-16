@@ -1,17 +1,24 @@
+'use client'
+import { allReviewsQuery } from '@/sanity/lib/queries'
+import { useQuery } from '@/sanity/loader/useQuery'
 
 interface TestimonialProps {
   centered?: boolean
   description?: any[]
   title?: string
   testimonials?: any[]
+  initial?: any
 }
-export async function Testimonials(props: TestimonialProps) {
-  const { testimonials } = props
+export function Testimonials(props: TestimonialProps) {
+  const { initial } = props
 
-  if (!testimonials) {
-    return null
-  }
-  console.log('testi', testimonials)
+  const { data: testimonials } = useQuery<any | null>(
+    allReviewsQuery,
+    {},
+    { initial },
+  )
+  console.log('testimonials', testimonials);
+
   return (
     <div>testimonials</div>
     // <div className={`${centered ? 'text-center' : ''}`}>

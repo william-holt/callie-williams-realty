@@ -27,12 +27,10 @@ export default defineType({
   preview: {
     select: {
       title: 'name',
-      description: 'description',
     },
-    prepare({ title, description }) {
+    prepare({ title }) {
       return {
         title,
-        description,
       }
     },
   },

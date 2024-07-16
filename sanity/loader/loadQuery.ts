@@ -9,7 +9,7 @@ import {
   pagesBySlugQuery,
   projectBySlugQuery,
   settingsQuery,
-  allReviewsQuery,
+  allReviewsQuery, allListingsQuery
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
@@ -100,5 +100,13 @@ export function loadTestimonials() {
     allReviewsQuery,
     {},
     { next: { tags: ['home'] } },
+  )
+}
+
+export function loadProperties() {
+  return loadQuery<any | null>(
+    allListingsQuery,
+    {},
+    { next: { tags: ['properties'] } },
   )
 }
