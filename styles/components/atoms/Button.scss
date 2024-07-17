@@ -1,0 +1,170 @@
+.button-wrapper {
+  button {
+    padding: 0.75em 2em;
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+  }
+
+  // sizes
+  .sm {
+    font-size: 0.8em;
+  }
+  .md {
+    font-size: 1em;
+  }
+  .lg {
+    font-size: 1.2em;
+  }
+
+  // variants
+  .solid {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+  .outlined {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  // colors
+  .primary.solid {
+    background-color: var(--primary);
+    color: var(--paper-light);
+    &:hover {
+      background-color: var(--primary-light);
+    }
+  }
+  .primary.outlined {
+    color: var(--primary);
+    border-color: var(--primary);
+    &:hover {
+      background-color: var(--primary);
+      color: var(--paper-light);
+    }
+  }
+  .primary.ghost {
+    background-color: transparent;
+    color: var(--primary);
+    &:hover {
+      color: var(--primary-dark);
+    }
+  }
+
+  .secondary.solid {
+    background-color: var(--secondary);
+    color: var(--paper-light);
+    &:hover {
+      background-color: var(--secondary-light);
+    }
+  }
+  .secondary.outlined {
+    color: var(--secondary);
+    border-color: var(--secondary);
+    &:hover {
+      background-color: var(--secondary);
+      color: var(--paper-light);
+    }
+  }
+  .secondary.ghost {
+    background-color: transparent;
+    color: var(--secondary);
+    &:hover {
+      color: var(--secondary-dark);
+    }
+  }
+
+  .tertiary.solid {
+    background-color: var(--tertiary);
+    color: var(--paper-light);
+    &:hover {
+      background-color: var(--tertiary-light);
+    }
+  }
+  .tertiary.outlined {
+    color: var(--tertiary);
+    border-color: var(--tertiary);
+    &:hover {
+      background-color: var(--tertiary);
+      color: var(--paper-light);
+    }
+  }
+  .tertiary.ghost {
+    background-color: transparent;
+    color: var(--tertiary);
+    &:hover {
+      color: var(--tertiary-dark);
+    }
+  }
+
+  .accent.solid {
+    background-color: var(--accent);
+    color: var(--paper-light);
+    &:hover {
+      background-color: var(--accent-light);
+    }
+  }
+  .accent.outlined {
+    color: var(--accent);
+    border-color: var(--accent);
+    &:hover {
+      background-color: var(--accent);
+      color: var(--paper-light);
+    }
+  }
+  .accent.ghost {
+    background-color: transparent;
+    color: var(--accent);
+    &:hover {
+      color: var(--accent-dark);
+    }
+  }
+
+  .ink.solid {
+    background-color: var(--ink);
+    color: var(--paper-light);
+    &:hover {
+      background-color: var(--ink-light);
+    }
+  }
+  .ink.outlined {
+    color: var(--ink);
+    border-color: var(--ink);
+    &:hover {
+      background-color: var(--ink);
+      color: var(--paper-light);
+    }
+  }
+  .ink.ghost {
+    background-color: transparent;
+    color: var(--ink);
+    &:hover {
+      color: var(--ink-dark);
+    }
+  }
+
+  .paper.solid {
+    background-color: var(--paper-light);
+    color: var(--accent-dark);
+    &:hover {
+      background-color: var(--paper);
+    }
+  }
+  .paper.outlined {
+    color: var(--paper);
+    border-color: var(--paper);
+    &:hover {
+      background-color: var(--paper);
+      color: var(--ink);
+    }
+  }
+  .paper.ghost {
+    background-color: transparent;
+    color: var(--paper-light);
+    &:hover {
+      color: var(--paper);
+    }
+  }
+}

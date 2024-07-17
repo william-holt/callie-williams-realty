@@ -1,8 +1,8 @@
 import type { EncodeDataAttributeCallback } from '@sanity/react-loader'
+import Image from 'next/image'
 import Link from 'next/link'
 
-import { Header } from '@/components/shared/Header'
-import ImageBox from '@/components/shared/ImageBox'
+import { HomePageHero } from '@/components/pages/home/HomePageHero'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { HomePagePayload } from '@/types'
 import { Testimonials } from '@/components/shared/Testimonials'
@@ -14,22 +14,40 @@ export interface HomePageProps {
   testimonials?: any
 }
 
-export function HomePage({ data, encodeDataAttribute, initial, testimonials }: any) {
+export function HomePage({
+  data,
+  encodeDataAttribute,
+  initial,
+  testimonials,
+}: any) {
   // Default to an empty object to allow previews on non-existent documents
-  const {homeData, propertyData} = data;
-  const { overview = [], services = [], title = '', aboutTitle, propertiesTitle, aboutText, testimonialsTitle, servicesTitle, footer, paragraph, subtitle, heroImage } = homeData ?? {}
-  console.log('heroImage', heroImage);
+  const { homeData, propertyData } = data
+  const {
+    overview = [],
+    services = [],
+    title = '',
+    aboutTitle,
+    propertiesTitle,
+    aboutText,
+    testimonialsTitle,
+    servicesTitle,
+    footer,
+    paragraph,
+    subtitle,
+    heroImage,
+  } = homeData ?? {}
+  console.log('heroImage', heroImage)
 
   return (
     <div className="space-y-20 flex flex-col">
       {/* Header */}
-      {title && <Header centered title={title} description={overview} />}
+      {title && <HomePageHero title={title} description={overview} />}
       {heroImage && (
-        <div className="max-w-80vw">
-          <ImageBox data-sanity={encodeDataAttribute?.('coverImage')}
-                                     image={heroImage}
-                                     alt=""/>
-        </div>
+        <Image
+          data-sanity={encodeDataAttribute?.('coverImage')}
+          src={heroImage}
+          alt="Hero image"
+        />
       )}
       {subtitle && <div>{subtitle}</div>}
       {paragraph && <div>{paragraph}</div>}
