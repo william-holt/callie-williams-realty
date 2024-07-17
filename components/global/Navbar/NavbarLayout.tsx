@@ -32,7 +32,7 @@ export default function Navbar(props: NavbarProps) {
   }
 
   return (
-    <nav className="sticky top-0 z-10 w-full max-w-screen-2xl flex flex-row items-center justify-center flex-wrap mx-auto px-4 py-4 backdrop-blur lg:justify-between">
+    <nav className="sticky top-0 z-10 w-full max-w-screen-2xl h-[100px] flex flex-row items-center justify-center flex-wrap mx-auto px-4 backdrop-blur lg:justify-between">
       <Menu menuItems={menuItems} isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className={twMerge(`w-fit order-1 lg:hidden`)}>
         <Hamburger

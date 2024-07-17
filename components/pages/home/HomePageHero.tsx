@@ -10,7 +10,7 @@ export function HomePageHero(props: HomePageHeroProps) {
     return null
   }
   return (
-    <section className="absolute top-0 left-0 w-full h-screen min-h-[600px] flex flex-col items-center justify-center bg-primary-light">
+    <section className="relative -top-[100px] left-0 w-full h-screen min-h-[600px] flex flex-col items-center justify-center bg-primary-light">
       <div className="relative w-full max-w-screen-2xl h-screen min-h-[600px] flex flex-col items-center justify-center mx-auto">
         <div className="absolute bottom-0 w-full h-full flex flex-col items-start justify-between pt-36 px-4 pb-12">
           {/* Top */}
