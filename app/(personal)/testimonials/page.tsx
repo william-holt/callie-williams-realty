@@ -10,52 +10,37 @@ import { CustomPortableText } from '@/components/shared/CustomPortableText'
 //   () => import('@/components/pages/home/HomePagePreview'),
 // )
 
-export default async function PropertiesRoute() {
+export default async function TestimonialsRoute() {
   const initial = await loadProperties()
   const { data } = initial;
 
+  const testimonials = data.filter((property: any) => property.testimonials?.length > 0).map((filteredTestimonial: any) => {
+    if (filteredTestimonial.testimonials.length > 1) {
+      const testimonials = filteredTestimonial.testimonials.map((testimonial: any) => testimonial);
+      return testimonials.length > 0 ? testimonials : null;
+    } else {
+      return {
+        ...filteredTestimonial.testimonials[0]
+      }
+    }
+  });
   // if (draftMode().isEnabled) {
   //   return <HomePagePreview initial={initial} />
   // }
 
   return (
     <>
-      <div>properties</div>
+      <div>testimonials</div>
 
-      {data?.length && (
-        <div className="flex flex-row flex-wrap justify-start items-start">
-          {data.map((listing: any, index: number) => {
-            return (
-              <div key={'listing' + index} className="flex flex-col items-start justify-center p-2 m-2 border-black border-2">
-                <div>name: {listing.name}</div>
-                <div>status: {listing.status}</div>
-                <div>description: {listing.description}</div>
-                <div>location: {listing.location}</div>
-                <div>price: {listing.price}</div>
-                <div>square footage: {listing.squareFootage}</div>
-                <div>bedrooms: {listing.bedroomCount}</div>
-                <div>bathrooms: {listing.bathroomCount}</div>
-                <div>construction date: {listing.constructionDate}</div>
-                <CustomPortableText
-                  paragraphClasses="text-md md:text-xl"
-                  value={listing.features}
-                />
-                {listing.testimonials?.length > 0 && (
-                  <div>
-                    {listing.testimonials.map((testimonial: any, testimonialIndex: number) => {
-                      return (
-                        <div key={'testimonial' + testimonialIndex}>
-                          <div>{testimonial.name}</div>
-                          <div>{testimonial.review}</div>
-                          <div>{testimonial.date}</div>
-                        </div>
-                      )
-                    })}
-                  </div>
-                )}
-              </div>
-            )
-          })}
+      {testimonials.length > 0 && (
+        <div className="flex flex-row flex-wrap">
+          {testimonials.map((testimonial: any, index: number) => (
+            <div key={'testimonial' + index} className="p-2 m-2 border-black border-2">
+              <div>{testimonial.name}</div>
+              <div>{testimonial.review}</div>
+              <div>{testimonial.date}</div>
+            </div>
+          ))}
         </div>
       )}
     </>
