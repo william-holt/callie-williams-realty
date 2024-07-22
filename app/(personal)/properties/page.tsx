@@ -1,11 +1,13 @@
 import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
-import Link from 'next/link'
 
 import { HomePage } from '@/components/pages/home/HomePage'
 import { studioUrl } from '@/sanity/lib/api'
 import { loadHomePage, loadProperties } from '@/sanity/loader/loadQuery'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
+import { list } from 'postcss'
+import { redirect } from 'next/navigation'
+import Link from 'next/link'
 // const HomePagePreview = dynamic(
 //   () => import('@/components/pages/home/HomePagePreview'),
 // )
@@ -13,6 +15,8 @@ import { CustomPortableText } from '@/components/shared/CustomPortableText'
 export default async function PropertiesRoute() {
   const initial = await loadProperties()
   const { data } = initial;
+
+  console.log(1, data);
 
   // if (draftMode().isEnabled) {
   //   return <HomePagePreview initial={initial} />
@@ -28,6 +32,11 @@ export default async function PropertiesRoute() {
             return (
               <div key={'listing' + index} className="flex flex-col items-start justify-center p-2 m-2 border-black border-2">
                 <div>name: {listing.name}</div>
+                <div>
+                  <Link href="/properties/[slug]" as={`/properties/${listing.slug.current}`}>
+                    GO TO FULL LISTING
+                  </Link>
+                </div>
                 <div>status: {listing.status}</div>
                 <div>description: {listing.description}</div>
                 <div>location: {listing.location}</div>

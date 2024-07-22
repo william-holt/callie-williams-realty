@@ -26,7 +26,7 @@ export default function Navbar(props: MenuProps) {
               return null
             }
             return (
-              <li>
+              <li key={key}>
                 <Link
                   key={key}
                   className={`text-5xl uppercase text-paper-light border-b border-transparent hover:text-accent lg:text-lg ${

@@ -13,6 +13,15 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'ogImage',
+      title: 'Open Graph Image',
+      type: 'image',
+      description: 'Displayed on social cards and search engine results.',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',

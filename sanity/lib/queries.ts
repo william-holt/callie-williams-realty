@@ -78,13 +78,13 @@ export const listingBySlugQuery = groq`
     price,
     squareFootage,
     bedroomCount,
-    bathroomCount
+    bathroomCount,
     constructionDate,
     tags,
     features,
     overview,
     images,
-    testimonials
+    testimonials,
     "slug": slug.current,
   }
 `

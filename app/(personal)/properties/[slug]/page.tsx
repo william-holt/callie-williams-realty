@@ -7,10 +7,12 @@ import { toPlainText } from 'next-sanity'
 import { ProjectPage } from '@/components/pages/project/ProjectPage'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
-import { loadProject } from '@/sanity/loader/loadQuery'
-const ProjectPreview = dynamic(
-  () => import('@/components/pages/project/ProjectPreview'),
-)
+import { loadProject, loadProperty } from '@/sanity/loader/loadQuery'
+import Link from 'next/link'
+import { CustomPortableText } from '@/components/shared/CustomPortableText'
+// const ProjectPreview = dynamic(
+//   () => import('@/components/pages/project/ProjectPreview'),
+// )
 
 type Props = {
   params: { slug: string }
@@ -20,13 +22,13 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { data: project } = await loadProject(params.slug)
-  const ogImage = urlForOpenGraphImage(project?.coverImage)
+  const { data: property } = await loadProperty(params.slug)
+  const ogImage = urlForOpenGraphImage(property?.coverImage)
 
   return {
-    title: project?.title,
-    description: project?.overview
-      ? toPlainText(project.overview)
+    title: property?.title,
+    description: property?.overview
+      ? toPlainText(property.overview)
       : (await parent).description,
     openGraph: ogImage
       ? {
@@ -37,19 +39,56 @@ export async function generateMetadata(
 }
 
 export function generateStaticParams() {
-  return generateStaticSlugs('project')
+  return generateStaticSlugs('property')
 }
 
-export default async function ProjectSlugRoute({ params }: Props) {
-  const initial = await loadProject(params.slug)
+export default async function PropertySlugRoute({ params }: Props) {
+  const initial = await loadProperty(params.slug)
 
-  if (draftMode().isEnabled) {
-    return <ProjectPreview params={params} initial={initial} />
-  }
+  // if (draftMode().isEnabled) {
+  //   return <ProjectPreview params={params} initial={initial} />
+  // }
 
   if (!initial.data) {
     notFound()
   }
 
-  return <ProjectPage data={initial.data} />
+  const {data: listing} = initial;
+
+  // return <ProjectPage data={initial.data} />
+  return (
+    <div>
+      <div>
+        Individual Project Page
+      </div>
+      <div className="flex flex-col items-start justify-center p-2 m-2 border-black border-2">
+        <div>name: {listing.name}</div>
+        <div>status: {listing.status}</div>
+        <div>description: {listing.description}</div>
+        <div>location: {listing.location}</div>
+        <div>price: {listing.price}</div>
+        <div>square footage: {listing.squareFootage}</div>
+        <div>bedrooms: {listing.bedroomCount}</div>
+        <div>bathrooms: {listing.bathroomCount}</div>
+        <div>construction date: {listing.constructionDate}</div>
+        <CustomPortableText
+          paragraphClasses="text-md md:text-xl"
+          value={listing.features}
+        />
+        {listing.testimonials?.length > 0 && (
+          <div>
+            {listing.testimonials.map((testimonial: any, testimonialIndex: number) => {
+              return (
+                <div key={'testimonial' + testimonialIndex}>
+                  <div>{testimonial.name}</div>
+                  <div>{testimonial.review}</div>
+                  <div>{testimonial.date}</div>
+                </div>
+              )
+            })}
+          </div>
+        )}
+      </div>
+    </div>
+  )
 }

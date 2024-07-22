@@ -9,7 +9,7 @@ import {
   pagesBySlugQuery,
   projectBySlugQuery,
   settingsQuery,
-  allReviewsQuery, allListingsQuery
+  allReviewsQuery, allListingsQuery, listingBySlugQuery
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
@@ -108,5 +108,13 @@ export function loadProperties() {
     allListingsQuery,
     {},
     { next: { tags: ['properties'] } },
+  )
+}
+
+export function loadProperty(slug: string) {
+  return loadQuery<any | null>(
+    listingBySlugQuery,
+    { slug },
+    { next: { tags: [`product:${slug}`] } },
   )
 }
