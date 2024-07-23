@@ -1,14 +1,11 @@
 import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
-import Link from 'next/link'
 
-import { HomePage } from '@/components/pages/home/HomePage'
-import { CustomPortableText } from '@/components/shared/CustomPortableText'
-import { studioUrl } from '@/sanity/lib/api'
-import { loadHomePage, loadProperties } from '@/sanity/loader/loadQuery'
-// const HomePagePreview = dynamic(
-//   () => import('@/components/pages/home/HomePagePreview'),
-// )
+import TestimonialsPage from '@/components/pages/testimonials/TestimonialsPage'
+import { loadProperties } from '@/sanity/loader/loadQuery'
+const TestimonialsPagePreview = dynamic(
+  () => import('@/components/pages/testimonials/TestimonialsPagePreview'),
+)
 
 export default async function TestimonialsRoute() {
   const initial = await loadProperties()
@@ -24,25 +21,9 @@ export default async function TestimonialsRoute() {
       }
     }
   });
-  // if (draftMode().isEnabled) {
-  //   return <HomePagePreview initial={initial} />
-  // }
+  if (draftMode().isEnabled) {
+    return <TestimonialsPagePreview initial={initial} />
+  }
 
-  return (
-    <>
-      <div>testimonials</div>
-
-      {testimonials.length > 0 && (
-        <div className="flex flex-row flex-wrap">
-          {testimonials.map((testimonial: any, index: number) => (
-            <div key={'testimonial' + index} className="p-2 m-2 border-black border-2">
-              <div>{testimonial.name}</div>
-              <div>{testimonial.review}</div>
-              <div>{testimonial.date}</div>
-            </div>
-          ))}
-        </div>
-      )}
-    </>
-  )
+  return <TestimonialsPage data={testimonials} />
 }
