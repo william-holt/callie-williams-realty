@@ -3,9 +3,9 @@ import { draftMode } from 'next/headers'
 import Link from 'next/link'
 
 import { HomePage } from '@/components/pages/home/HomePage'
+import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import { studioUrl } from '@/sanity/lib/api'
 import { loadHomePage, loadProperties } from '@/sanity/loader/loadQuery'
-import { CustomPortableText } from '@/components/shared/CustomPortableText'
 // const HomePagePreview = dynamic(
 //   () => import('@/components/pages/home/HomePagePreview'),
 // )

@@ -1,13 +1,13 @@
 import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
+import Link from 'next/link'
+import { redirect } from 'next/navigation'
+import { list } from 'postcss'
 
 import { HomePage } from '@/components/pages/home/HomePage'
+import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import { studioUrl } from '@/sanity/lib/api'
 import { loadHomePage, loadProperties } from '@/sanity/loader/loadQuery'
-import { CustomPortableText } from '@/components/shared/CustomPortableText'
-import { list } from 'postcss'
-import { redirect } from 'next/navigation'
-import Link from 'next/link'
 // const HomePagePreview = dynamic(
 //   () => import('@/components/pages/home/HomePagePreview'),
 // )

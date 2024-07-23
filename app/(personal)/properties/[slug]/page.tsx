@@ -1,15 +1,15 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { toPlainText } from 'next-sanity'
 
 import { ProjectPage } from '@/components/pages/project/ProjectPage'
+import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
 import { loadProject, loadProperty } from '@/sanity/loader/loadQuery'
-import Link from 'next/link'
-import { CustomPortableText } from '@/components/shared/CustomPortableText'
 // const ProjectPreview = dynamic(
 //   () => import('@/components/pages/project/ProjectPreview'),
 // )

@@ -3,9 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { HomePageHero } from '@/components/pages/home/HomePageHero'
+import { Testimonials } from '@/components/shared/Testimonials'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { HomePagePayload } from '@/types'
-import { Testimonials } from '@/components/shared/Testimonials'
 
 export interface HomePageProps {
   data: HomePagePayload | null

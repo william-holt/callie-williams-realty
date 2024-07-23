@@ -1,13 +1,12 @@
 'use client'
 
-import { useState } from 'react'
-import Image from 'next/image'
 import Hamburger from 'hamburger-react'
+import Image from 'next/image'
+import { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { Button } from '@/components/shared/Button'
 import Menu from '@/components/global/Navbar/Menu'
-
+import { Button } from '@/components/shared/Button'
 import type { MenuItem, SettingsPayload } from '@/types'
 
 interface NavbarProps {
