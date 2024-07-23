@@ -1,18 +1,18 @@
 'use client'
 import type { QueryResponseInitial } from '@sanity/react-loader'
 
-import PropertiesPage from '@/components/pages/properties/PropertiesPage'
-import { allListingsQuery } from '@/sanity/lib/queries'
+import SingleListingPage from '@/components/pages/listings/SingleListingPage'
+import { listingBySlugQuery } from '@/sanity/lib/queries'
 import { useQuery } from '@/sanity/loader/useQuery'
 
 type Props = {
   initial: QueryResponseInitial<any | null>
 }
 
-export default function PropertiesPagePreview(props: Props) {
+export default function SingleListingPagePreview(props: Props) {
   const { initial } = props
   const { data, encodeDataAttribute } = useQuery<any | null>(
-    allListingsQuery,
+    listingBySlugQuery,
     {},
     { initial },
   )
@@ -20,10 +20,10 @@ export default function PropertiesPagePreview(props: Props) {
   if (!data) {
     return (
       <div className="text-center">
-        Please start editing your Properties Page document to see the preview!
+        Please start editing your Property Page to see the preview!
       </div>
     )
   }
 
-  return <PropertiesPage data={data} />
+  return <SingleListingPage data={data} />
 }

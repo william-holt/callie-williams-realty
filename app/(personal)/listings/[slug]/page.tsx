@@ -4,12 +4,12 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { toPlainText } from 'next-sanity'
 
-import SinglePropertyPage from '@/components/pages/properties/SinglePropertyPage'
+import SingleListingPage from '@/components/pages/listings/SingleListingPage'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
-import { loadProperty } from '@/sanity/loader/loadQuery'
-const SinglePropertyPagePreview = dynamic(
-  () => import('@/components/pages/properties/SinglePropertyPreviewPage'),
+import { loadSingleListing } from '@/sanity/loader/loadQuery'
+const SingleListingPagePreview = dynamic(
+  () => import('@/components/pages/listings/SingleListingPreviewPage'),
 )
 
 type Props = {
@@ -20,7 +20,7 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { data: property } = await loadProperty(params.slug)
+  const { data: property } = await loadSingleListing(params.slug)
   const ogImage = urlForOpenGraphImage(property?.coverImage)
 
   return {
@@ -41,10 +41,10 @@ export function generateStaticParams() {
 }
 
 export default async function PropertySlugRoute({ params }: Props) {
-  const initial = await loadProperty(params.slug)
+  const initial = await loadSingleListing(params.slug)
 
   if (draftMode().isEnabled) {
-    return <SinglePropertyPagePreview initial={initial} />
+    return <SingleListingPagePreview initial={initial} />
   }
 
   if (!initial.data) {
@@ -53,5 +53,5 @@ export default async function PropertySlugRoute({ params }: Props) {
 
   const {data: listing} = initial;
   
-  return <SinglePropertyPage initial={initial} listing={listing} />
+  return <SingleListingPage initial={initial} listing={listing} />
 }

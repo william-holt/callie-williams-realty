@@ -2,13 +2,13 @@ import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
 
 import TestimonialsPage from '@/components/pages/testimonials/TestimonialsPage'
-import { loadProperties } from '@/sanity/loader/loadQuery'
+import { loadListings } from '@/sanity/loader/loadQuery'
 const TestimonialsPagePreview = dynamic(
   () => import('@/components/pages/testimonials/TestimonialsPagePreview'),
 )
 
 export default async function TestimonialsRoute() {
-  const initial = await loadProperties()
+  const initial = await loadListings()
   const { data } = initial;
 
   const testimonials = data.filter((property: any) => property.testimonials?.length > 0).map((filteredTestimonial: any) => {

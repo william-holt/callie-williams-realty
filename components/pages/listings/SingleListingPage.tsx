@@ -1,11 +1,11 @@
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 
-export function PropertiesPage({data: listing}: any) {
+export function SingleListingPage({data: listing}: any) {
 
   return (
     <div className="space-y-20 flex flex-col">
       <div>
-        Individual Project Page
+        Single Listing Page
       </div>
       <div className="flex flex-col items-start justify-center p-2 m-2 border-black border-2">
         <div>name: {listing.name}</div>
@@ -39,4 +39,4 @@ export function PropertiesPage({data: listing}: any) {
   )
 }
 
-export default PropertiesPage
+export default SingleListingPage

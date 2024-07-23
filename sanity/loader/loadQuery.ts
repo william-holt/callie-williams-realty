@@ -103,7 +103,7 @@ export function loadTestimonials() {
   )
 }
 
-export function loadProperties() {
+export function loadListings() {
   return loadQuery<any | null>(
     allListingsQuery,
     {},
@@ -111,7 +111,7 @@ export function loadProperties() {
   )
 }
 
-export function loadProperty(slug: string) {
+export function loadSingleListing(slug: string) {
   return loadQuery<any | null>(
     listingBySlugQuery,
     { slug },

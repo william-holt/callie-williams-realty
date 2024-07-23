@@ -2,11 +2,11 @@ import Link from 'next/link'
 
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 
-export function PropertiesPage({data}: any) {
+export function ListingsPage({data}: any) {
 
   return (
     <div className="space-y-20 flex flex-col">
-      <div>Properties </div>
+      <div>Listings </div>
 
       {data?.length && (
         <div className="flex flex-row flex-wrap justify-start items-start">
@@ -53,4 +53,4 @@ export function PropertiesPage({data}: any) {
   )
 }
 
-export default PropertiesPage
+export default ListingsPage

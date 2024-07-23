@@ -1,8 +1,7 @@
 'use client'
-
 import type { QueryResponseInitial } from '@sanity/react-loader'
 
-import TestimonialsPage from '@/components/pages/testimonials/TestimonialsPage'
+import ListingsPage from '@/components/pages/listings/ListingsPage'
 import { allListingsQuery } from '@/sanity/lib/queries'
 import { useQuery } from '@/sanity/loader/useQuery'
 
@@ -10,8 +9,8 @@ type Props = {
   initial: QueryResponseInitial<any | null>
 }
 
-export default function TestimonialsPagePreview(props: Props) {
-  const { initial } = props;
+export default function ListingsPagePreview(props: Props) {
+  const { initial } = props
   const { data, encodeDataAttribute } = useQuery<any | null>(
     allListingsQuery,
     {},
@@ -21,10 +20,10 @@ export default function TestimonialsPagePreview(props: Props) {
   if (!data) {
     return (
       <div className="text-center">
-        Please start editing your Testimonials document to see the preview!
+        Please start editing your Properties Page document to see the preview!
       </div>
     )
   }
 
-  return <TestimonialsPage data={data}  />
+  return <ListingsPage data={data} />
 }
