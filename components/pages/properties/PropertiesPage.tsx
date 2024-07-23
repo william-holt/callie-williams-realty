@@ -6,7 +6,7 @@ export function PropertiesPage({data}: any) {
 
   return (
     <div className="space-y-20 flex flex-col">
-      <div>Properties</div>
+      <div>Properties </div>
 
       {data?.length && (
         <div className="flex flex-row flex-wrap justify-start items-start">
