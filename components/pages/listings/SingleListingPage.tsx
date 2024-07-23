@@ -1,6 +1,8 @@
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 
-export function SingleListingPage({data: listing}: any) {
+export function SingleListingPage(initial: any) {
+
+  const {data: listing} = initial.initial;
 
   return (
     <div className="space-y-20 flex flex-col">

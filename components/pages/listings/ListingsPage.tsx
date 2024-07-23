@@ -15,7 +15,7 @@ export function ListingsPage({data}: any) {
               <div key={'listing' + index} className="flex flex-col items-start justify-center p-2 m-2 border-black border-2">
                 <div>name: {listing.name}</div>
                 <div>
-                  <Link href="/properties/[slug]" as={`/properties/${listing.slug.current}`}>
+                  <Link href="/listings/[slug]" as={`/listings/${listing.slug.current}`}>
                     GO TO FULL LISTING
                   </Link>
                 </div>

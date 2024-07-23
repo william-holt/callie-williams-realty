@@ -20,7 +20,7 @@ export default function PastDealsPagePreview(props: Props) {
   if (!data) {
     return (
       <div className="text-center">
-        Please start editing your Properties Page document to see the preview!
+        Please start editing your Listings Page document to see the preview!
       </div>
     )
   }

@@ -50,8 +50,6 @@ export default async function PropertySlugRoute({ params }: Props) {
   if (!initial.data) {
     notFound()
   }
-
-  const {data: listing} = initial;
   
-  return <SingleListingPage initial={initial} listing={listing} />
+  return <SingleListingPage initial={initial} />
 }

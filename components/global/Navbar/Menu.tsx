@@ -45,7 +45,7 @@ export default function Navbar(props: MenuProps) {
           <Link
             key="properties"
             className={`text-5xl uppercase text-paper-light hover:text-accent lg:text-lg`}
-            href="/properties"
+            href="/listings"
           >
             Properties
           </Link>
