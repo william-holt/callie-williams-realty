@@ -49,7 +49,11 @@ export default async function IndexRoute({
 }) {
   return (
     <>
+<<<<<<< Updated upstream
       <div className="flex min-h-screen flex-col bg-white text-black">
+=======
+      <div className="">
+>>>>>>> Stashed changes
         <Suspense>
           <Navbar />
         </Suspense>

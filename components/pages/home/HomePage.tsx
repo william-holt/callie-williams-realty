@@ -3,6 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { HomePageHero } from '@/components/pages/home/HomePageHero'
+<<<<<<< Updated upstream
+=======
+import { HomePageServiceSection } from '@/components/pages/home/HomePageServiceSection'
+import { Testimonials } from '@/components/shared/Testimonials'
+>>>>>>> Stashed changes
 import { resolveHref } from '@/sanity/lib/utils'
 import type { HomePagePayload } from '@/types'
 import { Testimonials } from '@/components/shared/Testimonials'
@@ -31,40 +36,26 @@ export function HomePage({
     aboutText,
     testimonialsTitle,
     servicesTitle,
+    servicesParagraph,
     footer,
     paragraph,
     subtitle,
     heroImage,
   } = homeData ?? {}
-  console.log('heroImage', heroImage)
 
   return (
-    <div className="space-y-20 flex flex-col">
+    <div className="">
       {/* Header */}
-      {title && <HomePageHero title={title} description={overview} />}
-      {heroImage && (
-        <Image
-          data-sanity={encodeDataAttribute?.('coverImage')}
-          src={heroImage}
-          alt="Hero image"
-        />
-      )}
-      {subtitle && <div>{subtitle}</div>}
-      {paragraph && <div>{paragraph}</div>}
-      {servicesTitle && <div>{servicesTitle}</div>}
-
-      {services?.length > 0 && (
-        <div className="mt-8 flex flex-row flex-nowrap">
-          {services.map((service, key) => {
-            return (
-              <div key={'service' + key} className="flex flex-col">
-                <div>{service.title}</div>
-                <div>{service.description}</div>
-              </div>
-            )
-          })}
-        </div>
-      )}
+      <HomePageHero
+        title={subtitle}
+        description={paragraph}
+        coverImage={heroImage}
+      />
+      <HomePageServiceSection
+        title={servicesTitle}
+        description={servicesParagraph}
+        services={services}
+      />
 
       {propertiesTitle && <div>{propertiesTitle}</div>}
       {testimonialsTitle && <div>{testimonialsTitle}</div>}
