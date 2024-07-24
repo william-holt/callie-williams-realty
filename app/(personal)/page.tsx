@@ -28,5 +28,5 @@ export default async function IndexRoute() {
     )
   }
 
-  return <HomePage data={initial.data} initial={initial}/>
+  return <HomePage data={initial.data} initial={initial} />
 }

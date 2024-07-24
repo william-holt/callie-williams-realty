@@ -50,6 +50,7 @@ body {
 .shout {
   font-family: var(--title);
   font-size: var(--font-size-xl);
+  font-weight: 700;
   line-height: 1em;
 }
 
@@ -263,6 +264,14 @@ body {
 }
 .border-paper-light {
   border-color: var(--paper-light);
+}
+
+// Border radius classes
+.rounded-border-lg {
+  border-radius: 24px;
+}
+.rounded-border-sm {
+  border-radius: 16px;
 }
 
 /* Code */

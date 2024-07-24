@@ -1,8 +1,8 @@
 :root {
   // Fonts
   --headline: 'MYROGE', serif;
-  --title: 'Greycliff CF Extra', sans-serif;
-  --subtitle: 'Greycliff CF Demi', serif;
+  --title: 'Greycliff CF', sans-serif;
+  --subtitle: 'Greycliff CF', serif;
   --body: 'Greycliff CF', serif;
   --caption: 'Greycliff CF', serif;
 
@@ -17,22 +17,22 @@
   --font-size-4xl: clamp(3.5em, 9vw, 8em);
 
   // Colors
-  --primary-dark: #1c1c1c;
-  --primary: #333333;
-  --primary-light: #4d4d4d;
-  --secondary-dark: #666666;
-  --secondary: #808080;
-  --secondary-light: #999999;
-  --tertiary-dark: #a84300;
-  --tertiary: #e07b00;
-  --tertiary-light: #ffa933;
-  --accent-dark: #d6902b;
-  --accent: #f9b73f;
-  --accent-light: #fccd81;
-  --ink-dark: #2a2a2a;
-  --ink: #434343;
-  --ink-light: #6e6e6e;
-  --paper-dark: #c7beb3;
-  --paper: #fff6ec;
+  --primary-dark: #636f65;
+  --primary: #95978a;
+  --primary-light: #b3b8a2;
+  --secondary-dark: #24303c;
+  --secondary: #3c5057;
+  --secondary-light: #91a3a7;
+  --tertiary-dark: #905336;
+  --tertiary: #c8a68d;
+  --tertiary-light: #e3d1bf;
+  --accent-dark: #a97237;
+  --accent: #b48b5f;
+  --accent-light: #d2b589;
+  --ink-dark: #1b1c21;
+  --ink: #474340;
+  --ink-light: #979694;
+  --paper-dark: #ab9e96;
+  --paper: #e3d0bf;
   --paper-light: #ffffff;
 }
