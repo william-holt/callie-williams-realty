@@ -1,5 +1,4 @@
-import { FC, ButtonHTMLAttributes } from 'react'
-
+import { ButtonHTMLAttributes,FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

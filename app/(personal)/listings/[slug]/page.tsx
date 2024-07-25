@@ -4,12 +4,12 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { toPlainText } from 'next-sanity'
 
-import { PropertyPage } from '@/components/pages/property/PropertyPage'
+import SingleListingPage from '@/components/pages/listings/SingleListingPage'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
-import { loadProject } from '@/sanity/loader/loadQuery'
-const ProjectPreview = dynamic(
-  () => import('@/components/pages/property/PropertyPreview'),
+import { loadSingleListing } from '@/sanity/loader/loadQuery'
+const SingleListingPagePreview = dynamic(
+  () => import('@/components/pages/listings/SingleListingPreviewPage'),
 )
 
 type Props = {
@@ -20,13 +20,13 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { data: project } = await loadProject(params.slug)
-  const ogImage = urlForOpenGraphImage(project?.coverImage)
+  const { data: property } = await loadSingleListing(params.slug)
+  const ogImage = urlForOpenGraphImage(property?.coverImage)
 
   return {
-    title: project?.title,
-    description: project?.overview
-      ? toPlainText(project.overview)
+    title: property?.title,
+    description: property?.overview
+      ? toPlainText(property.overview)
       : (await parent).description,
     openGraph: ogImage
       ? {
@@ -37,19 +37,19 @@ export async function generateMetadata(
 }
 
 export function generateStaticParams() {
-  return generateStaticSlugs('project')
+  return generateStaticSlugs('property')
 }
 
-export default async function ProjectSlugRoute({ params }: Props) {
-  const initial = await loadProject(params.slug)
+export default async function PropertySlugRoute({ params }: Props) {
+  const initial = await loadSingleListing(params.slug)
 
   if (draftMode().isEnabled) {
-    return <ProjectPreview params={params} initial={initial} />
+    return <SingleListingPagePreview initial={initial} />
   }
 
   if (!initial.data) {
     notFound()
   }
 
-  return <PropertyPage data={initial.data} />
+  return <SingleListingPage initial={initial} />
 }

@@ -53,8 +53,10 @@ export function HomePage({
         description={servicesParagraph}
         services={services}
       />
-      {propertiesTitle && <div>{propertiesTitle}</div>}
-      <HomePageFeaturedProperties project={propertyData} odd={1} />
+      <HomePageFeaturedProperties
+        title={propertiesTitle}
+        property={propertyData}
+      />
       {testimonialsTitle && <div>{testimonialsTitle}</div>}
       <Testimonials propertyData={propertyData} />
       {aboutTitle && <div>{aboutTitle}</div>}

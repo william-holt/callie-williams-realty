@@ -1,13 +1,12 @@
 'use client'
 
-import { useState } from 'react'
-import Image from 'next/image'
 import Hamburger from 'hamburger-react'
+import Image from 'next/image'
+import { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { Button } from '@/components/shared/Button'
 import Menu from '@/components/global/Navbar/Menu'
-
+import { Button } from '@/components/shared/Button'
 import type { MenuItem, SettingsPayload } from '@/types'
 
 interface NavbarProps {
@@ -32,7 +31,7 @@ export default function Navbar(props: NavbarProps) {
   }
 
   return (
-    <nav className="sticky top-0 z-10 w-full h-[125px] max-w-screen-2xl flex flex-row items-center justify-center flex-wrap mx-auto px-4 py-2 backdrop-blur lg:justify-between">
+    <nav className="sticky top-0 z-10 w-full max-w-screen-2xl h-[100px] flex flex-row items-center justify-center flex-wrap mx-auto px-4 backdrop-blur lg:justify-between">
       <Menu menuItems={menuItems} isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className={twMerge(`w-fit order-1 lg:hidden`)}>
         <Hamburger
