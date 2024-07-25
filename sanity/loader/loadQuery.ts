@@ -9,13 +9,14 @@ import {
   pagesBySlugQuery,
   projectBySlugQuery,
   settingsQuery,
-  allReviewsQuery, allListingsQuery
+  allReviewsQuery,
+  allListingsQuery,
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
   HomePagePayload,
   PagePayload,
-  ProjectPayload,
+  PropertyPayload,
   SettingsPayload,
 } from '@/types'
 
@@ -80,7 +81,7 @@ export function loadHomePage() {
 }
 
 export function loadProject(slug: string) {
-  return loadQuery<ProjectPayload | null>(
+  return loadQuery<PropertyPayload | null>(
     projectBySlugQuery,
     { slug },
     { next: { tags: [`project:${slug}`] } },
@@ -96,7 +97,7 @@ export function loadPage(slug: string) {
 }
 
 export function loadTestimonials() {
-  return loadQuery<ProjectPayload | null>(
+  return loadQuery<PropertyPayload | null>(
     allReviewsQuery,
     {},
     { next: { tags: ['home'] } },

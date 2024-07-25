@@ -19,7 +19,7 @@ export interface MilestoneItem {
   title?: string
 }
 
-export interface ShowcaseProject {
+export interface ShowcaseProperty {
   _type: string
   coverImage?: Image
   overview?: PortableTextBlock[]
@@ -69,7 +69,7 @@ export interface PagePayload {
   slug?: string
 }
 
-export interface ProjectPayload {
+export interface PropertyPayload {
   client?: string
   coverImage?: Image
   description?: PortableTextBlock[]

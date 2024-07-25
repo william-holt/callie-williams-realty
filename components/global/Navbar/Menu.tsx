@@ -73,7 +73,7 @@ export default function Navbar(props: MenuProps) {
       >
         <MenuLinks />
       </ul>
-      <ul className="hidden w-1/3 flex-row items-start justify-start gap-x-4 order-2 lg:flex xl:order-1">
+      <ul className="hidden w-1/3 flex-row items-start justify-start gap-x-4 order-2 mr-4 lg:flex xl:order-1 xl:mr-0">
         <MenuLinks />
       </ul>
     </>

@@ -4,12 +4,12 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { toPlainText } from 'next-sanity'
 
-import { ProjectPage } from '@/components/pages/project/ProjectPage'
+import { PropertyPage } from '@/components/pages/property/PropertyPage'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
 import { loadProject } from '@/sanity/loader/loadQuery'
 const ProjectPreview = dynamic(
-  () => import('@/components/pages/project/ProjectPreview'),
+  () => import('@/components/pages/property/PropertyPreview'),
 )
 
 type Props = {
@@ -30,8 +30,8 @@ export async function generateMetadata(
       : (await parent).description,
     openGraph: ogImage
       ? {
-        images: [ogImage, ...((await parent).openGraph?.images || [])],
-      }
+          images: [ogImage, ...((await parent).openGraph?.images || [])],
+        }
       : {},
   }
 }
@@ -51,5 +51,5 @@ export default async function ProjectSlugRoute({ params }: Props) {
     notFound()
   }
 
-  return <ProjectPage data={initial.data} />
+  return <PropertyPage data={initial.data} />
 }

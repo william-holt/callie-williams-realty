@@ -4,14 +4,14 @@ import Link from 'next/link'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import { Header } from '@/components/shared/Header'
 import ImageBox from '@/components/shared/ImageBox'
-import type { ProjectPayload } from '@/types'
+import type { PropertyPayload } from '@/types'
 
-export interface ProjectPageProps {
-  data: ProjectPayload | null
+export interface PropertyPageProps {
+  data: PropertyPayload | null
   encodeDataAttribute?: EncodeDataAttributeCallback
 }
 
-export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
+export function PropertyPage({ data, encodeDataAttribute }: PropertyPageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const {
     client,
@@ -111,4 +111,4 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
   )
 }
 
-export default ProjectPage
+export default PropertyPage

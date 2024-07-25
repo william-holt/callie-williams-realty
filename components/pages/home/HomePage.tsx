@@ -3,14 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { HomePageHero } from '@/components/pages/home/HomePageHero'
-<<<<<<< Updated upstream
-=======
 import { HomePageServiceSection } from '@/components/pages/home/HomePageServiceSection'
+import { HomePageFeaturedProperties } from '@/components/pages/home/HomePageFeaturedProperties'
 import { Testimonials } from '@/components/shared/Testimonials'
->>>>>>> Stashed changes
-import { resolveHref } from '@/sanity/lib/utils'
+
 import type { HomePagePayload } from '@/types'
-import { Testimonials } from '@/components/shared/Testimonials'
 
 export interface HomePageProps {
   data: HomePagePayload | null
@@ -56,13 +53,12 @@ export function HomePage({
         description={servicesParagraph}
         services={services}
       />
-
       {propertiesTitle && <div>{propertiesTitle}</div>}
+      <HomePageFeaturedProperties project={propertyData} odd={1} />
       {testimonialsTitle && <div>{testimonialsTitle}</div>}
+      <Testimonials propertyData={propertyData} />
       {aboutTitle && <div>{aboutTitle}</div>}
       {aboutText && <div>{aboutText}</div>}
-
-      <Testimonials propertyData={propertyData} />
     </div>
   )
 }

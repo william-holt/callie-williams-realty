@@ -20,11 +20,8 @@ export function HomePageHero(props: HomePageHeroProps) {
     .url()
 
   return (
-<<<<<<< Updated upstream
-    <section className="absolute top-0 left-0 w-full h-screen min-h-[600px] flex flex-col items-center justify-center bg-primary-light">
-=======
     <section
-      className="relative -top-[100px] left-0 w-full h-screen min-h-[600px] flex flex-col items-center justify-center -mb-[100px]"
+      className="relative -top-[125px] left-0 w-full h-screen min-h-[600px] flex flex-col items-center justify-center -mb-[125px]"
       style={{
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: 'cover',
@@ -33,7 +30,6 @@ export function HomePageHero(props: HomePageHeroProps) {
       }}
     >
       <div className="absolute top-0 left-0 w-full h-full bg-secondary-dark opacity-50" />
->>>>>>> Stashed changes
       <div className="relative w-full max-w-screen-2xl h-screen min-h-[600px] flex flex-col items-center justify-center mx-auto">
         <div className="absolute bottom-0 w-full h-full flex flex-col items-start justify-between pt-36 px-4 pb-12">
           {/* Top */}

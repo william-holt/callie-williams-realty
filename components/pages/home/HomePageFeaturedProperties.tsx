@@ -2,15 +2,17 @@ import type { PortableTextBlock } from 'next-sanity'
 
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import ImageBox from '@/components/shared/ImageBox'
-import type { ShowcaseProject } from '@/types'
+import type { ShowcaseProperty } from '@/types'
 
 interface ProjectProps {
-  project: ShowcaseProject
+  project: ShowcaseProperty
   odd: number
 }
 
-export function ProjectListItem(props: ProjectProps) {
+export function HomePageFeaturedProperties(props: ProjectProps) {
   const { project, odd } = props
+
+  console.log(project)
 
   return (
     <div
@@ -32,9 +34,10 @@ export function ProjectListItem(props: ProjectProps) {
   )
 }
 
-function TextBox({ project }: { project: ShowcaseProject }) {
+function TextBox({ project }: { project: ShowcaseProperty }) {
   return (
     <div className="relative mt-2 flex w-full flex-col justify-between p-3 xl:mt-0">
+      <pre>{project.title}</pre>
       <div>
         {/* Title */}
         <div className="mb-2 text-xl font-extrabold tracking-tight md:text-2xl">
