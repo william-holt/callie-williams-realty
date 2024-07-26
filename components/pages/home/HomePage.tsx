@@ -6,6 +6,7 @@ import { HomePageHero } from '@/components/pages/home/HomePageHero'
 import { HomePageServiceSection } from '@/components/pages/home/HomePageServiceSection'
 import { HomePageFeaturedProperties } from '@/components/pages/home/HomePageFeaturedProperties'
 import { Testimonials } from '@/components/shared/Testimonials'
+import { HomePageAbout } from '@/components/pages/home/HomePageAbout'
 
 import type { HomePagePayload } from '@/types'
 
@@ -32,8 +33,9 @@ export function HomePage({
     propertiesTitle,
     aboutText,
     testimonialsTitle,
+    testimonialsDescription, // need to add this
     servicesTitle,
-    servicesParagraph,
+    servicesParagraph, // need to add this
     footer,
     paragraph,
     subtitle,
@@ -57,10 +59,15 @@ export function HomePage({
         title={propertiesTitle}
         property={propertyData}
       />
-      {testimonialsTitle && <div>{testimonialsTitle}</div>}
-      <Testimonials propertyData={propertyData} />
-      {aboutTitle && <div>{aboutTitle}</div>}
-      {aboutText && <div>{aboutText}</div>}
+      <Testimonials
+        title={testimonialsTitle}
+        description={testimonialsDescription}
+        propertyData={propertyData}
+      />
+      <HomePageAbout title={aboutTitle} description={aboutText} />
+      <div className="w-full flex items-center justify-center py-24">
+        <code>subscribe_to_newsletter</code>
+      </div>
     </div>
   )
 }

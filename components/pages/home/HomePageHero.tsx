@@ -21,7 +21,7 @@ export function HomePageHero(props: HomePageHeroProps) {
 
   return (
     <section
-      className="relative -top-[125px] left-0 w-full h-screen min-h-[600px] flex flex-col items-center justify-center -mb-[125px]"
+      className="relative -top-[100px] left-0 w-full h-screen min-h-[600px] flex flex-col items-center justify-center -mb-[100px]"
       style={{
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: 'cover',
