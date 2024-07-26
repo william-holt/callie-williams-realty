@@ -7,6 +7,7 @@ import { HomePageServiceSection } from '@/components/pages/home/HomePageServiceS
 import { HomePageFeaturedProperties } from '@/components/pages/home/HomePageFeaturedProperties'
 import { Testimonials } from '@/components/shared/Testimonials'
 import { HomePageAbout } from '@/components/pages/home/HomePageAbout'
+import { Subscribe } from '@/components/shared/Subscribe'
 
 import type { HomePagePayload } from '@/types'
 
@@ -67,9 +68,7 @@ export function HomePage({
         propertyData={propertyData}
       />
       <HomePageAbout title={aboutTitle} description={aboutText} />
-      <div className="w-full flex items-center justify-center py-24">
-        <code>subscribe_to_newsletter</code>
-      </div>
+      <Subscribe />
     </div>
   )
 }

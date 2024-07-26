@@ -14,6 +14,7 @@ interface HomePageHeroProps {
   numberOfReviews?: number
   coverImage?: any
 }
+
 export function HomePageHero(props: HomePageHeroProps) {
   const { title, description, numberOfReviews = false } = props
   if (!description && !title) {

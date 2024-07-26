@@ -10,13 +10,18 @@ input {
   display: flex;
   flex-direction: column;
 
-  .label-text {
-    font-size: 1rem;
+  .label-text,
+  .label-text.light {
     color: var(--paper-light);
+    font-size: 1rem;
     margin: 0 0 6px 12px;
   }
+  .label-text.dark {
+    color: var(--accent-dark);
+  }
 
-  .text-input {
+  .text-input,
+  .text-input.light {
     color: var(--paper-light);
     background-color: transparent;
     padding: 0.25rem 1.25rem 0.3rem 1.25rem;
@@ -39,7 +44,28 @@ input {
     }
   }
 
-  .helper-text {
+  .text-input.dark {
+    color: var(--accent-dark);
+    border-bottom: 1px solid var(--accent-dark);
+
+    &:hover {
+      border-bottom: 1px solid var(--accent);
+    }
+
+    &:active,
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid var(--accent-dark);
+    }
+  }
+
+  .helper-text,
+  .helper-text.light {
+    margin-top: 5px;
+    color: var(--paper-light);
+  }
+
+  .helper-text.dark {
     margin-top: 5px;
     color: var(--accent-dark);
   }
