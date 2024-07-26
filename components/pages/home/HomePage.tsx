@@ -29,6 +29,10 @@ export function HomePage({
     overview = [],
     services = [],
     title = '',
+    numberOfReviews,
+    subtitle,
+    paragraph,
+    heroImage,
     aboutTitle,
     propertiesTitle,
     aboutText,
@@ -37,15 +41,13 @@ export function HomePage({
     servicesTitle,
     servicesParagraph, // need to add this
     footer,
-    paragraph,
-    subtitle,
-    heroImage,
   } = homeData ?? {}
 
   return (
     <div className="">
       {/* Header */}
       <HomePageHero
+        numberOfReviews={16}
         title={subtitle}
         description={paragraph}
         coverImage={heroImage}

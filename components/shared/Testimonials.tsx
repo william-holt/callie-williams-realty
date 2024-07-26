@@ -1,3 +1,5 @@
+import { FaCircleArrowLeft, FaCircleArrowRight } from 'react-icons/fa6'
+
 interface TestimonialProps {
   centered?: boolean
   description?: any[]
@@ -28,7 +30,12 @@ export function Testimonials(props: TestimonialProps) {
     })
 
   const Arrows = () => {
-    return <code>arrows</code>
+    return (
+      <div className="flex space-x-2">
+        <FaCircleArrowLeft className="text-tertiary-dark text-4xl transition-all duration-300 ease-in-out cursor-pointer hover:text-accent" />
+        <FaCircleArrowRight className="text-tertiary-dark text-4xl transition-all duration-300 ease-in-out cursor-pointer hover:text-accent" />
+      </div>
+    )
   }
 
   return (

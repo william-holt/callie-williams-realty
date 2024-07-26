@@ -1,4 +1,18 @@
+import Link from 'next/link'
+
 import type { ShowcaseProperty } from '@/types'
+
+import {
+  FaBath,
+  FaBed,
+  FaCircleArrowLeft,
+  FaCircleArrowRight,
+  FaListCheck,
+  FaPersonDigging,
+  FaRulerCombined,
+  FaMapPin,
+  FaTag,
+} from 'react-icons/fa6'
 
 interface propertyProps {
   title: string
@@ -9,7 +23,12 @@ export function HomePageFeaturedProperties(props: propertyProps) {
   const { property } = props
 
   const Arrows = () => {
-    return <code>arrows</code>
+    return (
+      <div className="flex space-x-2">
+        <FaCircleArrowLeft className="text-paper-light text-4xl transition-all duration-300 ease-in-out cursor-pointer hover:text-accent" />
+        <FaCircleArrowRight className="text-paper-light text-4xl transition-all duration-300 ease-in-out cursor-pointer hover:text-accent" />
+      </div>
+    )
   }
 
   return (
@@ -26,36 +45,60 @@ export function HomePageFeaturedProperties(props: propertyProps) {
           </div>
           <div className="w-full min-h-[300px] flex flex-col items-center justify-center bg-secondary-light p-4 rounded-border-lg shadow-lg lg:flex-row lg:items-stretch">
             {/* Thumbnail */}
-            <div className="w-full p-1 rounded-border-sm shadow-sm lg:w-1/2 lg:pr-2">
-              <div className="w-full h-full min-h-[300px] rounded-border-sm shadow-sm lg:mb-0 bg-secondary" />
+            <div className="w-full p-1 rounded-border-sm shadow-sm lg:w-1/2 lg:pr-2 xl:w-7/12 2xl:w-8/12">
+              <div className="relative w-full h-full min-h-[300px] rounded-border-sm shadow-sm lg:mb-0">
+                <div className="absolute z-10 bottom-0 left-0 talk text-paper-light p-6">
+                  <div className="w-full space-x-2 pb-2">
+                    <code>tag</code>
+                    <code>status</code>
+                  </div>
+                  <h3 className="shout pb-2">Property Title</h3>
+                  <p className="talk">Property description.</p>
+                </div>
+                <div className="absolute w-full h-full bg-gradient-to-t from-ink-dark rounded-border-sm" />
+              </div>
             </div>
             {/* Features */}
-            <div className="w-full rounded-border-sm shadow-sm lg:w-1/2">
+            <div className="w-full rounded-border-sm shadow-sm lg:w-1/2 xl:w-5/12 2xl:w-4/12">
               {/* Details */}
               <div className="w-full p-1">
-                <div className="w-full flex flex-col items-start justify-start p-4 rounded-border-sm shadow-sm bg-paper-light sm:flex-row">
-                  <ul className="w-full flex flex-col gap-y-2 p-1 sm:w-1/2">
-                    <li>
-                      <code>detail_1</code>
+                <div className="w-full flex flex-col items-start justify-start p-6 rounded-border-sm shadow-sm bg-paper-light sm:flex-row">
+                  <ul className="w-full flex flex-col gap-y-4 p-1 sm:w-1/2">
+                    <li className="flex mr-1">
+                      <FaMapPin className="text-accent text-2xl mr-2" />
+                      Location
                     </li>
-                    <li>
-                      <code>detail_2</code>
+                    <li className="flex">
+                      <FaTag className="text-accent text-2xl mr-2" /> Price
                     </li>
-                    <li>
-                      <code>detail_3</code>
+                    <li className="flex">
+                      <FaRulerCombined className="text-accent text-2xl mr-2" />
+                      Square Feet
+                    </li>
+                    <li className="flex">
+                      <FaBed className="text-accent text-2xl mr-2" /> Bedrooms
+                    </li>
+                    <li className="flex">
+                      <FaBath className="text-accent text-2xl mr-2" /> Bathrooms
+                    </li>
+                    <li className="flex">
+                      <FaPersonDigging className="text-accent text-2xl mr-2" />
+                      Year Built
                     </li>
                   </ul>
-                  <ul className="w-full flex flex-col gap-y-2 p-1 sm:w-1/2">
-                    <li>
-                      <code>detail_4</code>
-                    </li>
-                    <li>
-                      <code>detail_5</code>
-                    </li>
-                    <li>
-                      <code>detail_6</code>
-                    </li>
-                  </ul>
+                  <div className="w-full flex flex-col gap-y-2 p-1 pt-4 sm:w-1/2 sm:pt-0">
+                    <div className="flex">
+                      <FaListCheck className="text-accent text-2xl mr-2" />
+                      Features:
+                    </div>
+                    <ul className="w-full flex flex-col space-y-2 pl-12 list-disc">
+                      <li>Feature 1</li>
+                      <li>Feature 2</li>
+                      <li>Feature 3</li>
+                      <li>Feature 4</li>
+                      <li>Feature 5</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
               {/* Gallery */}
@@ -71,7 +114,17 @@ export function HomePageFeaturedProperties(props: propertyProps) {
                     <div className="w-full h-full rounded-border-sm shadow-sm  bg-secondary" />
                   </div>
                   <div className="w-1/3 h-24 p-1 md:w-1/2 lg:h-36">
-                    <div className="w-full h-full rounded-border-sm shadow-sm bg-secondary" />
+                    <div className="relative w-full h-full rounded-border-sm shadow-sm lg:mb-0">
+                      <div className="absolute z-10 bottom-0 left-0 w-full h-full flex items-center justify-center chat text-paper-light">
+                        <Link
+                          href=""
+                          className="text-paper-light hover:underline"
+                        >
+                          + 17 more
+                        </Link>
+                      </div>
+                      <div className="absolute w-full h-full bg-gradient-to-t from-ink-dark rounded-border-sm" />
+                    </div>
                   </div>
                 </div>
               </div>
