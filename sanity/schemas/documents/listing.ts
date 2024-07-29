@@ -57,6 +57,13 @@ export default defineType({
     }),
     defineField({
       type: 'number',
+      name: 'zipcode',
+      title: 'Zipcode',
+      description: 'Zipcode',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      type: 'number',
       name: 'price',
       title: 'Price',
       validation: (rule) => rule.required(),
@@ -84,6 +91,11 @@ export default defineType({
       name: 'constructionDate',
       title: 'Construction Date',
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      type: 'number',
+      name: 'acres',
+      title: 'Acres'
     }),
     defineField({
       type: 'string',
