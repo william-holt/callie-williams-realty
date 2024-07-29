@@ -41,6 +41,12 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'servicesBody',
+      description: 'This field is the body text of the Services Section.',
+      title: 'Services Body',
+      type: 'string',
+    }),
+    defineField({
       name: 'services',
       title: 'Services',
       type: 'array',
@@ -57,6 +63,12 @@ export default defineType({
       name: 'testimonialsTitle',
       description: 'This field is the header text of the testimonials  section.',
       title: 'Testimonials Section Title',
+      type: 'string',
+    }),
+    defineField({
+      name: 'testimonialsText',
+      description: 'This field is the body text of the testimonials  section.',
+      title: 'Testimonials Section Body',
       type: 'string',
     }),
     defineField({

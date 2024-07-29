@@ -17,6 +17,27 @@ export default function ListingsPagePreview(props: Props) {
     { initial },
   )
 
+
+  // let lastId = ''
+  //
+  // async function fetchNextPage() {
+  //   if (lastId === null) {
+  //     return []
+  //   }
+  //   const {result} = await fetch(
+  //     groq`*[_type == "article" && _id > $lastId] | order(_id) [0...25] {
+  //     _id, title, body
+  //   }`, {lastId})
+  //
+  //   if (result.length > 0) {
+  //     lastId = result[result.length - 1]._id
+  //   } else {
+  //     lastId = null // Reached the end
+  //   }
+  //   return result
+  // }
+
+
   if (!data) {
     return (
       <div className="text-center">

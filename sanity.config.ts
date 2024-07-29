@@ -12,14 +12,14 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
 import { locate } from '@/sanity/plugins/locate'
 import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
-import page from '@/sanity/schemas/documents/page'
-import home from '@/sanity/schemas/singletons/home'
-import settings from '@/sanity/schemas/singletons/settings'
 import listing from '@/sanity/schemas/documents/listing'
+import page from '@/sanity/schemas/documents/page'
 import listingImage from '@/sanity/schemas/objects/listingImage'
-import testimonial from '@/sanity/schemas/objects/testimonial'
 import service from '@/sanity/schemas/objects/service'
 import social from '@/sanity/schemas/objects/social'
+import testimonial from '@/sanity/schemas/objects/testimonial'
+import home from '@/sanity/schemas/singletons/home'
+import settings from '@/sanity/schemas/singletons/settings'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||

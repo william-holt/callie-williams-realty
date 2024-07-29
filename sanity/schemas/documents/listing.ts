@@ -1,4 +1,5 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
+
 import listingStatus from '@/sanity/schemas/staticFields/listingStatus'
 
 export default defineType({
@@ -83,6 +84,16 @@ export default defineType({
       name: 'constructionDate',
       title: 'Construction Date',
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      type: 'string',
+      name: 'mlsNumber',
+      title: 'MLS Number'
+    }),
+    defineField({
+      type: 'url',
+      name: 'mlsUrl',
+      title: 'MLS URL'
     }),
     defineField({
       name: 'tags',
