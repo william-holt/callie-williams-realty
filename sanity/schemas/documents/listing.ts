@@ -1,6 +1,7 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 import listingStatus from '@/sanity/schemas/staticFields/listingStatus'
+import { mediaAssetSource } from 'sanity-plugin-media'
 
 export default defineType({
   name: 'listing',
@@ -182,6 +183,26 @@ export default defineType({
       title: 'Listing Images',
       type: 'array',
       of: [{type: 'listingImage'}],
+    }),
+    defineField({
+      name: 'listingImages',
+      title: 'Listing Images',
+      type: 'array',
+      of: [
+        { type: 'image',
+          fields: [
+          {
+            name: 'caption',
+            type: 'string',
+            title: 'Caption',
+          },
+          {
+            name: 'altText',
+            type: 'string',
+            title: 'Alt Text',
+          }
+        ]}],
+      options: {  },
     }),
     defineField({
       name: 'testimonials',
