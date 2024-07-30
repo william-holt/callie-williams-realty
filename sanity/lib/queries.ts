@@ -16,6 +16,7 @@ export const homePageQuery = groq`{
       aboutText,
     },
     "propertyData": *[_type == "listing"][],
+    "featuredPropertyData": *[_type == "featuredListing"][]
   }`
 
 export const pagesBySlugQuery = groq`

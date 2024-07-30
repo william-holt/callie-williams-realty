@@ -12,6 +12,7 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
 import { locate } from '@/sanity/plugins/locate'
 import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
+import featuredListing from '@/sanity/schemas/documents/featuredListing'
 import listing from '@/sanity/schemas/documents/listing'
 import page from '@/sanity/schemas/documents/page'
 import listingImage from '@/sanity/schemas/objects/listingImage'
@@ -39,6 +40,7 @@ export default defineConfig({
       // Documents
       page,
       listing,
+      featuredListing,
       // Objects
       service,
       testimonial,

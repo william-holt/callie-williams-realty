@@ -2,13 +2,12 @@ import type { EncodeDataAttributeCallback } from '@sanity/react-loader'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { HomePageAbout } from '@/components/pages/home/HomePageAbout'
+import { HomePageFeaturedProperties } from '@/components/pages/home/HomePageFeaturedProperties'
 import { HomePageHero } from '@/components/pages/home/HomePageHero'
 import { HomePageServiceSection } from '@/components/pages/home/HomePageServiceSection'
-import { HomePageFeaturedProperties } from '@/components/pages/home/HomePageFeaturedProperties'
-import { Testimonials } from '@/components/shared/Testimonials'
-import { HomePageAbout } from '@/components/pages/home/HomePageAbout'
 import { Subscribe } from '@/components/shared/Subscribe'
-
+import { Testimonials } from '@/components/shared/Testimonials'
 import type { HomePagePayload } from '@/types'
 
 export interface HomePageProps {
@@ -25,7 +24,7 @@ export function HomePage({
   testimonials,
 }: any) {
   // Default to an empty object to allow previews on non-existent documents
-  const { homeData, propertyData } = data
+  const { homeData, propertyData, featuredPropertyData } = data
   const {
     overview = [],
     services = [],
