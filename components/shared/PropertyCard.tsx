@@ -14,9 +14,7 @@ export function PropertyCard(props: HeaderProps) {
     <div className={`${centered ? 'text-center' : ''}`}>
       {/* Title */}
       {title && (
-        <div className="text-3xl font-extrabold md:text-5xl">
-          {title}
-        </div>
+        <div className="text-3xl font-extrabold md:text-5xl">{title}</div>
       )}
       {/* Description */}
       {description && (

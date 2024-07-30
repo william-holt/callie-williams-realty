@@ -44,7 +44,11 @@ export default function Navbar(props: MenuProps) {
         <li>
           <Link
             key="properties"
-            className={`text-5xl uppercase text-paper-light hover:text-accent lg:text-lg`}
+            className={`text-5xl uppercase text-paper-light border-b border-transparent hover:text-accent lg:text-lg ${
+              pathname === '/listings'
+                ? 'border-paper-light'
+                : 'border-transparent'
+            }`}
             href="/listings"
           >
             Properties

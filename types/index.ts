@@ -66,6 +66,7 @@ export interface PagePayload {
   name?: string
   overview?: PortableTextBlock[]
   title?: string
+  heroImage?: any
   slug?: string
 }
 

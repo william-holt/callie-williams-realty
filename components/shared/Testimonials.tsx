@@ -45,7 +45,7 @@ export function Testimonials(props: TestimonialProps) {
           <h2 className="w-full hollar text-tertiary-dark pb-2 md:w-2/3">
             {props.title}
           </h2>
-          <p className="talk text-tertiary-dark"></p>
+          <p className="talk text-tertiary-dark">{props.description}</p>
           <div className="hidden w-full flex-row items-center justify-end md:flex md:w-1/3">
             <Arrows />
           </div>

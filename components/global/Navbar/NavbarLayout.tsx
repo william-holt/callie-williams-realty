@@ -2,6 +2,7 @@
 
 import Hamburger from 'hamburger-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -45,20 +46,22 @@ export default function Navbar(props: NavbarProps) {
           />
         </div>
         <div className="relative z-10 w-fit order-2 lg:order-1 xl:w-1/3 xl:justify-end">
-          <Image
-            className="w-fit max-w-[250px] md:max-w-[350px] lg:max-w-[450px] xl:hidden"
-            src="/navbar-logo-mobile-v1.png"
-            alt="Callie Williams logo"
-            width={500}
-            height={250}
-          />
-          <Image
-            className="hidden w-fit max-w-[450px] xl:block"
-            src="/navbar-logo-v1.png"
-            alt="Callie Williams logo"
-            width={500}
-            height={250}
-          />
+          <Link href="">
+            <Image
+              className="w-fit max-w-[250px] md:max-w-[350px] lg:max-w-[450px] xl:hidden"
+              src="/navbar-logo-mobile-v1.png"
+              alt="Callie Williams logo"
+              width={500}
+              height={250}
+            />
+            <Image
+              className="hidden w-fit max-w-[450px] xl:block"
+              src="/navbar-logo-v1.png"
+              alt="Callie Williams logo"
+              width={500}
+              height={250}
+            />
+          </Link>
         </div>
         <div className="hidden w-fit items-center justify-end order-3 xl:w-1/3 xl:flex">
           <Button color="paper" size="md" variant="solid">

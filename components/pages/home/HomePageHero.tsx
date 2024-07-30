@@ -16,12 +16,12 @@ interface HomePageHeroProps {
 }
 
 export function HomePageHero(props: HomePageHeroProps) {
-  const { title, description, numberOfReviews = false } = props
+  const { title, description, numberOfReviews, coverImage = false } = props
   if (!description && !title) {
     return null
   }
 
-  const imageUrl = urlForImage(props.coverImage)
+  const imageUrl = urlForImage(coverImage)
     ?.height(2000)
     .width(3500)
     .fit('crop')
@@ -124,9 +124,11 @@ export function HomePageHero(props: HomePageHeroProps) {
               </ul>
             </div>
             {/* Title */}
-            <h1 className="roar text-paper-light pb-2">{title}</h1>
+            <h1 className="roar text-paper-light pb-2 text-balance">{title}</h1>
             {/* Description */}
-            <p className="talk text-paper-light pb-6">{description}</p>
+            <p className="talk text-paper-light pb-6 text-balance">
+              {description}
+            </p>
             {/* Subscribe Bar */}
             <div className="w-full flex flex-col items-start justify-start rounded-border-lg shadow-lg backdrop-blur-md backdrop-brightness-125 md:h-36 md:flex-row md:items-center">
               <div className="w-full flex flex-col items-start justify-start p-4 md:w-5/6 md:flex-row md:space-x-2 lg:space-x-4">

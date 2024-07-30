@@ -14,6 +14,12 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'heroImage',
+      description: 'This is the top Hero Image of the Home Page',
+      title: 'Hero Image',
+      type: 'image',
+    }),
+    defineField({
       type: 'slug',
       name: 'slug',
       title: 'Slug',

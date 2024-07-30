@@ -8,24 +8,24 @@ export interface PageProps {
 
 export function Page({ data }: PageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { body, overview, title } = data ?? {}
+  const { body, overview, title, heroImage } = data ?? {}
 
   return (
-    <div>
-      <div className="mb-14">
-        {/* Header */}
-        <Header title={title} description={overview} />
-
-        {/* Body */}
-        {body && (
-          <CustomPortableText
-            paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
-            value={body}
-          />
-        )}
-      </div>
-      <div className="absolute left-0 w-screen border-t" />
-    </div>
+    <>
+      {/* Header */}
+      <Header title={title} description={overview} coverImage={heroImage} />
+      {/* Body */}
+      {body && (
+        <section className="w-full talk bg-secondary-dark py-12 pb-24">
+          <div className="w-full max-w-screen-2xl mx-auto px-6">
+            <CustomPortableText
+              paragraphClasses="talk text-paper-light"
+              value={body}
+            />
+          </div>
+        </section>
+      )}
+    </>
   )
 }
 

@@ -10,9 +10,11 @@ import { TimelineSection } from '@/components/shared/TimelineSection'
 
 export function CustomPortableText({
   paragraphClasses,
+  captionClasses,
   value,
 }: {
   paragraphClasses?: string
+  captionClasses?: string
   value: PortableTextBlock[]
 }) {
   const components: PortableTextComponents = {
@@ -25,7 +27,7 @@ export function CustomPortableText({
       link: ({ children, value }) => {
         return (
           <a
-            className="underline transition hover:opacity-50"
+            className={`${paragraphClasses} underline transition hover:opacity-50 `}
             href={value?.href}
             rel="noreferrer noopener"
           >
@@ -48,9 +50,7 @@ export function CustomPortableText({
               classesWrapper="relative aspect-[16/9]"
             />
             {value?.caption && (
-              <div className="font-sans text-sm text-gray-600">
-                {value.caption}
-              </div>
+              <div className={captionClasses}>{value.caption}</div>
             )}
           </div>
         )

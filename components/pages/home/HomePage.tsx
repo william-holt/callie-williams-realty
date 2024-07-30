@@ -44,7 +44,7 @@ export function HomePage({
   } = homeData ?? {}
 
   return (
-    <div className="">
+    <>
       {/* Header */}
       <HomePageHero
         numberOfReviews={16}
@@ -68,7 +68,7 @@ export function HomePage({
       />
       <HomePageAbout title={aboutTitle} description={aboutText} />
       <Subscribe />
-    </div>
+    </>
   )
 }
 
