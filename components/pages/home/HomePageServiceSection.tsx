@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { Button } from '@/components/shared/Button'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
@@ -46,9 +47,11 @@ export function HomePageServiceSection(props: HomePageServicesProps) {
                     <h3 className="shout text-ink pb-2">{service.title}</h3>
                     <p className="talk text-ink">{service.description}</p>
                     <div className="absolute bottom-0 left-0 w-full p-4">
-                      <Button color="accent" size="md" variant="solid">
-                        Contact Us
-                      </Button>
+                      <Link href={`${service.link}`}>
+                        <Button color="accent" size="md" variant="solid">
+                          {service.linkText}
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>

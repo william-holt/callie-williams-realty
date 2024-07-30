@@ -18,10 +18,17 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'linkText',
+      description:
+        'This field is the text for the service button on the homepage.',
+      title: 'Link Text',
+      type: 'string',
+    }),
+    defineField({
       name: 'link',
-      description: 'This field is the link of the service.',
+      description: 'This field is the URL path for the service.',
       title: 'Link',
-      type: 'url',
+      type: 'string',
     }),
     defineField({
       name: 'image',
