@@ -11,7 +11,7 @@ import {
   settingsQuery,
   allReviewsQuery,
   allListingsQuery,
-  listingBySlugQuery, allPastDealsPageQuery
+  listingBySlugQuery, allPastDealsPageQuery, allListingsPageQuery
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
@@ -100,6 +100,14 @@ export function loadTestimonials() {
 export function loadListings() {
   return loadQuery<any | null>(
     allListingsQuery,
+    {},
+    { next: { tags: ['properties'] } },
+  )
+}
+
+export function loadListingsForAllListings() {
+  return loadQuery<any | null>(
+    allListingsPageQuery,
     {},
     { next: { tags: ['properties'] } },
   )
