@@ -1,6 +1,4 @@
 import type { EncodeDataAttributeCallback } from '@sanity/react-loader'
-import Image from 'next/image'
-import Link from 'next/link'
 
 import { HomePageAbout } from '@/components/pages/home/HomePageAbout'
 import { HomePageFeaturedProperties } from '@/components/pages/home/HomePageFeaturedProperties'
@@ -59,7 +57,7 @@ export function HomePage({
       />
       <HomePageFeaturedProperties
         title={propertiesTitle}
-        property={propertyData}
+        properties={featuredPropertyData}
       />
       <Testimonials
         title={testimonialsTitle}
