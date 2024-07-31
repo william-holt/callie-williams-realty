@@ -101,7 +101,7 @@ export function loadListings() {
   return loadQuery<any | null>(
     allListingsQuery,
     {},
-    { next: { tags: ['properties'] } },
+    { next: { tags: ['listings'] } },
   )
 }
 
@@ -109,7 +109,7 @@ export function loadListingsForAllListings() {
   return loadQuery<any | null>(
     allListingsPageQuery,
     {},
-    { next: { tags: ['properties'] } },
+    { next: { tags: ['listings'] } },
   )
 }
 
@@ -117,7 +117,7 @@ export function loadListingsForPastDeals() {
   return loadQuery<any | null>(
     allPastDealsPageQuery,
     {},
-    { next: { tags: ['properties'] } },
+    { next: { tags: ['listings'] } },
   )
 }
 
@@ -125,6 +125,6 @@ export function loadSingleListing(slug: string) {
   return loadQuery<any | null>(
     listingBySlugQuery,
     { slug },
-    { next: { tags: [`product:${slug}`] } },
+    { next: { tags: [`listing:${slug}`] } },
   )
 }

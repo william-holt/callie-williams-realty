@@ -43,7 +43,7 @@ export default function Menu(props: MenuProps) {
           <Link
             key="properties"
             className={`text-base uppercase text-paper-light hover:text-accent lg:text-lg`}
-            href="/listings"
+            href="/listings?filter=Residential"
           >
             Properties
           </Link>

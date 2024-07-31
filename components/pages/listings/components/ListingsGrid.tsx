@@ -1,12 +1,30 @@
 'use client'
-import { useEffect, useState } from 'react'
+
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useCallback, useEffect, useState } from 'react'
 
 import { ListingCard } from '@/components/pages/listings/components/ListingCard'
 import { Tabs } from '@/components/pages/listings/components/Tabs'
 
 export function ListingsGrid({ data, title, description }: any) {
-  const [currentFilter, setCurrentFilter] = useState('Residential')
+  const [currentFilter, setCurrentFilter] = useState('')
   const [viewableListings, setViewableListings] = useState<any[]>([])
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const filter = searchParams.get('filter')
+
+  const setFilterAndUrl = useCallback((newFilter: string) => {
+    router.push('/listings/?filter=' + newFilter, {scroll: false})
+  }, [router])
+
+  useEffect(() => {
+    if (filter) {
+      if (filter !== currentFilter) {
+        setCurrentFilter(filter)
+      }
+    }
+  }, [currentFilter, filter, setFilterAndUrl])
+
 
   useEffect(() => {
     if (data?.length) {
@@ -18,6 +36,7 @@ export function ListingsGrid({ data, title, description }: any) {
     }
   }, [data, currentFilter])
 
+
   return (
     <div className="w-full flex flex-col bg-secondary -mt-[100px] py-24">
       <div className="w-full max-w-screen-2xl mx-auto px-6">
@@ -28,7 +47,7 @@ export function ListingsGrid({ data, title, description }: any) {
         <div className="w-full flex flex-row justify-center items-center pb-6">
           <Tabs
             currentFilter={currentFilter}
-            setCurrentFilter={setCurrentFilter}
+            setCurrentFilter={setFilterAndUrl}
           />
         </div>
         {viewableListings?.length > 0 ? (

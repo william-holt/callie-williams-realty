@@ -37,7 +37,7 @@ export async function generateMetadata(
 }
 
 export function generateStaticParams() {
-  return generateStaticSlugs('property')
+  return generateStaticSlugs('listing')
 }
 
 export default async function PropertySlugRoute({ params }: Props) {

@@ -49,7 +49,7 @@ export default function Navbar(props: MenuProps) {
                 ? 'border-paper-light'
                 : 'border-transparent'
             }`}
-            href="/listings"
+            href="/listings?filter=Residential"
           >
             Properties
           </Link>
