@@ -55,8 +55,8 @@ export function HomePageFeaturedProperties(props: propertyProps) {
                         <div className="w-full space-x-2 pb-2">
                           {property.tags.length && (
                             <>
-                              {property.tags.map((tag: any) => (
-                                <code>{tag}</code>
+                              {property.tags.map((tag: any, index: number) => (
+                                <code key={index}>{tag}</code>
                               ))}
                             </>
                           )}
