@@ -84,6 +84,12 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'aboutImage',
+      description: 'This is the small image attached to the Homepage About section',
+      title: 'About Image',
+      type: 'image',
+    }),
+    defineField({
       name: 'overview',
       description:
         'Used both for the <meta> description tag for SEO, and the personal website subheader.',

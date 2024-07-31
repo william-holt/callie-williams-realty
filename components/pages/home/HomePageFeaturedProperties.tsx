@@ -46,8 +46,8 @@ export function HomePageFeaturedProperties(props: propertyProps) {
           </div>
           {properties?.length && (
             <>
-              {properties.filter((property: any) => property.isShownOnHomepage).map((property: any) => (
-                <div className="w-full min-h-[300px] flex flex-col items-center justify-center bg-secondary-light p-4 rounded-border-lg shadow-lg lg:flex-row lg:items-stretch">
+              {properties.filter((property: any) => property.isShownOnHomepage).map((property: any, index: number) => (
+                <div className="w-full min-h-[300px] flex flex-col items-center justify-center bg-secondary-light p-4 rounded-border-lg shadow-lg lg:flex-row lg:items-stretch" key={index}>
                   {/* Thumbnail */}
                   <div className="w-full p-1 rounded-border-sm shadow-sm lg:w-1/2 lg:pr-2 xl:w-7/12 2xl:w-8/12">
                     <div className="relative w-full h-full min-h-[300px] rounded-border-sm shadow-sm lg:mb-0">
