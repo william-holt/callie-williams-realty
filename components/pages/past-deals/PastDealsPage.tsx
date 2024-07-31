@@ -2,11 +2,12 @@ import Link from 'next/link'
 
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 
-export function PastDealsPage({data}: any) {
+export function PastDealsPage({metadata, data}: any) {
 
   return (
     <div className="space-y-20 flex flex-col">
-      <div>Past Deals </div>
+      <div>{metadata.header} </div>
+      <div>{metadata.subtitle}</div>
 
       {data?.length && (
         <div className="flex flex-row flex-wrap justify-start items-start">

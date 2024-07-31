@@ -2,7 +2,7 @@
 import type { QueryResponseInitial } from '@sanity/react-loader'
 
 import ListingsPage from '@/components/pages/listings/ListingsPage'
-import { allListingsQuery } from '@/sanity/lib/queries'
+import { allListingsPageQuery } from '@/sanity/lib/queries'
 import { useQuery } from '@/sanity/loader/useQuery'
 
 type Props = {
@@ -12,11 +12,10 @@ type Props = {
 export default function ListingsPagePreview(props: Props) {
   const { initial } = props
   const { data, encodeDataAttribute } = useQuery<any | null>(
-    allListingsQuery,
+    allListingsPageQuery,
     {},
     { initial },
   )
-
 
   // let lastId = ''
   //

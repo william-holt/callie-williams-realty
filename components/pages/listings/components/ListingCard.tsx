@@ -34,7 +34,7 @@ export function ListingCard(props: ListingCardProps) {
                 <div className="absolute z-10 bottom-0 left-0 w-full h-full flex flex-col items-center justify-between chat text-paper-light p-4">
                   <div className="w-full flex flex-row items-start  justify-between">
                     <div className="w-2/3 flex justify-start flex-wrap -ml-1">
-                      {listing.tags.map((tag) => {
+                      {listing.tags.map((tag, index) => {
                         // filter tags to only show residential, development, or commercial
                         if (
                           tag !== 'Residential' &&
@@ -45,7 +45,7 @@ export function ListingCard(props: ListingCardProps) {
                         }
 
                         return (
-                          <span className="text-body uppercase text-xs text-ink-dark bg-paper-light bg-opacity-50 m-1 py-1 px-2 rounded-full shadow-sm">
+                          <span className="text-body uppercase text-xs text-ink-dark bg-paper-light bg-opacity-50 m-1 py-1 px-2 rounded-full shadow-sm" key={index}>
                             {tag}
                           </span>
                         )

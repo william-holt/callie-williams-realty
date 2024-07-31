@@ -20,7 +20,9 @@ import listingImage from '@/sanity/schemas/objects/listingImage'
 import service from '@/sanity/schemas/objects/service'
 import social from '@/sanity/schemas/objects/social'
 import testimonial from '@/sanity/schemas/objects/testimonial'
+import allListingsMetaData from '@/sanity/schemas/singletons/allListingsMetaData'
 import home from '@/sanity/schemas/singletons/home'
+import pastDealsMetaData from '@/sanity/schemas/singletons/pastDealsMetaData'
 import settings from '@/sanity/schemas/singletons/settings'
 
 const title =
@@ -38,6 +40,8 @@ export default defineConfig({
       // Singletons
       home,
       settings,
+      allListingsMetaData,
+      pastDealsMetaData,
       // Documents
       page,
       listing,

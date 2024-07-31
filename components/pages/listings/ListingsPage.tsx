@@ -1,13 +1,14 @@
-import { ListingsHero } from '@/components/pages/listings/components/ListingsHero'
 import { ListingsGrid } from '@/components/pages/listings/components/ListingsGrid'
+import { ListingsHero } from '@/components/pages/listings/components/ListingsHero'
 
 export function ListingsPage({ data }: any) {
-  const { overview, title, heroImage } = data ?? {}
+  const { listingData, allListingsMetadata } = data;
+  const { overview, header, heroImage, subtitle } = allListingsMetadata ?? {}
 
   return (
     <>
       <ListingsHero coverImage={heroImage} />
-      <ListingsGrid title={title} description={overview} data={data} />
+      <ListingsGrid title={header} description={subtitle} data={listingData} />
     </>
   )
 }

@@ -56,9 +56,31 @@ export const settingsQuery = groq`
   }
 `
 
+export const allListingsPageQuery = groq`{
+    "allListingsMetadata": *[_type == "allListingsMetaData"][0]{
+      _id,
+      overview,
+      header,
+      heroImage,
+      subtitle,
+    },
+    "listingData": *[_type == "listing"][]
+  }`
+
 export const allListingsQuery = groq`
   *[_type == "listing"][]
 `
+
+export const allPastDealsPageQuery = groq`{
+    "pastDealsMetadata": *[_type == "pastDealsMetaData"][0]{
+      _id,
+      overview,
+      header,
+      heroImage,
+      subtitle,
+    },
+    "listingData": *[_type == "listing"][]
+  }`
 
 export const allReviewsQuery = groq`
   *[_type == "listing" && listing.testimonial != null][]{

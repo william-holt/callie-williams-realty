@@ -2,7 +2,7 @@
 import type { QueryResponseInitial } from '@sanity/react-loader'
 
 import PastDealsPage from '@/components/pages/past-deals/PastDealsPage'
-import { allListingsQuery } from '@/sanity/lib/queries'
+import { allPastDealsPageQuery } from '@/sanity/lib/queries'
 import { useQuery } from '@/sanity/loader/useQuery'
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 export default function PastDealsPagePreview(props: Props) {
   const { initial } = props
   const { data, encodeDataAttribute } = useQuery<any | null>(
-    allListingsQuery,
+    allPastDealsPageQuery,
     {},
     { initial },
   )
@@ -25,5 +25,7 @@ export default function PastDealsPagePreview(props: Props) {
     )
   }
 
-  return <PastDealsPage data={data} />
+  const {listingData, pastDealsMetadata} = data;
+
+  return <PastDealsPage data={listingData} metadata={pastDealsMetadata} />
 }
