@@ -15,6 +15,7 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.8",
     "@next/env": "14.2.2",
     "@sanity/demo": "2.0.0",
     "@sanity/icons": "2.11.8",

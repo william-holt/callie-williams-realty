@@ -1,14 +1,6 @@
-import Link from 'next/link'
-import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
 
-import { urlForImage } from '@/sanity/lib/utils'
-
 import { Button } from '@/components/shared/Button'
-import { Input } from '@/components/shared/Input'
-
-import { FaInstagram, FaFacebook, FaLinkedin } from 'react-icons/fa'
-import { FaStar } from 'react-icons/fa6'
 
 interface TabsProps {
   currentFilter: string

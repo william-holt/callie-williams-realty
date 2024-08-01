@@ -11,7 +11,7 @@ import {
   settingsQuery,
   allReviewsQuery,
   allListingsQuery,
-  listingBySlugQuery, allPastDealsPageQuery, allListingsPageQuery
+  listingBySlugQuery, allPastDealsPageQuery, allListingsPageQuery, contactPageMetadata
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
@@ -126,5 +126,13 @@ export function loadSingleListing(slug: string) {
     listingBySlugQuery,
     { slug },
     { next: { tags: [`listing:${slug}`] } },
+  )
+}
+
+export function loadContactMetadata() {
+  return loadQuery<any | null>(
+    contactPageMetadata,
+    {},
+    { next: { tags: ['contact'] } },
   )
 }

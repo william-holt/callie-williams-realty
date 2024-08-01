@@ -1,13 +1,17 @@
 'use client'
 import ContactPage from '@/components/pages/contact/ContactPage'
+import { useQuery } from '@sanity/react-loader'
+import { contactPageMetadata } from '@/sanity/lib/queries'
 
-export default function ContactPagePreview() {
-  // const { initial } = props
-  // const { data, encodeDataAttribute } = useQuery<HomePagePayload | null>(
-  //   homePageQuery,
-  //   {},
-  //   { initial },
-  // )
+export default function ContactPagePreview(props: any) {
+  const { initial } = props
+  const { data, encodeDataAttribute} = useQuery<any | null>(
+    contactPageMetadata,
+    {},
+    { initial },
+  )
+
+  console.log('preview', data);
 
   // if (!data) {
   //   return (
@@ -17,5 +21,5 @@ export default function ContactPagePreview() {
   //   )
   // }
 
-  return <ContactPage />
+  return <ContactPage data={data} />
 }

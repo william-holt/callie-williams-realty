@@ -113,3 +113,12 @@ export const listingBySlugQuery = groq`
     "slug": slug.current,
   }
 `
+export const contactPageMetadata = groq`
+    *[_type == "contactMetadata"][0]{
+      _id,
+      overview,
+      header,
+      heroImage,
+      subtitle,
+    }
+ `

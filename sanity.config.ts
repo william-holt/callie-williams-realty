@@ -24,6 +24,7 @@ import allListingsMetaData from '@/sanity/schemas/singletons/allListingsMetaData
 import home from '@/sanity/schemas/singletons/home'
 import pastDealsMetaData from '@/sanity/schemas/singletons/pastDealsMetaData'
 import settings from '@/sanity/schemas/singletons/settings'
+import contactMetadata from '@/sanity/schemas/singletons/contactMetadata'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -41,6 +42,7 @@ export default defineConfig({
       home,
       settings,
       allListingsMetaData,
+      contactMetadata,
       pastDealsMetaData,
       // Documents
       page,
