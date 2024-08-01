@@ -13,8 +13,6 @@ export function ListingsGrid({ data, title, description }: any) {
   const searchParams = useSearchParams();
   const filter = searchParams.get('filter')
 
-  console.log('data', data);
-
   const setFilterAndUrl = useCallback((newFilter: string) => {
     router.push('/listings/?filter=' + newFilter, {scroll: false})
   }, [router])

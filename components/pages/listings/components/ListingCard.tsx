@@ -1,11 +1,10 @@
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
+import { FaMapPin, FaTag } from 'react-icons/fa6'
 import { twMerge } from 'tailwind-merge'
-import { urlForImage } from '@/sanity/lib/utils'
 
 import { Button } from '@/components/shared/Button'
-
-import { FaMapPin, FaTag } from 'react-icons/fa6'
+import { urlForImage } from '@/sanity/lib/utils'
 
 interface ListingCardProps {
   index: number
@@ -16,8 +15,8 @@ export function ListingCard(props: ListingCardProps) {
   const { index, listing } = props
 
   const imageUrl =
-    listing.listingImages && listing.listingImages[0]
-      ? urlForImage(listing.listingImages[0])
+    listing.ogImage
+      ? urlForImage(listing.ogImage)
           ?.height(2000)
           .width(3500)
           .fit('crop')
