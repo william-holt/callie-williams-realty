@@ -32,11 +32,9 @@ const images = [
 export function SingleListingPage(initial: any) {
   const { data: listing } = initial.initial
 
-  console.log(listing)
-
-  // const images = listing.listingImages.map((image: any) => {
-  //   return urlForImage(image)?.height(2000).width(3500).fit('crop').url()
-  // })
+  const images = listing.listingImages.map((image: any) => {
+    return urlForImage(image)?.height(2000).width(3500).fit('crop').url()
+  })
 
   function convertToDollars(amount: number) {
     return amount

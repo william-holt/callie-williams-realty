@@ -108,7 +108,7 @@ export const listingBySlugQuery = groq`
     tags,
     features,
     overview,
-    images,
+    listingImages,
     testimonials,
     "slug": slug.current,
   }
