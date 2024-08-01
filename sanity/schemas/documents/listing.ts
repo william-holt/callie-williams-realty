@@ -39,10 +39,8 @@ export default defineType({
       name: 'status',
       type: 'string',
       options: {
-        list: [
-          ...listingStatus
-        ],
-      }
+        list: [...listingStatus],
+      },
     },
     defineField({
       type: 'string',
@@ -97,17 +95,17 @@ export default defineType({
     defineField({
       type: 'number',
       name: 'acres',
-      title: 'Acres'
+      title: 'Acres',
     }),
     defineField({
       type: 'string',
       name: 'mlsNumber',
-      title: 'MLS Number'
+      title: 'MLS Number',
     }),
     defineField({
       type: 'url',
       name: 'mlsUrl',
-      title: 'MLS URL'
+      title: 'MLS URL',
     }),
     defineField({
       name: 'tags',
@@ -124,8 +122,7 @@ export default defineType({
       type: 'array',
       name: 'features',
       title: 'Features',
-      description:
-        "This is where you can write the Listing's features.",
+      description: "This is where you can write the Listing's features.",
       of: [
         // Paragraphs
         defineArrayMember({
@@ -203,7 +200,7 @@ export default defineType({
       name: 'testimonials',
       title: 'Testimonials',
       type: 'array',
-      of: [{type: 'testimonial'}],
+      of: [{ type: 'testimonial' }],
     }),
   ],
   preview: {

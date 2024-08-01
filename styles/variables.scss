@@ -7,13 +7,14 @@
   --caption: 'Greycliff CF', serif;
 
   // Typography
-  --font-size-xs: clamp(0.9em, 0.8vw, 1em);
-  --font-size-sm: clamp(0.9em, 1vw, 1.25em);
-  --font-size-md: clamp(1.15em, 1.25vw, 1.5em);
-  --font-size-lg: clamp(1.5em, 3vw, 3em);
-  --font-size-xl: clamp(1.5em, 3vw, 3.5em);
-  --font-size-2xl: clamp(2em, 4vw, 4em);
-  --font-size-3xl: clamp(2em, 5vw, 4.5em);
+  --font-size-xxs: clamp(0.75em, 0.5vw, 0.75em);
+  --font-size-xs: clamp(0.85em, 0.7vw, 0.9em);
+  --font-size-sm: clamp(1em, 1vw, 1.1em);
+  --font-size-md: clamp(1.125em, 1.5vw, 1.25em);
+  --font-size-lg: clamp(1.25em, 2vw, 1.5em);
+  --font-size-xl: clamp(1.5em, 3vw, 2em);
+  --font-size-2xl: clamp(1.75em, 4vw, 2.5em);
+  --font-size-3xl: clamp(2em, 5vw, 3em);
   --font-size-4xl: clamp(3.5em, 9vw, 8em);
 
   // Colors
