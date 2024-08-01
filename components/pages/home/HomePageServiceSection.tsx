@@ -44,8 +44,12 @@ export function HomePageServiceSection(props: HomePageServicesProps) {
                     </div>
                   </div>
                   <div className="relative w-full h-full pt-2 px-4 pb-24 md:w-2/3 md:pt-4 lg:w-full lg:pb-48">
-                    <h3 className="shout text-ink pb-2">{service.title}</h3>
-                    <p className="talk text-ink">{service.description}</p>
+                    <h3 className="shout text-ink pb-2 text-pretty">
+                      {service.title}
+                    </h3>
+                    <p className="talk text-ink text-pretty">
+                      {service.description}
+                    </p>
                     <div className="absolute bottom-0 left-0 w-full p-4">
                       <Link href={`${service.link}`}>
                         <Button color="accent" size="md" variant="solid">

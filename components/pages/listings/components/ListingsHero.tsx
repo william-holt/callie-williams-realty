@@ -14,7 +14,7 @@ export function ListingsHero(props: ListingsHeroProps) {
 
   return (
     <section
-      className="relative -top-[100px] left-0 w-full h-fit min-h-[950px] flex flex-col items-center justify-center -mb-[100px] md:h-screen"
+      className="relative -top-[100px] left-0 w-full h-[40vh] min-h-[400px] flex flex-col items-center justify-center -mb-[100px] md:h-[50vh] lg:h-[55vh]"
       style={{
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: 'cover',

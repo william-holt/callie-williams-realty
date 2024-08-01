@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
+import { urlForImage } from '@/sanity/lib/utils'
 
 import { Button } from '@/components/shared/Button'
 
@@ -14,8 +15,16 @@ interface ListingCardProps {
 export function ListingCard(props: ListingCardProps) {
   const { index, listing } = props
 
+  const imageUrl =
+    listing.listingImages && listing.listingImages[0]
+      ? urlForImage(listing.listingImages[0])
+          ?.height(2000)
+          .width(3500)
+          .fit('crop')
+          .url()
+      : ''
+
   function convertToDollars(amount: number) {
-    // remove .00 at the end
     return amount
       .toLocaleString('en-US', {
         style: 'currency',
@@ -30,19 +39,19 @@ export function ListingCard(props: ListingCardProps) {
       className="relative w-full flex flex-col bg-paper-light rounded-border-lg shadow-lg md:flex-row md:items-start md:justify-start lg:w-1/3 lg:flex-col"
     >
       <div className="w-full p-2 md:w-1/3 lg:w-full">
-        <div className="relative w-full h-[150px] flex items-center justify-center bg-paper-dark rounded-border-sm md:h-[250px]">
+        <div className="relative w-full h-[150px] flex items-center justify-center rounded-border-sm md:h-[250px]">
           <div className="w-full h-full flex flex-row flex-wrap">
             <div className="w-full h-full">
               <div className="relative w-full h-full rounded-border-sm shadow-sm lg:mb-0">
                 <Image
                   className="w-full h-full rounded-border-sm"
-                  src={'/callie-williams.jpg'}
+                  src={imageUrl || '/callie-williams.jpg'}
                   alt={listing.name}
                   layout="fill"
                   objectFit="cover"
                 />
                 <div className="absolute z-10 bottom-0 left-0 w-full h-full flex flex-col items-center justify-between chat text-paper-light p-4">
-                  <div className="w-full flex flex-row items-center  justify-between">
+                  <div className="w-full flex flex-row items-center justify-between">
                     <div className="w-2/3 flex justify-start flex-wrap -ml-1">
                       {listing.tags.map((tag, index) => {
                         // filter tags to only show residential, development, or commercial
