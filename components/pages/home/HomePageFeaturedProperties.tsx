@@ -95,8 +95,8 @@ export function HomePageFeaturedProperties(props: propertyProps) {
                     <div className="w-full rounded-border-lg shadow-sm lg:w-1/2 xl:w-5/12 2xl:w-4/12">
                       {/* Details */}
                       <div className="w-full p-1">
-                        <div className="w-full flex flex-col items-start justify-start p-6 rounded-border-lg shadow-sm bg-paper-light sm:flex-row">
-                          <ul className="w-full flex flex-col gap-y-4 p-1 sm:w-1/2">
+                        <div className="w-full flex flex-col items-start justify-start bg-paper-light py-12 px-6 rounded-border-lg shadow-sm sm:flex-row">
+                          <ul className="w-full chat flex flex-col gap-y-4 p-1 sm:w-1/2">
                             <li className="flex mr-1">
                               <FaMapPin className="text-accent text-2xl mr-2" />
                               {property.location}
@@ -128,7 +128,7 @@ export function HomePageFeaturedProperties(props: propertyProps) {
                               Features:
                             </div>
                             <CustomPortableText
-                              paragraphClasses="text-md md:text-xl"
+                              paragraphClasses="text-ink"
                               value={property.features}
                             />
                           </div>

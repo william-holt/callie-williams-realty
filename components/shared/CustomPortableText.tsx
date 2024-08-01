@@ -19,9 +19,43 @@ export function CustomPortableText({
 }) {
   const components: PortableTextComponents = {
     block: {
-      normal: ({ children }) => {
-        return <p className={paragraphClasses}>{children}</p>
-      },
+      h1: ({ children }: any) => <h1 className="roar pb-4">{children}</h1>,
+      h2: ({ children }: any) => <h2 className="hollar pb-4">{children}</h2>,
+      h3: ({ children }: any) => <h3 className="scream pb-4">{children}</h3>,
+      h4: ({ children }: any) => <h4 className="shout pb-4">{children}</h4>,
+      h5: ({ children }: any) => <h5 className="yell-alt pb-4">{children}</h5>,
+      h6: ({ children }: any) => <h6 className="whisper pb-2">{children}</h6>,
+      blockquote: ({ children }: any) => (
+        <blockquote className="scream my-6 p-6 border-l-4 border-lightGreen">
+          {children}
+        </blockquote>
+      ),
+      normal: ({ children }: any) => (
+        <p className="talk mb-2 pb-4">{children}</p>
+      ),
+    },
+    list: {
+      bullet: ({ children }: any) => (
+        <ul className="chat mt-2 ml-6 mb-6">{children}</ul>
+      ),
+      number: ({ children }: any) => (
+        <ol className="chat mt-2 ml-6 mb-6">{children}</ol>
+      ),
+    },
+    listItem: {
+      bullet: ({ children }: any) => (
+        <li className="pb-2" style={{ listStyleType: 'disc' }}>
+          {children}
+        </li>
+      ),
+      number: ({ children }: any) => (
+        <li
+          className="text-darkGreen ml-2 pb-2"
+          style={{ listStyleType: 'decimal' }}
+        >
+          {children}
+        </li>
+      ),
     },
     marks: {
       link: ({ children, value }) => {
@@ -62,5 +96,9 @@ export function CustomPortableText({
     },
   }
 
-  return <PortableText components={components} value={value} />
+  return (
+    <div className={paragraphClasses}>
+      <PortableText components={components} value={value} />
+    </div>
+  )
 }

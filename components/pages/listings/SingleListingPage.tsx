@@ -132,7 +132,8 @@ export function SingleListingPage(initial: any) {
           </div>
         </div>
       )}
-      <div className="relative w-full h-[850px] flex flex-col items-start justify-start flex-wrap  bg-primary-dark -mt-[100px] pb-20 md:h-screen md:pb-0">
+      <div className="relative w-full h-[850px] flex flex-col items-start justify-start flex-wrap bg-primary-dark -mt-[100px] pb-20 md:h-screen md:pb-0">
+        <div className="absolute z-10 top-0 left-0 w-full h-full bg-gradient-to-b from-ink-dark to-transparent opacity-75" />
         {/* Desktop Layout */}
         <div className="hidden md:flex w-full h-full">
           <div className="relative w-1/2 h-full ">
@@ -331,7 +332,9 @@ export function SingleListingPage(initial: any) {
                 </Button>
               </Link>
               <Link className="chat hover:underline" href="">
-                Ask A Question
+                <Button color="paper" size="sm" variant="ghost">
+                  Ask A Question
+                </Button>
               </Link>
             </div>
           </div>
@@ -372,8 +375,8 @@ export function SingleListingPage(initial: any) {
                 </li>
               </ul>
             </div>
-            <div className="w-full flex flex-col items-start justify-start p-6 rounded-border-sm shadow-sm bg-paper-light sm:flex-row">
-              <ul className="w-full flex flex-col gap-y-4 p-1 sm:w-1/2">
+            <div className="w-full flex flex-col items-start justify-start  bg-paper-light py-12 px-6 rounded-border-sm shadow-sm sm:flex-row">
+              <ul className="w-full chat flex flex-col gap-y-4 p-1 sm:w-1/2">
                 <li className="flex mr-1">
                   <FaMapPin className="text-accent text-2xl mr-2" />
                   {listing.location}
@@ -399,13 +402,13 @@ export function SingleListingPage(initial: any) {
                   Built in {listing.constructionDate}
                 </li>
               </ul>
-              <div className="w-full flex flex-col gap-y-2 p-1 pt-4 sm:w-1/2 sm:pt-0">
+              <div className="w-full chat flex flex-col gap-y-2 p-1 pt-4 sm:w-1/2 sm:pt-0">
                 <div className="flex">
                   <FaListCheck className="text-accent text-2xl mr-2" />
                   Features:
                 </div>
                 <CustomPortableText
-                  paragraphClasses="text-md md:text-xl"
+                  paragraphClasses="text-ink"
                   value={listing.features}
                 />
               </div>
