@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 import { Button } from '@/components/shared/Button'
-
 import type { ShowcaseProperty } from '@/types'
 
 interface propertyProps {

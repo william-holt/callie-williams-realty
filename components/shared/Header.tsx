@@ -1,6 +1,5 @@
-import { urlForImage } from '@/sanity/lib/utils'
-
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
+import { urlForImage } from '@/sanity/lib/utils'
 
 interface HeaderProps {
   description?: any[]

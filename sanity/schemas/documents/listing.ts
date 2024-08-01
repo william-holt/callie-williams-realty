@@ -27,6 +27,7 @@ export default defineType({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      validation: (rule) => rule.required(),
       options: {
         source: 'title',
         maxLength: 96,
@@ -179,14 +180,8 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
-      name: 'images',
-      title: 'Listing Images',
-      type: 'array',
-      of: [{type: 'listingImage'}],
-    }),
-    defineField({
       name: 'listingImages',
-      title: 'Listing Images',
+      title: 'Upload Images',
       type: 'array',
       of: [
         { type: 'image',

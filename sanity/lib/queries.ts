@@ -19,15 +19,17 @@ export const homePageQuery = groq`{
     "featuredPropertyData": *[_type == "featuredListing"][]
   }`
 
-export const pagesBySlugQuery = groq`
-  *[_type == "page" && slug.current == $slug][0] {
+export const pagesBySlugQuery = groq`{
+  "pageData": *[_type == "page" && slug.current == $slug][0] {
     _id,
     body,
     overview,
     title,
+    heroImage,
     "slug": slug.current,
-  }
-`
+  },
+  "featuredPropertyData": *[_type == "featuredListing"][]
+}`
 
 export const projectBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][0] {

@@ -13,6 +13,8 @@ export function ListingsGrid({ data, title, description }: any) {
   const searchParams = useSearchParams();
   const filter = searchParams.get('filter')
 
+  console.log('data', data);
+
   const setFilterAndUrl = useCallback((newFilter: string) => {
     router.push('/listings/?filter=' + newFilter, {scroll: false})
   }, [router])
@@ -51,7 +53,7 @@ export function ListingsGrid({ data, title, description }: any) {
           />
         </div>
         {viewableListings?.length > 0 ? (
-          <div className="flex flex-col items-stretch space-y-4 lg:flex-row lg:space-y-0 lg:space-x-4 lg:-mx-4">
+          <div className="flex flex-col items-stretch space-y-4 lg:flex-row lg:flex-wrap lg:justify-evenly lg:space-y-0 lg:space-x-4 lg:-mx-4">
             {viewableListings.map((listing: any, index: number) => {
               return <ListingCard index={index} listing={listing} key={index} />
             })}

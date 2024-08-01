@@ -1,14 +1,16 @@
+import { HomePageFeaturedProperties } from '@/components/pages/home/HomePageFeaturedProperties'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import { Header } from '@/components/shared/Header'
-import type { PagePayload } from '@/types'
+import { Subscribe } from '@/components/shared/Subscribe'
 
 export interface PageProps {
-  data: PagePayload | null
+  data: any | null
 }
 
 export function Page({ data }: PageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { body, overview, title, heroImage } = data ?? {}
+  const {pageData, featuredPropertyData} = data;
+  const { body, overview, title, heroImage } = pageData ?? {}
 
   return (
     <>
@@ -25,6 +27,15 @@ export function Page({ data }: PageProps) {
           </div>
         </section>
       )}
+      {/* Featured Properties */}
+      <section className="w-full bg-primary-dark py-12 pb-24">
+        {/*<HomePageFeaturedProperties*/}
+        {/*  title={'Featured Listings Being Shown Now'}*/}
+        {/*  properties={featuredPropertyData}*/}
+        {/*/>*/}
+      </section>
+      {/* Subscribe */}
+      <Subscribe />
     </>
   )
 }

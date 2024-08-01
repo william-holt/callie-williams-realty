@@ -17,12 +17,13 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { data: page } = await loadPage(params.slug)
+  const { data } = await loadPage(params.slug)
+  const { pageData } = data
 
   return {
-    title: page?.title,
-    description: page?.overview
-      ? toPlainText(page.overview)
+    title: pageData?.title,
+    description: pageData?.overview
+      ? toPlainText(pageData.overview)
       : (await parent).description,
   }
 }

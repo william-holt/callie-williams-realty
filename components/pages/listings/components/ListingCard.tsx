@@ -17,7 +17,7 @@ export function ListingCard(props: ListingCardProps) {
   return (
     <div
       key={'service' + index}
-      className="relative w-full flex flex-col bg-paper-light rounded-border-lg shadow-lg md:flex-row md:items-start md:justify-start lg:w-1/3 lg:flex-col"
+      className="relative w-full h-[685px] flex flex-col bg-paper-light rounded-border-lg shadow-lg md:flex-row md:items-start md:justify-start lg:w-[30%] lg:flex-col lg:mb-8"
     >
       <div className="w-full p-2 md:w-1/3 lg:w-full">
         <div className="relative w-full h-[150px] flex items-center justify-center bg-paper-dark rounded-border-sm md:h-[250px]">
@@ -82,7 +82,7 @@ export function ListingCard(props: ListingCardProps) {
           </div>
         </div>
       </div>
-      <div className="relative w-full h-full pt-2 px-4 pb-24 md:w-2/3 md:pt-4 lg:w-full lg:pb-48">
+      <div className="relative w-full h-full pt-2 px-4 pb-24 flex flex-col justify-start items-center md:w-2/3 md:pt-4 lg:w-full lg:pb-8">
         <div className="w-full chat text-ink pb-4">
           <span className="px-2">
             <strong>{listing.bedroomCount}</strong> Bedrooms
@@ -96,9 +96,9 @@ export function ListingCard(props: ListingCardProps) {
             <strong>{listing.squareFootage}</strong> sq. ft.
           </span>
         </div>
-        <h3 className="shout text-ink pb-2">{listing.name}</h3>
-        <p className="talk text-ink">{listing.description}</p>
-        <div className="absolute bottom-0 left-0 w-full p-4">
+        <h3 className="shout text-ink mb-2 w-full text-left line-clamp-2 h-[105px]">{listing.name}</h3>
+        <p className="max-w-full talk text-ink line-clamp-4">{listing.description}</p>
+        <div className="w-full p-4 flex-grow-[3] flex justify-start items-end">
           <Link
             href="/listings/[slug]"
             as={`/listings/${listing.slug.current}`}

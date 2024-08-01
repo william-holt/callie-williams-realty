@@ -82,7 +82,7 @@ export function loadHomePage() {
 }
 
 export function loadPage(slug: string) {
-  return loadQuery<PagePayload | null>(
+  return loadQuery<any | null>(
     pagesBySlugQuery,
     { slug },
     { next: { tags: [`page:${slug}`] } },

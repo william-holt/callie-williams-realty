@@ -181,10 +181,24 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
-      name: 'images',
-      title: 'Listing Images',
+      name: 'listingImages',
+      title: 'Upload Images',
       type: 'array',
-      of: [{ type: 'listingImage' }],
+      of: [
+        { type: 'image',
+          fields: [
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Caption',
+            },
+            {
+              name: 'altText',
+              type: 'string',
+              title: 'Alt Text',
+            }
+          ]}],
+      options: {  },
     }),
     defineField({
       name: 'testimonials',
