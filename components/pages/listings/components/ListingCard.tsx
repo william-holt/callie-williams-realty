@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge'
 
 import { Button } from '@/components/shared/Button'
 
-import { CustomPortableText } from '@/components/shared/CustomPortableText'
+import { FaMapPin, FaTag } from 'react-icons/fa6'
 
 interface ListingCardProps {
   index: number
@@ -13,6 +13,16 @@ interface ListingCardProps {
 
 export function ListingCard(props: ListingCardProps) {
   const { index, listing } = props
+
+  function convertToDollars(amount: number) {
+    // remove .00 at the end
+    return amount
+      .toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      })
+      .replace('.00', '')
+  }
 
   return (
     <div
@@ -32,7 +42,7 @@ export function ListingCard(props: ListingCardProps) {
                   objectFit="cover"
                 />
                 <div className="absolute z-10 bottom-0 left-0 w-full h-full flex flex-col items-center justify-between chat text-paper-light p-4">
-                  <div className="w-full flex flex-row items-start  justify-between">
+                  <div className="w-full flex flex-row items-center  justify-between">
                     <div className="w-2/3 flex justify-start flex-wrap -ml-1">
                       {listing.tags.map((tag, index) => {
                         // filter tags to only show residential, development, or commercial
@@ -45,7 +55,10 @@ export function ListingCard(props: ListingCardProps) {
                         }
 
                         return (
-                          <span className="text-body uppercase text-xs text-ink-dark bg-paper-light bg-opacity-50 m-1 py-1 px-2 rounded-full shadow-sm" key={index}>
+                          <span
+                            className="text-body uppercase text-xs text-ink-dark bg-paper-light bg-opacity-75 m-[5px] py-[2.5px] px-2 rounded-full shadow-lg"
+                            key={index}
+                          >
                             {tag}
                           </span>
                         )
@@ -55,9 +68,9 @@ export function ListingCard(props: ListingCardProps) {
                       <div className="w-full flex items-center justify-end space-x-1">
                         <div
                           className={twMerge(
-                            `w-4 h-4 rounded-full mb-1`,
+                            `statusIcon`,
                             listing.status === 'Sold' && 'bg-red-500',
-                            listing.status === 'Active' && 'bg-green-500',
+                            listing.status === 'Active' && 'active',
                             listing.status === 'Pending' && 'bg-yellow-500',
                             listing.status === 'Under Contract' &&
                               'bg-blue-500',
@@ -72,11 +85,17 @@ export function ListingCard(props: ListingCardProps) {
                     </div>
                   </div>
                   <div className="w-full flex flex-row items-center justify-between">
-                    <code>{listing.price}</code>
-                    <code>{listing.location}</code>
+                    <div className="flex space-x-2 yell">
+                      <FaTag className="text-2xl" />
+                      <span>{convertToDollars(listing.price)}</span>
+                    </div>
+                    <div className="flex space-x-1 chat">
+                      <FaMapPin className="text-2xl" />
+                      <span>{listing.location}</span>
+                    </div>
                   </div>
                 </div>
-                <div className="absolute w-full h-full bg-ink-dark opacity-50 rounded-border-sm" />
+                <div className="absolute w-full h-full bg-gradient-to-b from-ink-dark via-transparent to-secondary rounded-border-sm" />
               </div>
             </div>
           </div>

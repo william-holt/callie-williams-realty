@@ -21,6 +21,8 @@ export function ListingsHero(props: ListingsHeroProps) {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}
-    />
+    >
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-ink-dark via-transparent to-secondary" />
+    </section>
   )
 }
