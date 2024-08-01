@@ -41,7 +41,7 @@ export function HomePageHero(props: HomePageHeroProps) {
       <div className="relative w-full max-w-screen-2xl h-fit min-h-[950px] flex flex-col items-center justify-center mx-auto md:h-screen">
         <div className="absolute bottom-0 w-full h-full flex flex-col items-start justify-between pt-36 px-4 pb-12">
           {/* Top */}
-          <div className="w-full flex flex-col items-start justify-start sm:flex-row sm:items-center">
+          <div className="w-full flex flex-col items-start justify-start sm:flex-row sm:items-center sm:px-2 xl:px-0">
             {/* Zillow Rating */}
             <div className="w-full flex flex-col text-paper-light sm:w-1/2">
               <div className="w-full flex flex-row items-center justify-start space-x-1">
@@ -101,7 +101,7 @@ export function HomePageHero(props: HomePageHeroProps) {
             </ul>
           </div>
           {/* Bottom */}
-          <div className="w-full">
+          <div className="w-full sm:px-2 xl:px-0">
             {/* Logos */}
             <div className="pb-4">
               <ul className="w-full flex flex-row items-center justify-start space-x-4 pt-12 sm:pt-0 sm:space-x-6">
@@ -124,7 +124,9 @@ export function HomePageHero(props: HomePageHeroProps) {
               </ul>
             </div>
             {/* Title */}
-            <h1 className="roar text-paper-light pb-2 text-balance">{title}</h1>
+            <h1 className="roar text-paper-light pb-6 text-balance md:pb-12">
+              {title}
+            </h1>
             {/* Description */}
             <p className="talk text-paper-light pb-6 text-balance">
               {description}

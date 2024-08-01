@@ -1,4 +1,8 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
 import { urlForImage } from '@/sanity/lib/utils'
 
@@ -7,10 +11,20 @@ import { Button } from '@/components/shared/Button'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 
 import {
+  FaShare,
+  FaLink,
+  FaInstagram,
+  FaFacebook,
+  FaLinkedin,
+  FaEnvelope,
+  FaChevronLeft,
+  FaChevronRight,
+  FaTimes,
+} from 'react-icons/fa'
+
+import {
   FaBath,
   FaBed,
-  FaCircleArrowLeft,
-  FaCircleArrowRight,
   FaListCheck,
   FaPersonDigging,
   FaRulerCombined,
@@ -18,23 +32,8 @@ import {
   FaTag,
 } from 'react-icons/fa6'
 
-// Example array of image paths
-const images = [
-  '/placeholder.jpg',
-  '/placeholder.jpg',
-  '/placeholder.jpg',
-  '/placeholder.jpg',
-  '/placeholder.jpg',
-  '/placeholder.jpg',
-  '/placeholder.jpg',
-]
-
 export function SingleListingPage(initial: any) {
   const { data: listing } = initial.initial
-
-  const images = listing.listingImages.map((image: any) => {
-    return urlForImage(image)?.height(2000).width(3500).fit('crop').url()
-  })
 
   function convertToDollars(amount: number) {
     return amount
@@ -45,65 +44,158 @@ export function SingleListingPage(initial: any) {
       .replace('.00', '')
   }
 
+  const images = listing.listingImages
+    ? listing.listingImages.map((image: any) => {
+        return urlForImage(image)?.height(2000).width(3500).fit('crop').url()
+      })
+    : []
+
+  const placeholderImage = '/placeholder-square.jpg'
+
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false)
+
+  const [currentImage, setCurrentImage] = useState(0)
+
+  function toggleGallery() {
+    setIsGalleryOpen(!isGalleryOpen)
+
+    // Prevent scrolling when gallery is open
+    if (isGalleryOpen) {
+      document.documentElement.classList.remove('no-scroll')
+      document.body.classList.remove('no-scroll')
+    } else {
+      document.documentElement.classList.add('no-scroll')
+      document.body.classList.add('no-scroll')
+    }
+  }
+
+  const imageCount = images.length
+
+  function prevImage() {
+    setCurrentImage(currentImage - 1)
+    if (currentImage === 0) {
+      setCurrentImage(imageCount - 1)
+    }
+  }
+
+  function nextImage() {
+    setCurrentImage(currentImage + 1)
+    if (currentImage === imageCount - 1) {
+      setCurrentImage(0)
+    }
+  }
+
   return (
     <div className="w-full">
-      <div className="relative w-full h-[850px] flex flex-col items-start justify-start flex-wrap  bg-primary-dark -mt-[100px] pb-20 md:h-screen md:pb-6">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-ink-dark from-0% to-transparent" />
+      {isGalleryOpen && (
+        <div className="fixed z-40 top-0 left-0 w-full h-screen">
+          <div
+            className="absolute z-0 top-0 left-0 w-full h-full bg-ink-dark bg-opacity-90"
+            onClick={() => setIsGalleryOpen(false)}
+          />
+          <div className="absolute top-0 left-0 z-50 w-full">
+            <div className="w-full h-16 mx-auto flex items-center justify-end px-6">
+              <button onClick={toggleGallery}>
+                <FaTimes className="text-4xl text-paper-light transition-all duration-300 ease-in-out hover:text-accent-light" />
+              </button>
+            </div>
+          </div>
+          <div className="w-full h-full flex overflow-scroll">
+            {/* Gallery */}
+            {/* {images.map((image: string) => {
+              return ( */}
+            <div className="min-w-[100vw] h-full flex items-center justify-center border-2 border-blue-500">
+              <button
+                onClick={prevImage}
+                className="relative z-30 w-[5%] flex items-center justify-center"
+              >
+                <FaChevronLeft className="text-4xl text-paper-light transition-all duration-300 ease-in-out hover:text-accent-light" />
+              </button>
+              <div className="relative z-30 w-[90%] h-full flex items-center justify-center">
+                <Image
+                  src={images[currentImage]}
+                  alt="gallery image"
+                  width={1500}
+                  height={1500}
+                  className="shadow-lg"
+                />
+              </div>
+              <button
+                onClick={nextImage}
+                className="relative z-30 w-[5%] flex items-center justify-center"
+              >
+                <FaChevronRight className="text-4xl text-paper-light transition-all duration-300 ease-in-out hover:text-accent-light" />
+              </button>
+            </div>
+            {/* )
+            })} */}
+          </div>
+        </div>
+      )}
+      <div className="relative w-full h-[850px] flex flex-col items-start justify-start flex-wrap  bg-primary-dark -mt-[100px] pb-20 md:h-screen md:pb-0">
         {/* Desktop Layout */}
         <div className="hidden md:flex w-full h-full">
-          <div className="w-1/2 h-full p-2">
-            <img
-              src={images[0]}
+          <div className="relative w-1/2 h-full ">
+            <Image
+              src={images[0] ? images[0] : placeholderImage}
               alt="image1"
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-cover rounded-border-lg p-2"
+              fill={true}
             />
           </div>
           <div className="w-1/2 h-full flex flex-col">
-            <div className="w-full h-1/2 p-2">
-              <img
-                src={images[1]}
+            <div className="relative w-full h-1/2">
+              <Image
+                src={images[1] ? images[1] : placeholderImage}
                 alt="image2"
-                className="w-full h-full object-cover rounded-lg"
+                className="w-full h-full object-cover rounded-border-lg p-2"
+                fill={true}
               />
             </div>
             <div className="w-full h-1/2 flex">
-              <div className="w-1/2 h-full p-2">
-                <img
-                  src={images[2]}
+              <div className="relative w-1/2 h-full">
+                <Image
+                  src={images[2] ? images[2] : placeholderImage}
                   alt="image3"
-                  className="w-full h-full object-cover rounded-lg"
+                  className="w-full h-full object-cover  rounded-border-lg p-2"
+                  fill={true}
                 />
               </div>
               <div className="w-1/2 h-full flex flex-wrap">
-                <div className="w-full h-1/2 p-2">
-                  <img
-                    src={images[3]}
+                <div className="relative w-full h-1/2">
+                  <Image
+                    src={images[3] ? images[3] : placeholderImage}
                     alt="image4"
-                    className="w-full h-full object-cover rounded-lg"
+                    className="w-full h-full object-cover rounded-border-lg p-2"
+                    fill={true}
                   />
                 </div>
-                <div className="w-1/2 h-1/2 p-2">
-                  <img
-                    src={images[4]}
+                <div className="relative w-1/2 h-1/2">
+                  <Image
+                    src={images[4] ? images[4] : placeholderImage}
                     alt="image5"
-                    className="w-full h-full object-cover rounded-lg"
+                    className="w-full h-full object-cover rounded-border-lg p-2"
+                    fill={true}
                   />
                 </div>
                 <div className="w-1/2 h-1/2 p-2">
-                  <div className="relative w-full h-full rounded-border-sm shadow-sm lg:mb-0">
-                    <div className="absolute z-10 bottom-0 left-0 w-full h-full flex items-center justify-center chat text-paper-light">
-                      <Link
-                        href=""
-                        className="text-paper-light hover:underline"
+                  <div className="relative w-full h-full shadow-sm lg:mb-0">
+                    <div className="absolute z-20 bottom-0 left-0 w-full h-full flex items-center justify-center chat text-paper-light">
+                      <Button
+                        color="paper"
+                        size="md"
+                        variant="ghost"
+                        onClick={toggleGallery}
                       >
-                        + 17 more
-                      </Link>
+                        View Gallery
+                      </Button>
                     </div>
-                    <div className="absolute w-full h-full bg-gradient-to-t from-ink-dark rounded-border-sm" />
-                    <img
-                      src={images[5]}
+                    <div className="absolute z-10 w-full h-full bg-ink-dark opacity-75 rounded-border-lg" />
+                    <Image
+                      src={images[5] ? images[5] : placeholderImage}
                       alt="image6"
-                      className="w-full h-full object-cover rounded-lg"
+                      className="relative z-0 w-full h-full object-cover rounded-border-lg"
+                      fill={true}
                     />
                   </div>
                 </div>
@@ -114,55 +206,71 @@ export function SingleListingPage(initial: any) {
 
         {/* Mobile Layout */}
         <div className="flex flex-col md:hidden w-full h-full">
-          <div className="w-full h-1/3 p-2">
-            <img
-              src={images[0]}
+          <div className="w-full h-1/3 ">
+            <Image
+              src={images[0] ? images[0] : placeholderImage}
               alt="image1"
-              className="w-full h-full object-cover rounded-lg"
+              className="relative w-full h-full object-cover rounded-border-lg p-2"
+              width={1500}
+              height={1500}
             />
           </div>
-          <div className="w-full h-1/3 p-2">
-            <img
-              src={images[1]}
+          <div className="w-full h-1/3 ">
+            <Image
+              src={images[1] ? images[1] : placeholderImage}
               alt="image2"
-              className="w-full h-full object-cover rounded-lg"
+              className="relative w-full h-full object-cover rounded-border-lg p-2"
+              width={1500}
+              height={1500}
             />
           </div>
           <div className="w-full h-1/3 flex flex-col">
-            <div className="w-full h-1/2 p-2">
-              <img
-                src={images[2]}
+            <div className="w-full h-1/2 ">
+              <Image
+                src={images[2] ? images[2] : placeholderImage}
                 alt="image3"
-                className="w-full h-full object-cover rounded-lg"
+                className="relative w-full h-full object-cover rounded-border-lg p-2"
+                width={1500}
+                height={1500}
               />
             </div>
             <div className="w-full h-1/2 flex flex-wrap">
-              <div className="w-1/2 h-full p-2">
-                <img
-                  src={images[3]}
+              <div className="w-1/2 h-full ">
+                <Image
+                  src={images[3] ? images[3] : placeholderImage}
                   alt="image4"
-                  className="w-full h-full object-cover rounded-lg"
+                  className="relative w-full h-full object-cover rounded-border-lg p-2"
+                  width={1500}
+                  height={1500}
                 />
               </div>
-              <div className="w-1/2 h-full p-2">
-                <img
-                  src={images[4]}
+              <div className="w-1/2 h-full ">
+                <Image
+                  src={images[4] ? images[4] : placeholderImage}
                   alt="image5"
-                  className="w-full h-full object-cover rounded-lg"
+                  className="relative w-full h-full object-cover rounded-border-lg p-2"
+                  width={1500}
+                  height={1500}
                 />
               </div>
               <div className="w-full h-1/2 p-2">
-                <div className="relative w-full h-full rounded-border-sm shadow-sm lg:mb-0">
-                  <div className="absolute z-10 bottom-0 left-0 w-full h-full flex items-center justify-center chat text-paper-light">
-                    <Link href="" className="text-paper-light hover:underline">
-                      + 17 more
-                    </Link>
+                <div className="relative w-full h-full shadow-sm lg:mb-0">
+                  <div className="absolute z-20 bottom-0 left-0 w-full h-full flex items-center justify-center chat text-paper-light">
+                    <Button
+                      color="paper"
+                      size="md"
+                      variant="ghost"
+                      onClick={toggleGallery}
+                    >
+                      View Gallery
+                    </Button>
                   </div>
-                  <div className="absolute w-full h-full bg-gradient-to-t from-ink-dark rounded-border-sm" />
-                  <img
-                    src={images[5]}
+                  <div className="absolute z-10 w-full h-full bg-ink-dark opacity-75 rounded-border-sm" />
+                  <Image
+                    src={images[5] ? images[5] : placeholderImage}
                     alt="image6"
-                    className="w-full h-full object-cover rounded-lg"
+                    className="relative z-0 w-full h-full object-cover rounded-border-sm"
+                    fill={true}
                   />
                 </div>
               </div>
@@ -230,9 +338,39 @@ export function SingleListingPage(initial: any) {
           {/* Features */}
           <div className="w-full px-6 md:w-1/2 p-1">
             <div className="w-full flex md:justify-end p-4">
-              <div>
-                <code>share</code>
-              </div>
+              <span className="chat text-paper-light pr-2">Share:</span>
+              <ul className="flex space-x-2">
+                <li>
+                  <Link href="">
+                    <FaShare className="text-paper-light text-2xl transition-all duration-300 ease-in-out  hover:text-accent-light" />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="">
+                    <FaLink className="text-paper-light text-2xl transition-all duration-300 ease-in-out hover:text-accent-light" />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="">
+                    <FaInstagram className="text-paper-light text-2xl transition-all duration-300 ease-in-out  hover:text-accent-light" />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="">
+                    <FaFacebook className="text-paper-light text-2xl transition-all duration-300 ease-in-out  hover:text-accent-light" />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="">
+                    <FaLinkedin className="text-paper-light text-2xl transition-all duration-300 ease-in-out  hover:text-accent-light" />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="">
+                    <FaEnvelope className="text-paper-light text-2xl transition-all duration-300 ease-in-out  hover:text-accent-light" />
+                  </Link>
+                </li>
+              </ul>
             </div>
             <div className="w-full flex flex-col items-start justify-start p-6 rounded-border-sm shadow-sm bg-paper-light sm:flex-row">
               <ul className="w-full flex flex-col gap-y-4 p-1 sm:w-1/2">

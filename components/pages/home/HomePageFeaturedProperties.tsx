@@ -1,6 +1,10 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 import type { ShowcaseProperty } from '@/types'
+
+import { Button } from '@/components/shared/Button'
+import { CustomPortableText } from '@/components/shared/CustomPortableText'
 
 import {
   FaBath,
@@ -13,7 +17,6 @@ import {
   FaMapPin,
   FaTag,
 } from 'react-icons/fa6'
-import { CustomPortableText } from '@/components/shared/CustomPortableText'
 
 interface propertyProps {
   title: string
@@ -63,8 +66,8 @@ export function HomePageFeaturedProperties(props: propertyProps) {
                     key={index}
                   >
                     {/* Thumbnail */}
-                    <div className="w-full p-1 rounded-border-sm shadow-sm lg:w-1/2 lg:pr-2 xl:w-7/12 2xl:w-8/12">
-                      <div className="relative w-full h-full min-h-[300px] rounded-border-sm shadow-sm lg:mb-0">
+                    <div className="w-full p-1 rounded-border-lg shadow-sm lg:w-1/2 lg:pr-2 xl:w-7/12 2xl:w-8/12">
+                      <div className="relative w-full h-full min-h-[300px] rounded-border-lg shadow-sm lg:mb-0">
                         <div className="absolute z-10 bottom-0 left-0 talk text-paper-light p-6">
                           <div className="w-full space-x-2 pb-2">
                             {property.tags.length && (
@@ -85,14 +88,14 @@ export function HomePageFeaturedProperties(props: propertyProps) {
                             {property.description}
                           </p>
                         </div>
-                        <div className="absolute w-full h-full bg-gradient-to-t from-ink-dark rounded-border-sm" />
+                        <div className="absolute w-full h-full bg-gradient-to-t from-ink-dark rounded-border-lg" />
                       </div>
                     </div>
                     {/* Features */}
-                    <div className="w-full rounded-border-sm shadow-sm lg:w-1/2 xl:w-5/12 2xl:w-4/12">
+                    <div className="w-full rounded-border-lg shadow-sm lg:w-1/2 xl:w-5/12 2xl:w-4/12">
                       {/* Details */}
                       <div className="w-full p-1">
-                        <div className="w-full flex flex-col items-start justify-start p-6 rounded-border-sm shadow-sm bg-paper-light sm:flex-row">
+                        <div className="w-full flex flex-col items-start justify-start p-6 rounded-border-lg shadow-sm bg-paper-light sm:flex-row">
                           <ul className="w-full flex flex-col gap-y-4 p-1 sm:w-1/2">
                             <li className="flex mr-1">
                               <FaMapPin className="text-accent text-2xl mr-2" />
@@ -133,27 +136,55 @@ export function HomePageFeaturedProperties(props: propertyProps) {
                       </div>
                       {/* Gallery */}
                       <div className="w-full flex flex-col items-center justify-center flex-wrap md:flex-row">
-                        <div className="w-full h-24 p-1 md:h-48 md:w-1/2 lg:h-72">
-                          <div className="w-full h-full rounded-border-sm shadow-sm  bg-secondary" />
+                        <div className="relative w-full h-24 p-1 md:h-48 md:w-1/2 lg:h-72">
+                          {/* <div className="w-full h-full rounded-border-lg shadow-sm  bg-secondary" /> */}
+                          <Image
+                            src={'/placeholder-square.jpg'}
+                            alt={'test'}
+                            className="w-full h-full object-cover rounded-border-lg p-2"
+                            fill={true}
+                          />
                         </div>
                         <div className="w-full flex flex-row flex-wrap md:w-1/2">
-                          <div className="w-1/3 h-24 p-1 md:w-full lg:h-36">
-                            <div className="w-full h-full rounded-border-sm shadow-sm  bg-secondary" />
+                          <div className="relative w-1/3 h-24 p-1 md:w-full lg:h-36">
+                            <Image
+                              src={'/placeholder-square.jpg'}
+                              alt={'test'}
+                              className="w-full h-full object-cover rounded-border-lg p-2"
+                              fill={true}
+                            />
+                          </div>
+                          <div className="relative w-1/3 h-24 p-1 md:w-1/2 lg:h-36">
+                            <Image
+                              src={'/placeholder-square.jpg'}
+                              alt={'test'}
+                              className="w-full h-full object-cover rounded-border-lg p-2"
+                              fill={true}
+                            />
                           </div>
                           <div className="w-1/3 h-24 p-1 md:w-1/2 lg:h-36">
-                            <div className="w-full h-full rounded-border-sm shadow-sm  bg-secondary" />
-                          </div>
-                          <div className="w-1/3 h-24 p-1 md:w-1/2 lg:h-36">
-                            <div className="relative w-full h-full rounded-border-sm shadow-sm lg:mb-0">
+                            <div className="relative w-full h-full rounded-border-lg shadow-sm lg:mb-0">
                               <div className="absolute z-10 bottom-0 left-0 w-full h-full flex items-center justify-center chat text-paper-light">
                                 <Link
                                   href=""
                                   className="text-paper-light hover:underline"
                                 >
-                                  + 17 more
+                                  <Button
+                                    color="paper"
+                                    size="sm"
+                                    variant="ghost"
+                                  >
+                                    View Gallery
+                                  </Button>
                                 </Link>
                               </div>
-                              <div className="absolute w-full h-full bg-gradient-to-t from-ink-dark rounded-border-sm" />
+                              <Image
+                                src={'/placeholder-square.jpg'}
+                                alt={'test'}
+                                className="w-full h-full object-cover rounded-border-lg"
+                                fill={true}
+                              />
+                              <div className="absolute w-full h-full bg-ink-dark opacity-75 rounded-border-lg" />
                             </div>
                           </div>
                         </div>
