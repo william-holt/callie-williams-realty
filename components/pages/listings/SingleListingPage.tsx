@@ -1,39 +1,38 @@
 'use client'
 
-import { useState } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
-import { twMerge } from 'tailwind-merge'
-import { urlForImage } from '@/sanity/lib/utils'
-
-import { Button } from '@/components/shared/Button'
-
-import { CustomPortableText } from '@/components/shared/CustomPortableText'
-
+import Link from 'next/link'
+import { useState } from 'react'
 import {
-  FaShare,
-  FaLink,
-  FaInstagram,
-  FaFacebook,
-  FaLinkedin,
-  FaEnvelope,
   FaChevronLeft,
   FaChevronRight,
+  FaEnvelope,
+  FaFacebook,
+  FaInstagram,
+  FaLink,
+  FaLinkedin,
+  FaShare,
   FaTimes,
 } from 'react-icons/fa'
-
 import {
   FaBath,
   FaBed,
   FaListCheck,
+  FaMapPin,
   FaPersonDigging,
   FaRulerCombined,
-  FaMapPin,
   FaTag,
 } from 'react-icons/fa6'
+import { twMerge } from 'tailwind-merge'
+
+import { MapWrapper } from '@/components/maps/MapWrapper'
+import { Button } from '@/components/shared/Button'
+import { CustomPortableText } from '@/components/shared/CustomPortableText'
+import { urlForImage } from '@/sanity/lib/utils'
 
 export function SingleListingPage(initial: any) {
   const { data: listing } = initial.initial
+  const address = listing
 
   function convertToDollars(amount: number) {
     return amount
@@ -427,6 +426,7 @@ export function SingleListingPage(initial: any) {
           />
           {/* Map */}
           {/* TODO: Finish map section */}
+          <MapWrapper address={'1033 Ashes Drive, Wilmington, NC 28405'} />
         </div>
       </div>
 

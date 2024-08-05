@@ -22,6 +22,17 @@ const config = {
   experimental: {
     taint: true,
   },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/api/:path*',
+  //       destination:
+  //         process.env.NODE_ENV === 'production'
+  //           ? 'https://calliewilliamsrealestate.com/api/:path*'
+  //           : 'http://locahost:3000/api/:path*',
+  //     },
+  //   ]
+  // }
 }
 
 export default config
