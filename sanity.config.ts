@@ -8,7 +8,7 @@ import { defineConfig } from 'sanity'
 import { presentationTool } from 'sanity/presentation'
 import { structureTool } from 'sanity/structure'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import { media, mediaAssetSource } from 'sanity-plugin-media'
+import { media } from 'sanity-plugin-media'
 
 import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
 import { locate } from '@/sanity/plugins/locate'
@@ -25,10 +25,12 @@ import home from '@/sanity/schemas/singletons/home'
 import pastDealsMetaData from '@/sanity/schemas/singletons/pastDealsMetaData'
 import settings from '@/sanity/schemas/singletons/settings'
 import contactMetadata from '@/sanity/schemas/singletons/contactMetadata'
+import youtubeVideos from '@/sanity/schemas/singletons/youtubeVideos'
+import youtubeVideoLinks from '@/sanity/schemas/objects/youtubeVideoLinks'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
-  'Next.js Personal Website with Sanity.io'
+  'Callie Williams Real Estate'
 
 export default defineConfig({
   basePath: studioUrl,
@@ -44,6 +46,7 @@ export default defineConfig({
       allListingsMetaData,
       contactMetadata,
       pastDealsMetaData,
+      youtubeVideos,
       // Documents
       page,
       listing,
@@ -53,6 +56,7 @@ export default defineConfig({
       testimonial,
       listingImage,
       social,
+      youtubeVideoLinks,
     ],
   },
   plugins: [

@@ -28,7 +28,10 @@ export const pagesBySlugQuery = groq`{
     heroImage,
     "slug": slug.current,
   },
-  "featuredPropertyData": *[_type == "featuredListing"][]
+  "featuredPropertyData": *[_type == "featuredListing"][],
+  "youtubeVideos": *[_type == "youtubeVideos"][0] {
+    youtubeVideoLinks
+  }
 }`
 
 export const projectBySlugQuery = groq`
@@ -120,5 +123,11 @@ export const contactPageMetadata = groq`
       header,
       heroImage,
       subtitle,
+    }
+ `
+
+export const youtubeVideos = groq`
+    *[_type == "youtubeVideos"][0]{
+      youtubeVideoLinks,
     }
  `

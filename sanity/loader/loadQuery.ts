@@ -11,7 +11,7 @@ import {
   settingsQuery,
   allReviewsQuery,
   allListingsQuery,
-  listingBySlugQuery, allPastDealsPageQuery, allListingsPageQuery, contactPageMetadata
+  listingBySlugQuery, allPastDealsPageQuery, allListingsPageQuery, contactPageMetadata, youtubeVideos
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
@@ -134,5 +134,13 @@ export function loadContactMetadata() {
     contactPageMetadata,
     {},
     { next: { tags: ['contact'] } },
+  )
+}
+
+export function loadYoutubeVideos() {
+  return loadQuery<any | null>(
+    youtubeVideos,
+    {},
+    { next: { tags: ['about'] } },
   )
 }
