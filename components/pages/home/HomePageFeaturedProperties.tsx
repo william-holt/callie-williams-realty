@@ -53,9 +53,9 @@ export function HomePageFeaturedProperties(props: propertyProps) {
             <h2 className="w-full hollar text-paper-light md:w-2/3">
               {props.title}
             </h2>
-            <div className="hidden w-full flex-row items-center justify-end md:flex md:w-1/3">
-              <Arrows />
-            </div>
+            {/*<div className="hidden w-full flex-row items-center justify-end md:flex md:w-1/3">*/}
+            {/*  <Arrows />*/}
+            {/*</div>*/}
           </div>
           {properties?.length && (
             <>
