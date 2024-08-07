@@ -51,27 +51,29 @@ export function ListingCard(props: ListingCardProps) {
                 />
                 <div className="absolute z-10 bottom-0 left-0 w-full h-full flex flex-col items-center justify-between chat text-paper-light p-4">
                   <div className="w-full flex flex-row items-center justify-between">
-                    <div className="w-2/3 flex justify-start flex-wrap -ml-1">
-                      {listing.tags.map((tag, index) => {
-                        // filter tags to only show residential, development, or commercial
-                        if (
-                          tag !== 'Residential' &&
-                          tag !== 'Development' &&
-                          tag !== 'Commercial'
-                        ) {
-                          return null
-                        }
+                    {listing.tags?.length > 0 && (
+                      <div className="w-2/3 flex justify-start flex-wrap -ml-1">
+                        {listing.tags.map((tag, index) => {
+                          // filter tags to only show residential, development, or commercial
+                          if (
+                            tag !== 'Residential' &&
+                            tag !== 'Development' &&
+                            tag !== 'Commercial'
+                          ) {
+                            return null
+                          }
 
-                        return (
-                          <span
-                            className="text-body uppercase text-xs text-ink-dark bg-paper-light bg-opacity-75 m-[5px] py-[2.5px] px-2 rounded-full shadow-lg"
-                            key={index}
-                          >
+                          return (
+                            <span
+                              className="text-body uppercase text-xs text-ink-dark bg-paper-light bg-opacity-75 m-[5px] py-[2.5px] px-2 rounded-full shadow-lg"
+                              key={index}
+                            >
                             {tag}
                           </span>
-                        )
-                      })}
-                    </div>
+                          )
+                        })}
+                      </div>
+                    )}
                     <div className="w-1/3 flex justify-end">
                       <div className="w-full flex items-center justify-end space-x-1">
                         <div
@@ -81,9 +83,9 @@ export function ListingCard(props: ListingCardProps) {
                             listing.status === 'Active' && 'active',
                             listing.status === 'Pending' && 'bg-yellow-500',
                             listing.status === 'Under Contract' &&
-                              'bg-blue-500',
+                            'bg-blue-500',
                             listing.status === 'Price Improvement' &&
-                              'bg-purple-500',
+                            'bg-purple-500'
                           )}
                         />
                         <span className="text-paper-light text-body uppercase text-xs">
