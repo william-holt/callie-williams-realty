@@ -54,6 +54,7 @@ export function HomePage({
         title={servicesTitle}
         description={servicesParagraph}
         services={services}
+        propertyData={propertyData}
       />
       <HomePageFeaturedProperties
         title={propertiesTitle}

@@ -2,17 +2,40 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Button } from '@/components/shared/Button'
-import { CustomPortableText } from '@/components/shared/CustomPortableText'
-
 import { urlForImage } from '@/sanity/lib/utils'
 
 interface HomePageServicesProps {
   description?: any[]
   title?: string
   services?: any[]
+  propertyData?: any[]
 }
 export function HomePageServiceSection(props: HomePageServicesProps) {
-  const { title, description, services } = props
+  const { title, description, services, propertyData } = props
+
+  const residentialCount = propertyData?.filter((listing: any) =>
+    listing.tags?.includes('Residential'),
+  ).length;
+  const commercialCount = propertyData?.filter((listing: any) =>
+    listing.tags?.includes('Commercial'),
+  ).length;
+  const developmentCount = propertyData?.filter((listing: any) =>
+    listing.tags?.includes('Development'),
+  ).length;
+
+  const checkServiceForData = (serviceName: string) => {
+    if (serviceName === 'Residential') {
+      return !!(residentialCount && residentialCount > 0);
+    }
+    if (serviceName === 'Commercial') {
+      return !!(commercialCount && commercialCount > 0);
+    }
+    if (serviceName === 'Development') {
+      return !!(developmentCount && developmentCount > 0);
+    }
+  }
+
+  console.log(1, residentialCount, commercialCount, developmentCount);
 
   return (
     <section className="w-full bg-primary-dark">
@@ -50,13 +73,15 @@ export function HomePageServiceSection(props: HomePageServicesProps) {
                     <p className="talk text-ink text-pretty">
                       {service.description}
                     </p>
-                    <div className="absolute bottom-0 left-0 w-full p-4">
-                      <Link href={`${service.link}`}>
-                        <Button color="accent" size="md" variant="solid">
-                          {service.linkText}
-                        </Button>
-                      </Link>
-                    </div>
+                    {checkServiceForData(service.title) && (
+                      <div className="absolute bottom-0 left-0 w-full p-4">
+                        <Link href={`${service.link}`}>
+                          <Button color="accent" size="md" variant="solid">
+                            {service.linkText}
+                          </Button>
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 </div>
               )

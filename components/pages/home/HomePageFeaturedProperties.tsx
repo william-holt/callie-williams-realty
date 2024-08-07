@@ -140,7 +140,7 @@ export function HomePageFeaturedProperties(props: propertyProps) {
                         <div className="relative w-full h-24 p-1 md:h-48 md:w-1/2 lg:h-72">
                           {/* <div className="w-full h-full rounded-border-lg shadow-sm  bg-secondary" /> */}
                           <Image
-                            src={urlForImage(property.ogImage)?.height(2000).width(3500).fit('crop').url()}
+                            src={urlForImage(property.listingImages[1])?.height(2000).width(3500).fit('crop').url()}
                             alt={'test'}
                             className="w-full h-full object-cover rounded-border-lg p-2"
                             fill={true}
@@ -149,7 +149,7 @@ export function HomePageFeaturedProperties(props: propertyProps) {
                         <div className="w-full flex flex-row flex-wrap md:w-1/2">
                           <div className="relative w-1/3 h-24 p-1 md:w-full lg:h-36">
                             <Image
-                              src={urlForImage(property.listingImages[0])?.height(2000).width(3500).fit('crop').url()}
+                              src={urlForImage(property.listingImages[1])?.height(2000).width(3500).fit('crop').url()}
                               alt={'test'}
                               className="w-full h-full object-cover rounded-border-lg p-2"
                               fill={true}
@@ -157,7 +157,7 @@ export function HomePageFeaturedProperties(props: propertyProps) {
                           </div>
                           <div className="relative w-1/3 h-24 p-1 md:w-1/2 lg:h-36">
                             <Image
-                              src={urlForImage(property.listingImages[1])?.height(2000).width(3500).fit('crop').url()}
+                              src={urlForImage(property.listingImages[2])?.height(2000).width(3500).fit('crop').url()}
                               alt={'test'}
                               className="w-full h-full object-cover rounded-border-lg p-2"
                               fill={true}
@@ -180,7 +180,7 @@ export function HomePageFeaturedProperties(props: propertyProps) {
                                 </Link>
                               </div>
                               <Image
-                                src={urlForImage(property.listingImages[2])?.height(2000).width(3500).fit('crop').url()}
+                                src={urlForImage(property.listingImages[3])?.height(2000).width(3500).fit('crop').url()}
                                 alt={'test'}
                                 className="w-full h-full object-cover rounded-border-lg"
                                 fill={true}
