@@ -3,42 +3,39 @@ import { useState } from 'react'
 import { Input } from '@/components/shared/Input'
 import { Button } from '@/components/shared/Button'
 
-
 export function ContactCallie(props: any) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [post, setPost] = useState("");
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [subject, setSubject] = useState('')
+  const [post, setPost] = useState('')
 
   function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     const postData = async () => {
       const data = {
         title: firstName,
         post: post,
-      };
+      }
 
-      const response = await fetch("/api/email/send", {
-        method: "POST",
+      const response = await fetch('/api/email/send', {
+        method: 'POST',
         body: JSON.stringify(data),
-      });
-      return response.json();
-    };
+      })
+      return response.json()
+    }
     postData().then((data) => {
-      alert(data.message);
-    });
+      alert(data.message)
+    })
   }
 
   return (
     <div className="w-full max-w-screen-2xl mx-auto pb-16">
       <div className="w-full px-6">
-        <h2 className="hollar text-white pb-4">
-          Contact Callie
-        </h2>
+        <h2 className="hollar text-white pb-4">Contact Callie</h2>
       </div>
       <div className="w-full flex flex-col items-start justify-start">
-        <div className="w-full flex flex-col items-start justify-start p-4 lg:w-5/6 lg:flex-row lg:space-x-4">
+        <div className="w-full flex flex-col items-start justify-start p-4 lg:flex-row lg:space-x-4">
           <Input
             className="w-full lg:w-1/3"
             name="firstName"
@@ -67,7 +64,7 @@ export function ContactCallie(props: any) {
             required
           />
         </div>
-        <div className="w-full flex flex-col items-start justify-start p-4 lg:w-5/6 lg:flex-row lg:space-x-4">
+        <div className="w-full flex flex-col items-start justify-start p-4 lg:flex-row lg:space-x-4">
           <Input
             className="w-full lg:w-1/3"
             name="subject"

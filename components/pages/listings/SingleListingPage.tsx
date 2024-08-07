@@ -101,8 +101,6 @@ export function SingleListingPage(initial: any) {
           </div>
           <div className="w-full h-full flex overflow-scroll">
             {/* Gallery */}
-            {/* {images.map((image: string) => {
-              return ( */}
             <div className="min-w-[100vw] h-full flex items-center justify-center border-2 border-blue-500">
               <button
                 onClick={prevImage}
@@ -311,9 +309,9 @@ export function SingleListingPage(initial: any) {
                       `statusIcon`,
                       listing.status === 'Sold' && 'bg-red-500',
                       listing.status === 'Active' && 'active',
-                      listing.status === 'Pending' && 'bg-yellow-500',
-                      listing.status === 'Under Contract' && 'bg-blue-500',
-                      listing.status === 'Price Improvement' && 'bg-purple-500',
+                      listing.status === 'Pending' && 'bg-yellow-500', // maybe getting rid of this?
+                      listing.status === 'Under Contract' && 'bg-yellow-500',
+                      listing.status === 'Price Improvement' && 'bg-blue-500',
                     )}
                   />
                   <span className="text-paper-light text-body uppercase text-xs">
@@ -424,10 +422,8 @@ export function SingleListingPage(initial: any) {
             paragraphClasses="text-md md:text-xl"
             value={listing.body}
           />
-          {/* Map */}
-          {/* TODO: Finish map section */}
-          <MapWrapper address={'1033 Ashes Drive, Wilmington, NC 28405'} />
         </div>
+        <MapWrapper address={'1033 Ashes Drive, Wilmington, NC 28405'} />
       </div>
 
       {/* TODO: Figure this out */}

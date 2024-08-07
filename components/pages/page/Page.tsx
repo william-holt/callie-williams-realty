@@ -10,7 +10,7 @@ export interface PageProps {
 
 export function Page({ data }: PageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const {pageData, youtubeVideos, propertyData} = data;
+  const { pageData, youtubeVideos, propertyData } = data
   const { body, overview, title, heroImage } = pageData ?? {}
 
   return (
@@ -28,7 +28,7 @@ export function Page({ data }: PageProps) {
             properties={propertyData}
           />
         </>
-      ): (
+      ) : (
         <>
           {body ?? (
             <section className="w-full talk bg-secondary-dark py-12 pb-24">

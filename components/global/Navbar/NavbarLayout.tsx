@@ -64,9 +64,11 @@ export default function Navbar(props: NavbarProps) {
           </Link>
         </div>
         <div className="hidden w-fit items-center justify-end order-3 xl:w-1/3 xl:flex">
-          <Button color="paper" size="md" variant="solid">
-            Contact Us
-          </Button>
+          <Link href="/contact">
+            <Button color="paper" size="md" variant="solid">
+              Contact Us
+            </Button>
+          </Link>
         </div>
       </div>
     </nav>
