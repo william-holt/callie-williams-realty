@@ -74,7 +74,7 @@ export function loadSettings() {
 }
 
 export function loadHomePage() {
-  return loadQuery<HomePagePayload | null>(
+  return loadQuery<any | null>(
     homePageQuery,
     {},
     { next: { tags: ['home', 'project'] } },
