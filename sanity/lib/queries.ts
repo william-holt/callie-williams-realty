@@ -28,7 +28,7 @@ export const pagesBySlugQuery = groq`{
     heroImage,
     "slug": slug.current,
   },
-  "featuredPropertyData": *[_type == "featuredListing"][],
+  "propertyData": *[_type == "listing"][],
   "youtubeVideos": *[_type == "youtubeVideos"][0] {
     youtubeVideoLinks
   }

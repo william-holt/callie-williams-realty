@@ -2,6 +2,7 @@ import { YoutubeVideos } from '@/components/pages/page/YoutubeVideos'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import { Header } from '@/components/shared/Header'
 import { Subscribe } from '@/components/shared/Subscribe'
+import { CallieFeaturedProperties } from '@/components/pages/page/CallieFeaturedProperties'
 
 export interface PageProps {
   data: any | null
@@ -9,7 +10,7 @@ export interface PageProps {
 
 export function Page({ data }: PageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const {pageData, youtubeVideos} = data;
+  const {pageData, youtubeVideos, propertyData} = data;
   const { body, overview, title, heroImage } = pageData ?? {}
 
   return (
@@ -18,7 +19,15 @@ export function Page({ data }: PageProps) {
       <Header title={title} description={overview} coverImage={heroImage} />
       {/* Body */}
       {pageData.slug === 'about' ? (
-        <YoutubeVideos videos={youtubeVideos} />
+        <>
+          <YoutubeVideos videos={youtubeVideos} />
+
+          {/* Featured Properties */}
+          <CallieFeaturedProperties
+            title={`Callie's Featured Listings`}
+            properties={propertyData}
+          />
+        </>
       ): (
         <>
           {body ?? (
@@ -33,13 +42,6 @@ export function Page({ data }: PageProps) {
           )}
         </>
       )}
-      {/* Featured Properties */}
-      <section className="w-full bg-primary-dark py-12 pb-24">
-        {/*<HomePageFeaturedProperties*/}
-        {/*  title={'Featured Listings Being Shown Now'}*/}
-        {/*  properties={featuredPropertyData}*/}
-        {/*/>*/}
-      </section>
       {/* Subscribe */}
       <Subscribe />
     </>
