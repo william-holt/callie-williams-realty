@@ -178,15 +178,10 @@ export function SingleListingPage(initial: any) {
                 </div>
                 <div className="w-1/2 h-1/2 p-2">
                   <div className="relative w-full h-full shadow-sm lg:mb-0">
-                    <div className="absolute z-20 bottom-0 left-0 w-full h-full flex items-center justify-center chat text-paper-light">
-                      <Button
-                        color="paper"
-                        size="md"
-                        variant="ghost"
-                        onClick={toggleGallery}
-                      >
-                        View Gallery
-                      </Button>
+                    <div className="absolute z-30 bottom-0 left-0 w-full h-full flex items-center justify-center chat text-paper-light hover:underline">
+                      <button type="button" onClick={toggleGallery}>
+                        + {images.length} More
+                      </button>
                     </div>
                     <div className="absolute z-10 w-full h-full bg-ink-dark opacity-75 rounded-border-lg" />
                     <Image
@@ -253,15 +248,10 @@ export function SingleListingPage(initial: any) {
               </div>
               <div className="w-full h-1/2 p-2">
                 <div className="relative w-full h-full shadow-sm lg:mb-0">
-                  <div className="absolute z-20 bottom-0 left-0 w-full h-full flex items-center justify-center chat text-paper-light">
-                    <Button
-                      color="paper"
-                      size="md"
-                      variant="ghost"
-                      onClick={toggleGallery}
-                    >
-                      View Gallery
-                    </Button>
+                  <div className="absolute z-30 bottom-0 left-0 w-full h-full flex items-center justify-center chat text-paper-light hover:underline">
+                    <button type="button" onClick={toggleGallery}>
+                      + {images.length} More
+                    </button>
                   </div>
                   <div className="absolute z-10 w-full h-full bg-ink-dark opacity-75 rounded-border-sm" />
                   <Image

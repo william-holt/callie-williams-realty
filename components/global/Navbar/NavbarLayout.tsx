@@ -46,7 +46,7 @@ export default function Navbar(props: NavbarProps) {
           />
         </div>
         <div className="relative z-20 w-fit order-2 lg:order-1 xl:w-1/3 xl:justify-end">
-          <Link href="">
+          <Link href="/">
             <Image
               className="w-fit max-w-[250px] md:max-w-[350px] lg:max-w-[450px] xl:hidden"
               src="/navbar-logo-mobile-v1.png"

@@ -225,7 +225,7 @@ export function HomePageFeaturedProperties(props: propertyProps) {
                             </div>
                             <div className="w-1/3 h-24 p-1 md:w-1/2 lg:h-36">
                               <div className="relative w-full h-full rounded-border-lg shadow-sm lg:mb-0">
-                                <div className="absolute z-10 bottom-0 left-0 w-full h-full flex items-center justify-center chat text-paper-light">
+                                <div className="absolute z-10 bottom-0 left-0 w-full h-full flex items-center justify-center chat text-paper-light hover:underline">
                                   <button type="button" onClick={toggleGallery}>
                                     + {property.listingImages.length} More
                                   </button>
