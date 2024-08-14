@@ -22,10 +22,6 @@ export function YoutubeVideos({videos}: any) {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen></iframe>
-      {/*<HomePageFeaturedProperties*/}
-      {/*  title={'Featured Listings Being Shown Now'}*/}
-      {/*  properties={featuredPropertyData}*/}
-      {/*/>*/}
     </section>
   )
 }

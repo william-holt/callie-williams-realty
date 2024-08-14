@@ -35,8 +35,6 @@ export function HomePageServiceSection(props: HomePageServicesProps) {
     }
   }
 
-  console.log(1, residentialCount, commercialCount, developmentCount);
-
   return (
     <section className="w-full bg-primary-dark">
       <div className="w-full max-w-screen-2xl mx-auto pt-12 px-4 pb-24 md:px-6">
