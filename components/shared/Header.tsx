@@ -35,7 +35,7 @@ export function Header(props: HeaderProps) {
           {title && <div className="hollar pb-2">{title}</div>}
           {/* Description */}
           {description && (
-            <div className="talk pb-6">
+            <div className="tchat">
               <CustomPortableText value={description} />
             </div>
           )}

@@ -109,7 +109,7 @@ export const listingBySlugQuery = groq`
     _id,
     name,
     slug,
-    status,
+    status
     description,
     location,
     price,

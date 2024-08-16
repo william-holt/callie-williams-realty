@@ -300,9 +300,9 @@ export function SingleListingPage(initial: any) {
                       `statusIcon`,
                       listing.status === 'Sold' && 'bg-red-500',
                       listing.status === 'Active' && 'active',
-                      listing.status === 'Pending' && 'bg-yellow-500', // maybe getting rid of this?
-                      listing.status === 'Under Contract' && 'bg-yellow-500',
-                      listing.status === 'Price Improvement' && 'bg-blue-500',
+                      listing.status === 'Pending' && 'bg-yellow-500',
+                      listing.status === 'Under Contract' && 'bg-blue-500',
+                      listing.status === 'PriceImprovement' && 'bg-purple-500',
                     )}
                   />
                   <span className="text-paper-light text-body uppercase text-xs">

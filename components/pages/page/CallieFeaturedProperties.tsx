@@ -9,10 +9,10 @@ interface propertyProps {
 
 export function CallieFeaturedProperties(props: propertyProps) {
   const { properties } = props
-  const property1 = getRandomDifferent(properties);
-  const property2 = getRandomDifferent(properties, property1);
-  const property3 = getRandomDifferent(properties, property2);
-  const propertiesToShow = [property1, property2, property3];
+  const property1 = getRandomDifferent(properties)
+  const property2 = getRandomDifferent(properties, property1)
+  const property3 = getRandomDifferent(properties, property2)
+  const propertiesToShow = [property1, property2, property3]
 
   return (
     <>
@@ -24,10 +24,11 @@ export function CallieFeaturedProperties(props: propertyProps) {
             </h2>
           </div>
           {propertiesToShow?.length && (
-            <div
-              className="flex flex-col items-stretch space-y-4 lg:flex-row lg:flex-wrap lg:justify-evenly lg:space-y-0 lg:space-x-4 lg:-mx-4">
+            <div className="flex flex-col items-stretch space-y-4 lg:flex-row lg:flex-wrap lg:justify-evenly lg:space-y-0 lg:space-x-4 lg:-mx-4">
               {propertiesToShow.map((listing: any, index: number) => {
-                return <ListingCard index={index} listing={listing} key={index} />
+                return (
+                  <ListingCard index={index} listing={listing} key={index} />
+                )
               })}
             </div>
           )}

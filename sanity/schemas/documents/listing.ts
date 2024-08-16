@@ -181,20 +181,23 @@ export default defineType({
       title: 'Upload Images',
       type: 'array',
       of: [
-        { type: 'image',
+        {
+          type: 'image',
           fields: [
-          {
-            name: 'caption',
-            type: 'string',
-            title: 'Caption',
-          },
-          {
-            name: 'altText',
-            type: 'string',
-            title: 'Alt Text',
-          }
-        ]}],
-      options: {  },
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Caption',
+            },
+            {
+              name: 'altText',
+              type: 'string',
+              title: 'Alt Text',
+            },
+          ],
+        },
+      ],
+      options: {},
     }),
     defineField({
       name: 'testimonials',

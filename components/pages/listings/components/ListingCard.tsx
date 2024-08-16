@@ -14,14 +14,11 @@ interface ListingCardProps {
 export function ListingCard(props: ListingCardProps) {
   const { index, listing } = props
 
-  const imageUrl =
-    listing.ogImage
-      ? urlForImage(listing.ogImage)
-          ?.height(2000)
-          .width(3500)
-          .fit('crop')
-          .url()
-      : ''
+  console.log(listing.status)
+
+  const imageUrl = listing.ogImage
+    ? urlForImage(listing.ogImage)?.height(2000).width(3500).fit('crop').url()
+    : ''
 
   function convertToDollars(amount: number) {
     return amount
@@ -68,8 +65,8 @@ export function ListingCard(props: ListingCardProps) {
                               className="text-body uppercase text-xs text-ink-dark bg-paper-light bg-opacity-75 m-[5px] py-[2.5px] px-2 rounded-full shadow-lg"
                               key={index}
                             >
-                            {tag}
-                          </span>
+                              {tag}
+                            </span>
                           )
                         })}
                       </div>
@@ -83,9 +80,9 @@ export function ListingCard(props: ListingCardProps) {
                             listing.status === 'Active' && 'active',
                             listing.status === 'Pending' && 'bg-yellow-500',
                             listing.status === 'Under Contract' &&
-                            'bg-blue-500',
-                            listing.status === 'Price Improvement' &&
-                            'bg-purple-500'
+                              'bg-blue-500',
+                            listing.status === 'PriceImprovement' &&
+                              'bg-purple-500',
                           )}
                         />
                         <span className="text-paper-light text-body uppercase text-xs">
@@ -125,8 +122,12 @@ export function ListingCard(props: ListingCardProps) {
             <strong>{listing.squareFootage}</strong> sq. ft.
           </span>
         </div>
-        <h3 className="shout text-ink mb-2 w-full text-left line-clamp-2 h-[105px]">{listing.name}</h3>
-        <p className="max-w-full talk text-ink line-clamp-4">{listing.description}</p>
+        <h3 className="shout text-ink mb-2 w-full text-left line-clamp-2 h-[105px]">
+          {listing.name}
+        </h3>
+        <p className="max-w-full talk text-ink line-clamp-4">
+          {listing.description}
+        </p>
         <div className="w-full p-4 flex-grow-[3] flex justify-start items-end">
           <Link
             href="/listings/[slug]"
