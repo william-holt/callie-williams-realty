@@ -15,12 +15,7 @@ export interface HomePageProps {
   testimonials?: any
 }
 
-export function HomePage({
-  data,
-  encodeDataAttribute,
-  initial,
-  testimonials,
-}: any) {
+export function HomePage({ data, encodeDataAttribute, initial }: any) {
   // Default to an empty object to allow previews on non-existent documents
   const { homeData, propertyData, featuredPropertyData } = data
   const {
@@ -31,15 +26,33 @@ export function HomePage({
     subtitle,
     paragraph,
     heroImage,
-    aboutTitle,
     propertiesTitle,
+    aboutImage,
+    aboutTitle,
     aboutText,
     testimonialsTitle,
-    testimonialsDescription, // need to add this
+    testimonialsText,
     servicesTitle,
-    servicesParagraph, // need to add this
+    servicesBody,
     footer,
   } = homeData ?? {}
+
+  const testimonials = propertyData
+    .filter((property: any) => property.testimonials?.length > 0)
+    .map((filteredTestimonial: any) => {
+      if (filteredTestimonial.testimonials.length > 1) {
+        const testimonials = filteredTestimonial.testimonials.map(
+          (testimonial: any) => testimonial,
+        )
+        return testimonials.length > 0 ? testimonials : null
+      } else {
+        return {
+          ...filteredTestimonial.testimonials[0],
+        }
+      }
+    })
+
+  console.log(testimonials)
 
   return (
     <>
@@ -52,7 +65,7 @@ export function HomePage({
       />
       <HomePageServiceSection
         title={servicesTitle}
-        description={servicesParagraph}
+        description={servicesBody}
         services={services}
         propertyData={propertyData}
       />
@@ -62,10 +75,14 @@ export function HomePage({
       />
       <Testimonials
         title={testimonialsTitle}
-        description={testimonialsDescription}
-        propertyData={propertyData}
+        description={testimonialsText}
+        testimonials={testimonials}
       />
-      <HomePageAbout title={aboutTitle} description={aboutText} />
+      <HomePageAbout
+        image={aboutImage}
+        title={aboutTitle}
+        description={aboutText}
+      />
       <Subscribe />
     </>
   )

@@ -10,8 +10,11 @@ export const homePageQuery = groq`{
       subtitle,
       paragraph,
       servicesTitle,
+      servicesBody,
       propertiesTitle,
       testimonialsTitle,
+      testimonialsText,
+      aboutImage,
       aboutTitle,
       aboutText,
     },
@@ -74,6 +77,12 @@ export const allListingsPageQuery = groq`{
 
 export const allListingsQuery = groq`
   *[_type == "listing"][]
+`
+
+export const allTestimonialsQuery = groq`
+  *[_type == "listing" && listing.testimonials != null][]{
+    testimonials
+  }
 `
 
 export const allPastDealsPageQuery = groq`{

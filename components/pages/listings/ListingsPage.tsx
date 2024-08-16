@@ -2,7 +2,7 @@ import { ListingsGrid } from '@/components/pages/listings/components/ListingsGri
 import { ListingsHero } from '@/components/pages/listings/components/ListingsHero'
 
 export function ListingsPage({ data }: any) {
-  const { listingData, allListingsMetadata } = data;
+  const { listingData, allListingsMetadata } = data
   const { overview, header, heroImage, subtitle } = allListingsMetadata ?? {}
 
   return (

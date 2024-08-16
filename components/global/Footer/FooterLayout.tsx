@@ -5,7 +5,8 @@ import Menu from '@/components/global/Footer/Menu'
 
 import type { PortableTextBlock } from 'next-sanity'
 
-import { CustomPortableText } from '@/components//shared/CustomPortableText'
+import { CustomPortableText } from '@/components/shared/CustomPortableText'
+import { Ratings } from '@/components/shared/Ratings'
 import type { MenuItem, SettingsPayload } from '@/types'
 
 import { FaInstagram, FaFacebook, FaLinkedin } from 'react-icons/fa'
@@ -27,33 +28,7 @@ export default function Footer(props: FooterProps) {
         </div>
         <Menu menuItems={menuItems} />
         <div className="w-full flex flex-col items-start justify-start sm:flex-row sm:items-center">
-          {/* Zillow Rating */}
-          <div className="w-full flex flex-col text-paper-light sm:w-1/2">
-            <div className="w-full flex flex-row items-center justify-center space-x-1 sm:justify-start">
-              <FaStar className="text-2xl" />
-              <FaStar className="text-2xl" />
-              <FaStar className="text-2xl" />
-              <FaStar className="text-2xl" />
-              <FaStar className="text-2xl" />
-              <span className="text-xl mt-1">5.0</span>
-            </div>
-            <div className="w-full flex flex-row items-center justify-center space-x-1 sm:justify-start">
-              <Link
-                href="https://www.zillow.com/profile/clwilliams2081"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline"
-              >
-                {numberOfReviews} reviews on
-              </Link>
-              <Image
-                src="/zillow-logo.png"
-                alt="The Zillow logo"
-                width={100}
-                height={50}
-              />
-            </div>
-          </div>
+          <Ratings />
           {/* Social Links */}
           <ul className="w-full flex flex-row items-center justify-center space-x-1 py-4 sm:w-1/2 sm:justify-end sm:py-0">
             <li className="text-4xl text-paper-light transition-all duration-300 ease-in-out hover:text-accent hover:scale-105">

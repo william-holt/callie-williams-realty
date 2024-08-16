@@ -50,7 +50,7 @@ export default defineType({
       name: 'services',
       title: 'Services',
       type: 'array',
-      of: [{type: 'service'}],
+      of: [{ type: 'service' }],
       validation: (rule) => rule.min(3).max(3),
     }),
     defineField({
@@ -61,7 +61,8 @@ export default defineType({
     }),
     defineField({
       name: 'testimonialsTitle',
-      description: 'This field is the header text of the testimonials  section.',
+      description:
+        'This field is the header text of the testimonials  section.',
       title: 'Testimonials Section Title',
       type: 'string',
     }),
@@ -85,7 +86,8 @@ export default defineType({
     }),
     defineField({
       name: 'aboutImage',
-      description: 'This is the small image attached to the Homepage About section',
+      description:
+        'This is the small image attached to the Homepage About section',
       title: 'About Image',
       type: 'image',
     }),

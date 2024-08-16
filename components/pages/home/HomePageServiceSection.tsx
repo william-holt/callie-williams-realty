@@ -15,31 +15,31 @@ export function HomePageServiceSection(props: HomePageServicesProps) {
 
   const residentialCount = propertyData?.filter((listing: any) =>
     listing.tags?.includes('Residential'),
-  ).length;
+  ).length
   const commercialCount = propertyData?.filter((listing: any) =>
     listing.tags?.includes('Commercial'),
-  ).length;
+  ).length
   const developmentCount = propertyData?.filter((listing: any) =>
     listing.tags?.includes('Development'),
-  ).length;
+  ).length
 
   const checkServiceForData = (serviceName: string) => {
     if (serviceName === 'Residential') {
-      return !!(residentialCount && residentialCount > 0);
+      return !!(residentialCount && residentialCount > 0)
     }
     if (serviceName === 'Commercial') {
-      return !!(commercialCount && commercialCount > 0);
+      return !!(commercialCount && commercialCount > 0)
     }
     if (serviceName === 'Development') {
-      return !!(developmentCount && developmentCount > 0);
+      return !!(developmentCount && developmentCount > 0)
     }
   }
 
   return (
     <section className="w-full bg-primary-dark">
       <div className="w-full max-w-screen-2xl mx-auto pt-12 px-4 pb-24 md:px-6">
-        <h2 className="hollar text-paper-light lg:-mx-4">{title}</h2>
-        <p className="talk text-paper-light pb-12">{description}</p>
+        <h2 className="hollar text-paper-light pb-4 lg:-mx-4">{title}</h2>
+        <p className="talk text-paper-light pb-12 lg:-mx-4">{description}</p>
         {services && services?.length > 0 && (
           <div className="flex flex-col items-stretch space-y-4 lg:flex-row lg:space-y-0 lg:space-x-4 lg:-mx-4">
             {services.map((service, key) => {

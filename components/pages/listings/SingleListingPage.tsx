@@ -26,6 +26,7 @@ import {
 import { twMerge } from 'tailwind-merge'
 
 import { MapWrapper } from '@/components/maps/MapWrapper'
+import { Testimonials } from '@/components/shared/Testimonials'
 import { Button } from '@/components/shared/Button'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import { urlForImage } from '@/sanity/lib/utils'
@@ -417,21 +418,23 @@ export function SingleListingPage(initial: any) {
       </div>
 
       {/* TODO: Figure this out */}
-      {/* {listing.testimonials?.length > 0 && (
-        <div>
-          {listing.testimonials.map(
-            (testimonial: any, testimonialIndex: number) => {
-              return (
-                <div key={'testimonial' + testimonialIndex}>
-                  <div>{testimonial.name}</div>
-                  <div>{testimonial.review}</div>
-                  <div>{testimonial.date}</div>
-                </div>
-              )
-            },
-          )}
-        </div>
-      )} */}
+      {listing.testimonials?.length > 0 && (
+        <Testimonials testimonials={listing.testimonials} />
+
+        // <div>
+        //   {listing.testimonials.map(
+        //     (testimonial: any, testimonialIndex: number) => {
+        //       return (
+        //         <div key={'testimonial' + testimonialIndex}>
+        //           <div>{testimonial.name}</div>
+        //           <div>{testimonial.review}</div>
+        //           <div>{testimonial.date}</div>
+        //         </div>
+        //       )
+        //     },
+        //   )}
+        // </div>
+      )}
     </div>
   )
 }

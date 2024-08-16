@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { urlForImage } from '@/sanity/lib/utils'
 
 import { Input } from '@/components/shared/Input'
+import { Ratings } from '@/components/shared/Ratings'
 
 import { FaInstagram, FaFacebook, FaLinkedin } from 'react-icons/fa'
 import { FaStar } from 'react-icons/fa6'
@@ -38,37 +39,11 @@ export function HomePageHero(props: HomePageHeroProps) {
       }}
     >
       <div className="absolute top-0 left-0 w-full h-full bg-ink-dark opacity-60" />
-      <div className="relative w-full max-w-screen-2xl h-fit min-h-[950px] flex flex-col items-center justify-center mx-auto md:h-screen">
-        <div className="absolute bottom-0 w-full h-full flex flex-col items-start justify-between pt-36 px-4 pb-12">
+      <div className="relative w-full max-w-screen-2xl h-fit min-h-[1000px] flex flex-col items-center justify-center mx-auto md:h-screen">
+        <div className="absolute bottom-0 w-full h-full flex flex-col items-start justify-between pt-24 px-4 pb-12 sm:pt-36">
           {/* Top */}
           <div className="w-full flex flex-col items-start justify-start sm:flex-row sm:items-center sm:px-2 xl:px-0">
-            {/* Zillow Rating */}
-            <div className="w-full flex flex-col text-paper-light sm:w-1/2">
-              <div className="w-full flex flex-row items-center justify-start space-x-1">
-                <FaStar className="text-2xl" />
-                <FaStar className="text-2xl" />
-                <FaStar className="text-2xl" />
-                <FaStar className="text-2xl" />
-                <FaStar className="text-2xl" />
-                <span className="text-xl mt-1">5.0</span>
-              </div>
-              <div className="w-full flex flex-row items-center justify-start space-x-1">
-                <Link
-                  href="https://www.zillow.com/profile/clwilliams2081"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline"
-                >
-                  {numberOfReviews} reviews on
-                </Link>
-                <Image
-                  src="/zillow-logo.png"
-                  alt="The Zillow logo"
-                  width={100}
-                  height={50}
-                />
-              </div>
-            </div>
+            <Ratings />
             {/* Social Links */}
             <ul className="w-full flex flex-row items-center justify-start space-x-1 py-4 sm:w-1/2 sm:justify-end sm:py-0">
               <li className="text-4xl text-paper-light transition-all duration-300 ease-in-out hover:text-accent hover:scale-105">
@@ -119,6 +94,14 @@ export function HomePageHero(props: HomePageHeroProps) {
                     alt="Real Estate 43 logo"
                     width={200}
                     height={100}
+                  />
+                </li>
+                <li className="w-36 sm:w-fit">
+                  <Image
+                    src="/adtv-logo.png"
+                    alt="The American Dream TV logo"
+                    width={225}
+                    height={115}
                   />
                 </li>
               </ul>
