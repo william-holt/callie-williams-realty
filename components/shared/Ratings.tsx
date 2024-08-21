@@ -1,5 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
+
+import { motion } from 'framer-motion'
 
 import { FaStar } from 'react-icons/fa6'
 
@@ -7,7 +11,13 @@ export const Ratings = () => {
   return (
     <>
       {/* Ratings */}
-      <div className="w-full flex flex-col space-y-2 text-paper-light sm:w-1/2 sm:flex-row sm:space-x-4 sm:space-y-0">
+      <motion.div
+        className="w-full flex flex-col space-y-2 text-paper-light sm:w-1/2 sm:flex-row sm:space-x-4 sm:space-y-0"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ type: 'spring', delay: 0.25, duration: 2 }}
+      >
         {/* Zillow Rating */}
         <div className="w-fit">
           <div className="w-full flex flex-row items-center justify-start space-x-1">
@@ -62,7 +72,7 @@ export const Ratings = () => {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   )
 }

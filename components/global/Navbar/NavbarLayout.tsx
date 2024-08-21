@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
+import { motion } from 'framer-motion'
 
 import Menu from '@/components/global/Navbar/Menu'
 import { Button } from '@/components/shared/Button'
@@ -33,7 +34,13 @@ export default function Navbar(props: NavbarProps) {
 
   return (
     <nav className="sticky top-0 z-20 w-full h-[100px] bg-gradient-to-b from-ink-dark to-transparent">
-      <div className="w-full max-w-screen-2xl flex flex-row items-center justify-center flex-wrap mx-auto px-4 lg:justify-between">
+      <motion.div
+        className="w-full max-w-screen-2xl flex flex-row items-center justify-center flex-wrap mx-auto px-4 lg:justify-between"
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ type: 'spring', duration: 1.5 }}
+      >
         <Menu menuItems={menuItems} isOpen={isOpen} setIsOpen={setIsOpen} />
         <div className={twMerge(`w-fit order-1 lg:hidden`)}>
           <Hamburger
@@ -70,7 +77,7 @@ export default function Navbar(props: NavbarProps) {
             </Button>
           </Link>
         </div>
-      </div>
+      </motion.div>
     </nav>
   )
 }

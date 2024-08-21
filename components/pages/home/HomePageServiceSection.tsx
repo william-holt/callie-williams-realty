@@ -1,5 +1,8 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 import { Button } from '@/components/shared/Button'
 import { urlForImage } from '@/sanity/lib/utils'
@@ -38,8 +41,31 @@ export function HomePageServiceSection(props: HomePageServicesProps) {
   return (
     <section className="w-full bg-primary-dark">
       <div className="w-full max-w-screen-2xl mx-auto pt-12 px-4 pb-24 md:px-6">
-        <h2 className="hollar text-paper-light pb-4 lg:-mx-4">{title}</h2>
-        <p className="talk text-paper-light pb-12 lg:-mx-4">{description}</p>
+        <motion.h2
+          className="hollar text-paper-light pb-4 lg:-mx-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            type: 'spring',
+            duration: 2,
+          }}
+        >
+          {title}
+        </motion.h2>
+        <motion.p
+          className="talk text-paper-light pb-12 lg:-mx-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            type: 'spring',
+            delay: 0.15,
+            duration: 1,
+          }}
+        >
+          {description}
+        </motion.p>
         {services && services?.length > 0 && (
           <div className="flex flex-col items-stretch space-y-4 lg:flex-row lg:space-y-0 lg:space-x-4 lg:-mx-4">
             {services.map((service, key) => {
@@ -49,9 +75,17 @@ export function HomePageServiceSection(props: HomePageServicesProps) {
                 .url()
 
               return (
-                <div
+                <motion.div
                   key={'service' + key}
                   className="relative w-full flex flex-col bg-paper-light rounded-border-lg shadow-lg md:flex-row md:items-start md:justify-start lg:w-1/3 lg:flex-col"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    type: 'spring',
+                    delay: 0.25 * key,
+                    duration: 2,
+                  }}
                 >
                   <div className="w-full p-2 md:w-1/3 lg:w-full">
                     <div className="relative w-full h-[150px] flex items-center justify-center bg-paper-dark rounded-border-sm md:h-[250px]">
@@ -81,7 +115,7 @@ export function HomePageServiceSection(props: HomePageServicesProps) {
                       </div>
                     )}
                   </div>
-                </div>
+                </motion.div>
               )
             })}
           </div>
