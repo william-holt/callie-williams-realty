@@ -10,7 +10,7 @@ export const MapWrapper = ({ address }: any) => {
         </h2>
         <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6">
           <div className="w-full max-w-screen-2xl min-h-[250px] bg-primary-light mx-auto p-6 rounded-2xl">
-            <GoogleMap />
+            <GoogleMap address={address} />
           </div>
         </div>
       </div>
