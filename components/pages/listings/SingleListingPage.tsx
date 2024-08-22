@@ -84,6 +84,7 @@ export function SingleListingPage(initial: any) {
       setCurrentImage(0)
     }
   }
+  console.log('meh')
 
   return (
     <div className="w-full">

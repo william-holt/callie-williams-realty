@@ -1,27 +1,24 @@
 'use client'
-import { useState } from 'react'
 
 import { Button } from '@/components/shared/Button'
 import { Input } from '@/components/shared/Input'
+import { ErrorMessage, Field, Form, Formik } from 'formik'
 
 export function ContactCallie(props: any) {
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [email, setEmail] = useState('')
-  const [subject, setSubject] = useState('')
-  const [post, setPost] = useState('')
-
-  function handleSubmit(e) {
-    e.preventDefault()
+  function handleSubmit(formData: any) {
     const postData = async () => {
       const data = {
-        title: firstName,
-        post: post,
+        subject: 'Contact: ' + formData.subject + ' ',
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        message: formData.message,
       }
+      const jsonData = JSON.stringify(data)
 
       const response = await fetch('/api/email/send', {
         method: 'POST',
-        body: JSON.stringify(data),
+        body: jsonData
       })
       return response.json()
     }
@@ -35,62 +32,66 @@ export function ContactCallie(props: any) {
       <div className="w-full px-6">
         <h2 className="hollar text-white pb-4">Contact Callie</h2>
       </div>
-      <div className="w-full flex flex-col items-start justify-start">
-        <div className="w-full flex flex-col items-start justify-start p-4 lg:flex-row lg:space-x-4">
-          <Input
-            className="w-full lg:w-1/3"
-            name="firstName"
-            label="First Name"
-            mode="light"
-            type="text"
-            placeholder="Your first name"
-            required
-          />
-          <Input
-            className="w-full lg:w-1/3"
-            name="lastName"
-            label="Last Name"
-            mode="light"
-            type="text"
-            placeholder="Your last name"
-            required
-          />
-          <Input
-            className="w-full lg:w-1/3"
-            name="email"
-            label="Email Address"
-            mode="light"
-            type="email"
-            placeholder="Your email address"
-            required
-          />
-        </div>
-        <div className="w-full flex flex-col items-start justify-start p-4 lg:flex-row lg:space-x-4">
-          <Input
-            className="w-full lg:w-1/3"
-            name="subject"
-            label="Subject"
-            mode="light"
-            type="text"
-            placeholder="Subject of your message"
-            required
-          />
-          <Input
-            className="w-full lg:w-2/3"
-            name="message"
-            label="Message"
-            mode="light"
-            type="text"
-            placeholder="Your message"
-            required
-          />
-        </div>
-        <div className="w-full flex items-center justify-start px-6">
-          <Button color="paper" size="md" variant="solid">
-            Sign Up
-          </Button>
-        </div>
-      </div>
+      <Formik
+        initialValues={{ firstName: '', lastName: '', email: '', subject: '', message: '' }}
+        onSubmit={handleSubmit}>
+        <Form className="w-full flex flex-col items-start justify-start">
+          <div className="w-full flex flex-col items-start justify-start p-4 lg:flex-row lg:space-x-4">
+            <div className="w-full lg:w-1/3">
+              <Field
+                name="firstName"
+                label="First Name"
+                type="text"
+                as={Input}
+                required />
+              <ErrorMessage name="firstName" />
+            </div>
+            <div className="w-full lg:w-1/3">
+              <Field
+                name="lastName"
+                label="Last Name"
+                type="text"
+                as={Input}
+                required />
+              <ErrorMessage name="lastName" />
+            </div>
+            <div className="w-full lg:w-1/3">
+              <Field
+                name="email"
+                label="Email Address"
+                type="text"
+                as={Input}
+                required />
+              <ErrorMessage name="email" />
+            </div>
+          </div>
+          <div className="w-full flex flex-col items-start justify-start p-4 lg:flex-row lg:space-x-4">
+            <div className="w-full lg:w-1/3">
+              <Field
+                name="subject"
+                label="Subject"
+                type="text"
+                as={Input}
+                required />
+              <ErrorMessage name="subject" />
+            </div>
+            <div className="w-full lg:w-2/3">
+              <Field
+                name="message"
+                label="Message"
+                type="text"
+                as={Input}
+                required />
+              <ErrorMessage name="message" />
+            </div>
+          </div>
+          <div className="w-full flex items-center justify-start px-6">
+            <Button type="submit" color="paper" size="md" variant="solid">
+              Sign Up
+            </Button>
+          </div>
+        </Form>
+      </Formik>
     </div>
   )
 }

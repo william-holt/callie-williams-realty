@@ -14,8 +14,6 @@ interface ListingCardProps {
 export function ListingCard(props: ListingCardProps) {
   const { index, listing } = props
 
-  console.log(listing.status)
-
   const imageUrl = listing.ogImage
     ? urlForImage(listing.ogImage)?.height(2000).width(3500).fit('crop').url()
     : ''
