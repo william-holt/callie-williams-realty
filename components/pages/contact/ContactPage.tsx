@@ -2,7 +2,7 @@ import { ContactHero } from '@/components/pages/contact/ContactHero'
 import { ContactCallie } from '@/components/shared/ContactCallie'
 
 export function ContactPage(props: any) {
-  const { data } = props
+  const { data } = props;
 
   return (
     <article className="bg-primary-dark">

@@ -52,8 +52,6 @@ export function HomePage({ data, encodeDataAttribute, initial }: any) {
       }
     })
 
-  console.log(testimonials)
-
   return (
     <>
       {/* Header */}

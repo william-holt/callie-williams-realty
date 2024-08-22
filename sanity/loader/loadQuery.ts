@@ -5,13 +5,13 @@ import { draftMode } from 'next/headers'
 
 import { client } from '@/sanity/lib/client'
 import {
-  homePageQuery,
-  pagesBySlugQuery,
+allListingsPageQuery,   allListingsQuery,
+allPastDealsPageQuery,   allReviewsQuery,
+contactPageMetadata,   homePageQuery,
+  listingBySlugQuery,   pagesBySlugQuery,
   projectBySlugQuery,
   settingsQuery,
-  allReviewsQuery,
-  allListingsQuery,
-  listingBySlugQuery, allPastDealsPageQuery, allListingsPageQuery, contactPageMetadata, youtubeVideos
+youtubeVideos
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {

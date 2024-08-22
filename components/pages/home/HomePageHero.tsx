@@ -1,13 +1,12 @@
-import Link from 'next/link'
+'use client'
+import { ErrorMessage, Field, Form, Formik } from 'formik'
 import Image from 'next/image'
-
-import { urlForImage } from '@/sanity/lib/utils'
+import Link from 'next/link'
+import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa'
 
 import { Input } from '@/components/shared/Input'
 import { Ratings } from '@/components/shared/Ratings'
-
-import { FaInstagram, FaFacebook, FaLinkedin } from 'react-icons/fa'
-import { FaStar } from 'react-icons/fa6'
+import { urlForImage } from '@/sanity/lib/utils'
 
 interface HomePageHeroProps {
   description?: any[]
@@ -18,6 +17,28 @@ interface HomePageHeroProps {
 
 export function HomePageHero(props: HomePageHeroProps) {
   const { title, description, numberOfReviews, coverImage = false } = props
+
+  function handleSubmit(formData: any) {
+    const postData = async () => {
+      const data = {
+        subject: 'Newsletter Sign Up from ',
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email
+      }
+      const jsonData = JSON.stringify(data)
+
+      const response = await fetch('/api/email/send', {
+        method: 'POST',
+        body: jsonData
+      })
+      return response.json()
+    }
+    postData().then((data) => {
+      alert(data.message)
+    })
+  }
+
   if (!description && !title) {
     return null
   }
@@ -115,37 +136,55 @@ export function HomePageHero(props: HomePageHeroProps) {
               {description}
             </p>
             {/* Subscribe Bar */}
-            <div className="w-full flex flex-col items-start justify-start rounded-border-lg shadow-lg backdrop-blur-md backdrop-brightness-125 md:h-36 md:flex-row md:items-center">
-              <div className="w-full flex flex-col items-start justify-start p-4 md:w-5/6 md:flex-row md:space-x-2 lg:space-x-4">
-                <Input
-                  className="w-full md:w-1/3"
-                  name="firstName"
-                  label="First Name"
-                  type="text"
-                  required
-                />
-                <Input
-                  className="w-full md:w-1/3"
-                  name="lastName"
-                  label="Last Name"
-                  type="text"
-                  required
-                />
-                <Input
-                  className="w-full md:w-1/3"
-                  name="email"
-                  label="Email Address"
-                  type="email"
-                  required
-                />
-              </div>
-              <button className="w-full h-12 flex items-center justify-center talk uppercase text-accent bg-paper-light rounded-border-bottom-lg transition-all duration-300 ease-in-out hover:bg-accent hover:text-paper-light md:hidden">
-                Sign Up
-              </button>
-              <button className="hidden w-full items-center justify-center talk uppercase text-accent bg-paper-light rounded-border-right-lg transition-all duration-300 ease-in-out hover:bg-accent hover:text-paper-light md:w-1/6 md:h-36 md:flex">
-                Sign Up
-              </button>
-            </div>
+            <Formik
+              initialValues={{firstName: '', lastName: '', email: ''}}
+              onSubmit={(values) => {
+                handleSubmit(values);
+              }}
+            >
+              <Form className="w-full flex flex-col items-start justify-start rounded-border-lg shadow-lg backdrop-blur-md backdrop-brightness-125 md:h-36 md:flex-row md:items-center">
+                <div
+                  className="w-full flex flex-col items-start justify-start p-4 md:w-5/6 md:flex-row md:space-x-2 lg:space-x-4">
+                  <div className="w-full md:w-1/3">
+                    <Field
+                      name="firstName"
+                      label="First Name"
+                      type="text"
+                      as={Input}
+                      required />
+                    <ErrorMessage name="firstName" />
+                  </div>
+                  <div className="w-full md:w-1/3">
+                    <Field
+                      name="lastName"
+                      label="Last Name"
+                      type="text"
+                      as={Input}
+                      required />
+                    <ErrorMessage name="lastName" />
+                  </div>
+                  <div className="w-full md:w-1/3">
+                    <Field
+                      name="email"
+                      label="Email Address"
+                      type="text"
+                      as={Input}
+                      required />
+                    <ErrorMessage name="email" />
+                  </div>
+                </div>
+                <button
+                  className="w-full h-12 flex items-center justify-center talk uppercase text-accent bg-paper-light rounded-border-bottom-lg transition-all duration-300 ease-in-out hover:bg-accent hover:text-paper-light md:hidden"
+                  type="submit">
+                  Sign Up
+                </button>
+                <button
+                  className="hidden w-full items-center justify-center talk uppercase text-accent bg-paper-light rounded-border-right-lg transition-all duration-300 ease-in-out hover:bg-accent hover:text-paper-light md:w-1/6 md:h-36 md:flex"
+                  type='submit'>
+                  Sign Up
+                </button>
+              </Form>
+            </Formik>
           </div>
         </div>
       </div>
