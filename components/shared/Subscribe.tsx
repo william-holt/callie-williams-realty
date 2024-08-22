@@ -1,6 +1,7 @@
 'use client';
-import { Button } from '@/components/shared/Button'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
+
+import { Button } from '@/components/shared/Button'
 import { DarkInput } from '@/components/shared/DarkInput'
 
 export function Subscribe() {

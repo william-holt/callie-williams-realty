@@ -15,7 +15,7 @@ export async function POST(req: Request) {
       from: fromLine,
       to: ['delivered@resend.dev', 'clwilliams208@gmail.com', 'wheat@likethebread.com'],
       subject: bodyData.subject + bodyData.firstName + ' ' + bodyData.lastName,
-      react: EmailTemplate({ firstName: bodyData.firstName, lastName: bodyData.lastName, message: bodyData.message, email: bodyData.email }),
+      react: EmailTemplate({ firstName: bodyData.firstName, lastName: bodyData.lastName, message: bodyData.message, email: bodyData.email, listing: bodyData.listing }),
     });
 
     if (error) {

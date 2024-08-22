@@ -5,13 +5,15 @@ interface EmailTemplateProps {
   lastName?: string;
   message?: string;
   email?: string;
+  listing?: any;
 }
 
 export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
                                                                         firstName,
                                                                         lastName,
                                                                         message,
-                                                                        email
+                                                                        email,
+                                                                        listing
                                                                       }) => (
   <div>
     <h1>Hello, Callie!</h1>
@@ -30,5 +32,13 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
         </div>
       </div>
     )}
+
+    <div>
+      {listing && (
+        <div>
+          Showing Requested at {listing.name}
+        </div>
+      )}
+    </div>
   </div>
 );

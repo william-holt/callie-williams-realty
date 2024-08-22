@@ -23,17 +23,31 @@ import {
   FaRulerCombined,
   FaTag,
 } from 'react-icons/fa6'
+import Modal from 'react-responsive-modal'
 import { twMerge } from 'tailwind-merge'
 
 import { MapWrapper } from '@/components/maps/MapWrapper'
-import { Testimonials } from '@/components/shared/Testimonials'
 import { Button } from '@/components/shared/Button'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
+import { Testimonials } from '@/components/shared/Testimonials'
 import { urlForImage } from '@/sanity/lib/utils'
+import 'react-responsive-modal/styles.css';
+import { ErrorMessage, Field, Form, Formik } from 'formik'
+import { DarkInput } from '@/components/shared/DarkInput'
+import { Input } from '@/components/shared/Input'
+import service from '@/sanity/schemas/objects/service'
 
 export function SingleListingPage(initial: any) {
   const { data: listing } = initial.initial
   const address = listing
+
+  const [isRequestAShowingModalOpen, setIsRequestAShowingModalOpen] = useState<boolean>(false);
+  const [isAskQuestionModalOpen, setIsAskQuestionModalOpen] = useState<boolean>(false);
+
+  const onOpenShowingModal = () => setIsRequestAShowingModalOpen(true);
+  const onCloseShowingModal = () => setIsRequestAShowingModalOpen(false);
+  const onOpenQuestionModal = () => setIsAskQuestionModalOpen(true);
+  const onCloseQuestionModal = () => setIsAskQuestionModalOpen(false);
 
   function convertToDollars(amount: number) {
     return amount
@@ -46,8 +60,8 @@ export function SingleListingPage(initial: any) {
 
   const images = listing.listingImages
     ? listing.listingImages.map((image: any) => {
-        return urlForImage(image)?.height(2000).width(3500).fit('crop').url()
-      })
+      return urlForImage(image)?.height(2000).width(3500).fit('crop').url()
+    })
     : []
 
   const placeholderImage = '/placeholder-square.jpg'
@@ -84,7 +98,28 @@ export function SingleListingPage(initial: any) {
       setCurrentImage(0)
     }
   }
-  console.log('meh')
+
+  function handleSubmit(formData: any) {
+    const postData = async () => {
+      const data = {
+        subject: 'Showing Requested! ',
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        listing: listing,
+      }
+      const jsonData = JSON.stringify(data)
+
+      const response = await fetch('/api/email/send', {
+        method: 'POST',
+        body: jsonData
+      })
+      return response.json()
+    }
+    postData().then((data) => {
+      alert(data.message)
+    })
+  }
 
   return (
     <div className="w-full">
@@ -315,12 +350,12 @@ export function SingleListingPage(initial: any) {
             <h3 className="shout pt-6 pb-2 text-pretty">{listing.name}</h3>
             <p className="talk pb-6 text-pretty">{listing.description}</p>
             <div className="w-fit flex items-center justify-start">
-              <Link className="mr-4" href="">
-                <Button color="accent" size="md" variant="solid">
+              <span className="mr-4">
+                <Button color="accent" size="md" variant="solid" onClick={onOpenShowingModal}>
                   Request A Showing
                 </Button>
-              </Link>
-              <Link className="chat hover:underline" href="">
+              </span>
+              <Link className="chat hover:underline" href={`/contact`}>
                 <Button color="paper" size="sm" variant="ghost">
                   Ask A Question
                 </Button>
@@ -436,6 +471,58 @@ export function SingleListingPage(initial: any) {
         //   )}
         // </div>
       )}
+      <Modal
+        open={isRequestAShowingModalOpen}
+        onClose={onCloseShowingModal}
+      >
+        <h2>Request a Showing!</h2>
+
+        <Formik
+          initialValues={{firstName: '', lastName: '', email: ''}}
+          onSubmit={handleSubmit}>
+          <Form className="w-full flex flex-col items-start justify-start lg:flex-row lg:items-center">
+            <div className="w-full flex flex-col items-start justify-start p-4 lg:w-5/6 lg:flex-row lg:space-x-4">
+              <div className="w-full md:w-1/3">
+                <Field
+                  name="firstName"
+                  label="First Name"
+                  type="text"
+                  as={DarkInput}
+                  required />
+                <ErrorMessage name="firstName" />
+              </div>
+              <div className="w-full md:w-1/3">
+                <Field
+                  name="lastName"
+                  label="Last Name"
+                  type="text"
+                  as={DarkInput}
+                  required />
+                <ErrorMessage name="lastName" />
+              </div>
+              <div className="w-full md:w-1/3">
+                <Field
+                  name="email"
+                  label="Email Address"
+                  type="text"
+                  as={DarkInput}
+                  required />
+                <ErrorMessage name="email" />
+              </div>
+            </div>
+            <div className="w-full flex items-center justify-start px-6 lg:hidden">
+              <Button type='submit' color="accent" size="md" variant="solid">
+                Sign Up
+              </Button>
+            </div>
+            <div className="hidden w-full items-center justify-center lg:w-1/6  lg:flex">
+              <Button type='submit' color="accent" size="md" variant="solid">
+                Sign Up
+              </Button>
+            </div>
+          </Form>
+        </Formik>
+      </Modal>
     </div>
   )
 }
